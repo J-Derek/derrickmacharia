@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #080808;
+  --color-bg-secondary: #0f0f0f;
+  --color-bg-elevated: #1a1a1a;
+  --color-accent: #00FF87;
+  --color-accent-dim: #00ff8733;
+  --color-text-primary: #F5F5F0;
+  --color-text-secondary: #888880;
+  --color-text-muted: #666660;
+  --color-border: #1f1f1f;
+
+  --font-display: "Clash Display", sans-serif;
+  --font-sans: "General Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-text-primary font-sans antialiased selection:bg-accent selection:text-bg-primary overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Custom CSS classes for specific aesthetic choices */
+.mesh-bg {
+  background: radial-gradient(circle at 50% 50%, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+}
+
+.glow-effect {
+  box-shadow: 0 0 40px var(--color-accent-dim);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--color-text-primary), var(--color-text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

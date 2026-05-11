@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "react-helmet-async": "^3.0.0",
+    "react-hook-form": "^7.75.0",
+    "zod": "^4.4.3"
+  }
+}
