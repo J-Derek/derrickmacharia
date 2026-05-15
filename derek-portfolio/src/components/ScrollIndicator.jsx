@@ -7,7 +7,8 @@ const ScrollIndicator = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setNumSegments(Math.floor(window.innerHeight / 25));
+      // Increased density for a longer vertical presence
+      setNumSegments(Math.floor(window.innerHeight / 18));
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -15,7 +16,7 @@ const ScrollIndicator = () => {
   }, []);
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-1.5 items-end pointer-events-none hidden md:flex">
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2 items-end pointer-events-none hidden md:flex">
       {Array.from({ length: numSegments }).map((_, i) => {
         const threshold = i / numSegments;
         return (

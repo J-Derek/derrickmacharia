@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useOutlet } from 'react-router-dom';
 import { MotionConfig, AnimatePresence } from 'framer-motion';
+import { ReactLenis } from 'lenis/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -11,17 +12,19 @@ function App() {
   const element = useOutlet();
 
   return (
-    <MotionConfig reducedMotion="user">
-      <CustomCursor />
-      <ScrollIndicator />
-      <Navbar />
-      <main className="min-h-screen">
-        <AnimatePresence mode="wait">
-          {element && React.cloneElement(element, { key: location.pathname })}
-        </AnimatePresence>
-      </main>
-      <Footer />
-    </MotionConfig>
+    <ReactLenis root>
+      <MotionConfig reducedMotion="user">
+        <CustomCursor />
+        <ScrollIndicator />
+        <Navbar />
+        <main className="min-h-screen">
+          <AnimatePresence mode="wait">
+            {element && React.cloneElement(element, { key: location.pathname })}
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </MotionConfig>
+    </ReactLenis>
   );
 }
 

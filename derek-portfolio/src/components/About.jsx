@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 md:py-32 bg-bg-secondary">
+    <section id="about" className="py-24 md:py-32 bg-bg-primary">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
@@ -14,34 +14,21 @@ const About = () => {
           >
             <div className="mb-8">
               <span className="font-mono text-sm tracking-widest text-accent uppercase">
-                About Me
+                Expertise
               </span>
               <h2 className="mt-4 font-display text-[clamp(40px,6vw,80px)] leading-[1.1] font-semibold text-text-primary">
-                Building software<br />
-                that actually ships.
+                Solving complex problems<br />
+                with elegant code.
               </h2>
             </div>
 
             <div className="space-y-6 text-lg text-text-secondary font-sans leading-relaxed">
               <p>
-                CS student at Daystar University finishing in 2026. I don't just write code — I identify real problems, pitch solutions to stakeholders, and build working software that people actually use.
+                I am a results-driven Software Developer and UI/UX Designer specialized in building high-performance, user-centered applications. I bridge the gap between technical complexity and intuitive design, ensuring that every product I build provides real value to its users and stakeholders.
               </p>
               <p>
-                From digitizing KPLC's cafeteria system to building M-Pesa-integrated delivery apps, my projects live in the real world.
+                From architecting robust backends to crafting polished, interactive frontends, I take full ownership of the product lifecycle. My focus is on scalability, performance, and building software that doesn't just work—it excels in the real world.
               </p>
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-border flex flex-wrap gap-8">
-              {[
-                { label: 'Projects', value: '6' },
-                { label: 'Deployments', value: '2' },
-                { label: 'Industrial Attachment', value: '1' }
-              ].map((stat, i) => (
-                <div key={i} className="flex flex-col gap-1">
-                  <span className="font-display text-3xl font-semibold text-text-primary">{stat.value}</span>
-                  <span className="font-mono text-xs tracking-wider text-text-muted uppercase">{stat.label}</span>
-                </div>
-              ))}
             </div>
           </motion.div>
 
@@ -65,11 +52,11 @@ const About = () => {
                 </div>
                 <div className="space-y-3 font-mono text-sm">
                   <p className="text-accent">const developer = {'{'}</p>
-                  <p className="text-text-primary pl-4">name: <span className="text-text-secondary">'Derek Macharia'</span>,</p>
-                  <p className="text-text-primary pl-4">focus: <span className="text-text-secondary">'Real-world Solutions'</span>,</p>
-                  <p className="text-text-primary pl-4">stack: <span className="text-text-secondary">['Flutter', 'React', 'Node']</span></p>
+                  <p className="text-text-primary pl-4">expertise: <span className="text-text-secondary">'Full Stack'</span>,</p>
+                  <p className="text-text-primary pl-4">priority: <span className="text-text-secondary">'User Experience'</span>,</p>
+                  <p className="text-text-primary pl-4">mission: <span className="text-text-secondary">'Ship Excellence'</span></p>
                   <p className="text-accent">{'}'};</p>
-                  <p className="text-text-muted pt-2">// Ship it.</p>
+                  <p className="text-text-muted pt-2">// No compromises.</p>
                 </div>
               </div>
             </div>

@@ -43,3 +43,27 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-elevated);
+  border-radius: 10px;
+  border: 2px solid var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg-elevated) var(--color-bg-primary);
+}

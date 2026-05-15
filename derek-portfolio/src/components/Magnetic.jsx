@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import PropTypes from 'prop-types';
 
@@ -11,18 +11,28 @@ export default function Magnetic({ children }) {
     const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.1, y: middleY * 0.1 });
+    setPosition({ x: middleX, y: middleY });
   };
 
   const reset = () => {
     setPosition({ x: 0, y: 0 });
   };
 
-  const { x, y } = position;
+  const springConfigOuter = { stiffness: 100, damping: 15, mass: 0.1 };
+  const springConfigInner = { stiffness: 150, damping: 15, mass: 0.1 };
 
-  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
+  const springX = useSpring(0, springConfigOuter);
+  const springY = useSpring(0, springConfigOuter);
+  
+  const springInnerX = useSpring(0, springConfigInner);
+  const springInnerY = useSpring(0, springConfigInner);
+
+  useEffect(() => {
+    springX.set(position.x * 0.2);
+    springY.set(position.y * 0.2);
+    springInnerX.set(position.x * 0.35);
+    springInnerY.set(position.y * 0.35);
+  }, [position, springX, springY, springInnerX, springInnerY]);
 
   return (
     <motion.div
@@ -31,7 +41,9 @@ export default function Magnetic({ children }) {
       onMouseMove={handleMouse}
       onMouseLeave={reset}
     >
-      {children}
+      <motion.div style={{ x: springInnerX, y: springInnerY }}>
+        {children}
+      </motion.div>
     </motion.div>
   );
 }

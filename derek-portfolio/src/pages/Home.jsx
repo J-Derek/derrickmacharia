@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Derek Macharia | Software Engineer</title>
+        <title>Derrick Macharia | Software Developer — Nairobi, Kenya</title>
         <meta name="description" content="I build software that solves real problems. Full stack developer based in Nairobi." />
       </Helmet>
       <Hero />
