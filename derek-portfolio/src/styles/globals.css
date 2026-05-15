@@ -13,7 +13,19 @@
 
   --font-display: "Clash Display", sans-serif;
   --font-sans: "General Sans", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --color-mono: "JetBrains Mono", monospace;
+}
+
+:root[data-theme='light'] {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8F8F8;
+  --color-bg-elevated: #F0F0F0;
+  --color-accent: #00BF63;
+  --color-accent-dim: #00bf6333;
+  --color-text-primary: #121212;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #717171;
+  --color-border: #E5E5E5;
 }
 
 @layer base {

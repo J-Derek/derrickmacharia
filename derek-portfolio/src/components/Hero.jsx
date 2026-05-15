@@ -231,112 +231,124 @@ const Hero = () => {
       />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="max-w-5xl">
-          {/* Professional Identity Label */}
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-4"
-          >
-            <h2 ref={titleRef} className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent uppercase">
-              Full Stack Developer | UI/UX Designer
-            </h2>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="max-w-4xl">
+            {/* Professional Identity Label */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-4"
+            >
+              <h2 ref={titleRef} className="font-mono text-xs md:text-sm tracking-[0.3em] text-accent uppercase">
+                Full Stack Developer | UI/UX Designer
+              </h2>
+            </motion.div>
+  
+            {/* Explicit Multi-line Name Mapping */}
+            <h1 className="mb-12 font-display text-[clamp(48px,10vw,120px)] lg:text-[clamp(60px,8vw,140px)] leading-[0.85] font-bold text-text-primary tracking-tight">
+              <div className="block whitespace-nowrap">
+                {"Derrick".split("").map((char, index) => {
+                  const isI = char.toLowerCase() === 'i';
+                  return (
+                    <motion.span
+                      key={`d-${index}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      className={`char inline-block ${isI ? 'i-char-0' : ''}`}
+                      style={isI ? { clipPath: 'inset(35% 0 0 0)' } : {}}
+                    >
+                      {char}
+                    </motion.span>
+                  );
+                })}
+              </div>
+              <div className="block whitespace-nowrap">
+                {"Macharia".split("").map((char, index) => {
+                  const isI = char.toLowerCase() === 'i';
+                  return (
+                    <motion.span
+                      key={`m-${index}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      className={`char inline-block ${isI ? 'i-char-1' : ''}`}
+                      style={isI ? { clipPath: 'inset(35% 0 0 0)' } : {}}
+                    >
+                      {char}
+                    </motion.span>
+                  );
+                })}
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  className="final-dot text-accent inline-block"
+                >
+                  .
+                </motion.span>
+              </div>
+            </h1>
+  
+            {/* CTAs moved up */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="flex flex-wrap items-center gap-6"
+            >
+              <Magnetic>
+                <a
+                  href="#work"
+                  className="group flex items-center gap-2 bg-text-primary text-bg-primary px-10 py-4 rounded-full font-medium transition-transform hover:scale-105 active:scale-95"
+                >
+                  Explore Projects
+                  <ChevronDown size={18} className="group-hover:translate-y-1 transition-transform" />
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="/DerrickMachariaCV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-4 rounded-full font-medium text-text-primary border border-border hover:border-accent hover:text-accent transition-colors"
+                >
+                  Download CV
+                </a>
+              </Magnetic>
+            </motion.div>
+          </div>
 
-          {/* Explicit Multi-line Name Mapping */}
-          <h1 className="mb-8 font-display text-[clamp(48px,10vw,140px)] leading-[0.85] font-bold text-text-primary tracking-tight">
-            <div className="block whitespace-nowrap">
-              {"Derrick".split("").map((char, index) => {
-                const isI = char.toLowerCase() === 'i';
-                return (
-                  <motion.span
-                    key={`d-${index}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    className={`char inline-block ${isI ? 'i-char-0' : ''}`}
-                    style={isI ? { clipPath: 'inset(35% 0 0 0)' } : {}}
-                  >
-                    {char}
-                  </motion.span>
-                );
-              })}
+          {/* Profile Photo Right */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="relative aspect-square max-w-md mx-auto lg:ml-auto lg:mr-0 group"
+          >
+            <div className="absolute inset-0 bg-accent/10 rounded-[2rem] blur-3xl group-hover:bg-accent/20 transition-colors duration-500"></div>
+            <div className="relative z-10 w-full h-full rounded-[2rem] border border-border overflow-hidden bg-bg-elevated glow-effect transition-transform duration-500 group-hover:-translate-y-2">
+              <img 
+                src="/src/assets/profile.png" 
+                alt="Derrick Macharia" 
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
             </div>
-            <div className="block whitespace-nowrap">
-              {"Macharia".split("").map((char, index) => {
-                const isI = char.toLowerCase() === 'i';
-                return (
-                  <motion.span
-                    key={`m-${index}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    className={`char inline-block ${isI ? 'i-char-1' : ''}`}
-                    style={isI ? { clipPath: 'inset(35% 0 0 0)' } : {}}
-                  >
-                    {char}
-                  </motion.span>
-                );
-              })}
-              <motion.span 
-                initial={{ opacity: 0 }}
-                className="final-dot text-accent inline-block"
-              >
-                .
-              </motion.span>
-            </div>
-          </h1>
-
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-text-secondary max-w-2xl leading-relaxed mb-10"
-          >
-            Crafting high-performance digital experiences that solve real-world problems through code and design.
-          </motion.p>
-
-          {/* Stack Tags */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-wrap gap-3 mb-12"
-          >
-            {['Flutter', 'React', 'Node.js', 'Supabase', 'Figma'].map((tech) => (
-              <span
-                key={tech}
-                className="font-mono text-xs md:text-sm px-5 py-2 rounded-full border border-border bg-bg-elevated/50 text-text-primary hover:border-accent/50 transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-wrap items-center gap-6"
-          >
-            <Magnetic>
-              <a
-                href="#work"
-                className="group flex items-center gap-2 bg-text-primary text-bg-primary px-10 py-4 rounded-full font-medium transition-transform hover:scale-105 active:scale-95"
-              >
-                Explore Projects
-                <ChevronDown size={18} className="group-hover:translate-y-1 transition-transform" />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="/DerrickMachariaCV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-10 py-4 rounded-full font-medium text-text-primary border border-border hover:border-accent hover:text-accent transition-colors"
-              >
-                Download CV
-              </a>
-            </Magnetic>
+            
+            {/* Floating Decorative Elements (James's suggestion to add images/interaction) */}
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="absolute -top-6 -right-6 w-20 h-20 bg-bg-secondary rounded-2xl border border-border flex items-center justify-center p-4 shadow-xl hidden md:flex"
+            >
+              <div className="w-full h-full bg-accent/10 rounded-lg flex items-center justify-center">
+                <span className="text-accent font-bold text-xl">React</span>
+              </div>
+            </motion.div>
+            <motion.div 
+              animate={{ y: [0, 15, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -bottom-6 -left-6 w-24 h-24 bg-bg-secondary rounded-2xl border border-border flex items-center justify-center p-4 shadow-xl hidden md:flex"
+            >
+              <div className="w-full h-full bg-accent/10 rounded-lg flex items-center justify-center">
+                <span className="text-accent font-bold text-xl">Figma</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

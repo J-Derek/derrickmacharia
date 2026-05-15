@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
@@ -17,6 +17,17 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const navLinks = [
     { name: 'Work', href: isHome ? '#work' : '/#work' },
@@ -48,6 +59,13 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full bg-bg-elevated/50 text-text-primary hover:text-accent transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
             <a
               href={isHome ? '#contact' : '/#contact'}
               className="px-5 py-2 rounded-full bg-accent text-bg-primary font-medium text-sm hover:bg-accent/90 transition-colors"
@@ -77,6 +95,13 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="fixed inset-0 z-[100] bg-bg-primary flex flex-col justify-center items-center"
           >
+            <button
+              className="absolute top-6 left-6 p-2.5 rounded-full bg-bg-elevated/50 text-text-primary hover:text-accent transition-colors"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+            </button>
             <button
               className="absolute top-6 right-6 text-text-primary"
               onClick={() => setMobileMenuOpen(false)}
