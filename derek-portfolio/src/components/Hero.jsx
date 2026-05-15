@@ -329,7 +329,7 @@ const Hero = () => {
             </Magnetic>
             <Magnetic>
               <a
-                href="/derek-cv.pdf"
+                href="/DerrickMachariaCV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-10 py-4 rounded-full font-medium text-text-primary border border-border hover:border-accent hover:text-accent transition-colors"
