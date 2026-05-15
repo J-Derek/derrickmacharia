@@ -21,7 +21,19 @@ const Hero = () => {
   
   // Animation Sequence
   useEffect(() => {
+    const hasAnimated = sessionStorage.getItem('heroAnimated');
+
     const startSequence = async () => {
+      if (hasAnimated) {
+        // Skip animation, just show final states
+        animate(".char", { opacity: 1, y: 0 }, { duration: 0 });
+        animate(".final-dot", { opacity: 1 }, { duration: 0 });
+        animate(".i-char-0", { clipPath: 'inset(0% 0 0 0)' }, { duration: 0 });
+        animate(".i-char-1", { clipPath: 'inset(0% 0 0 0)' }, { duration: 0 });
+        setAnimationStarted(true);
+        return;
+      }
+
       // 1. Initial reveal
       await animate(".char", { opacity: 1, y: 0 }, { 
         duration: 0.6, 
@@ -121,9 +133,12 @@ const Hero = () => {
       // Swap
       animate(".final-dot", { opacity: 1 }, { duration: 0.1 });
       animate(".bouncing-ball", { opacity: 0 }, { duration: 0.1 });
+      
+      // Mark as animated for this session
+      sessionStorage.setItem('heroAnimated', 'true');
     };
 
-    const timer = setTimeout(startSequence, 1000);
+    const timer = setTimeout(startSequence, hasAnimated ? 0 : 1000);
     return () => clearTimeout(timer);
   }, [animate]);
 
