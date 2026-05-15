@@ -3,7 +3,7 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, onHover }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -11,8 +11,10 @@ const ProjectCard = ({ project, index }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
       className="group relative"
+      onMouseEnter={() => onHover(project)}
+      onMouseLeave={() => onHover(null)}
     >
-      <Link to={`/projects/${project.id}`} className="block border-b border-white/5 py-12 md:py-16 transition-colors duration-500 hover:bg-white/[0.02]">
+      <Link to={`/projects/${project.id}`} className="block border-b border-border py-12 md:py-16 transition-colors duration-500 hover:bg-bg-secondary/50">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 md:gap-4 relative">
           
           {/* Project Name & Number */}
@@ -45,7 +47,7 @@ const ProjectCard = ({ project, index }) => {
 
           {/* Action / Arrow */}
           <div className="col-span-1 md:col-span-1 flex justify-end">
-            <div className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 group-hover:bg-accent group-hover:border-accent group-hover:text-bg-primary transition-all duration-500">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full border border-border group-hover:bg-accent group-hover:border-accent group-hover:text-bg-primary transition-all duration-500">
               <ArrowUpRight 
                 size={24} 
                 className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
@@ -71,7 +73,11 @@ ProjectCard.propTypes = {
     stack: PropTypes.arrayOf(PropTypes.string).isRequired,
     color: PropTypes.string.isRequired,
     tagline: PropTypes.string,
+    number: PropTypes.string,
+    logo: PropTypes.string,
   }).isRequired,
+  index: PropTypes.number.isRequired,
+  onHover: PropTypes.func.isRequired,
 };
 
 export default ProjectCard;

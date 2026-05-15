@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import ScrollIndicator from './components/ScrollIndicator';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function App() {
   return (
     <ReactLenis root>
       <MotionConfig reducedMotion="user">
+        <ScrollToTop />
         <CustomCursor />
         <ScrollIndicator />
         <Navbar />
