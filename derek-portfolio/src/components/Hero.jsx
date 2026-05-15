@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import SplitType from 'split-type';
 import Magnetic from './Magnetic';
 import DynamicBackground from './DynamicBackground';
-import profileImg from '../assets/profile.png';
+import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   const [scope, animate] = useAnimate();
