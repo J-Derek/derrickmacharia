@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import SplitType from 'split-type';
 import Magnetic from './Magnetic';
 import DynamicBackground from './DynamicBackground';
+import profileImg from '../assets/profile.png';
 
 const Hero = () => {
   const [scope, animate] = useAnimate();
@@ -244,7 +245,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:bg-accent/30 transition-colors duration-500"></div>
             <div className="relative z-10 w-full h-full rounded-full border-[3px] border-border overflow-hidden bg-bg-elevated shadow-xl transition-transform duration-500 group-hover:-translate-y-2">
               <img 
-                src="/src/assets/profile.png" 
+                src={profileImg} 
                 alt="Derrick Macharia" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
