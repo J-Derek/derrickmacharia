@@ -8,15 +8,8 @@ import ProjectCard from './ProjectCard';
 
 const Projects = () => {
   const [showAll, setShowAll] = useState(false);
-  const [activeProject, setActiveProject] = useState(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef(null);
   const displayProjects = showAll ? projects : projects.slice(0, 4);
-
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    setMousePos({ x: clientX, y: clientY });
-  };
 
   const handleCollapse = () => {
     setShowAll(false);
@@ -28,7 +21,6 @@ const Projects = () => {
       id="work" 
       ref={sectionRef} 
       className="py-24 md:py-40 bg-bg-primary overflow-visible relative"
-      onMouseMove={handleMouseMove}
     >
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <motion.div
@@ -67,7 +59,7 @@ const Projects = () => {
                   key={project.id} 
                   project={project} 
                   index={index} 
-                  onHover={setActiveProject}
+                  onHover={() => {}}
                 />
               ))}
             </AnimatePresence>
@@ -107,37 +99,6 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Floating Image Preview */}
-      <AnimatePresence>
-        {activeProject && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
-              rotate: 0,
-              x: mousePos.x - 150, // Center relative to 300px width
-              y: mousePos.y - 150,
-            }}
-            exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            transition={{ type: 'spring', stiffness: 150, damping: 20, mass: 0.5 }}
-            className="fixed top-0 left-0 w-[300px] h-[300px] pointer-events-none z-[100] hidden md:block overflow-hidden rounded-2xl shadow-2xl border border-white/10"
-          >
-            <div className="w-full h-full relative bg-bg-elevated flex items-center justify-center p-12">
-              {/* Background Glow */}
-              <div 
-                className="absolute inset-0 opacity-20 blur-3xl transition-colors duration-500"
-                style={{ backgroundColor: activeProject.color }}
-              />
-              <img 
-                src={activeProject.logo} 
-                alt={activeProject.name}
-                className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };

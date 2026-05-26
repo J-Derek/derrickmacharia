@@ -10,10 +10,144 @@ import logoStayEasy from '../assets/logos/logo_stayeasy.png';
 import logoRideCare from '../assets/logos/logo_ridecare.png';
 import logoItax from '../assets/logos/logo_itax.png';
 
+// Live project screenshots
+import screenshotCrochetHub from '../assets/screenshots/screenshot_crochethub.png';
+import screenshotMinnieMiss from '../assets/screenshots/screenshot_minniemiss.png';
+import screenshotExamTimetable from '../assets/screenshots/screenshot_examtimetable.png';
+import screenshotRememberTodo from '../assets/screenshots/screenshot_remembertodo.png';
+import screenshotStayEasy from '../assets/screenshots/screenshot_stayeasy.png';
+import screenshotRideCare from '../assets/screenshots/screenshot_ridecare.png';
+
 export const projects = [
   {
-    id: "autobite",
+    id: "crochethub",
     number: "01",
+    name: "CrochetHub",
+    logo: logoCrochetHub,
+    tagline: "Unified social marketplace bringing Kenya's crochet community off WhatsApp",
+    problem: "Kenya's crochet community — artisans, buyers, and enthusiasts — was scattered across WhatsApp groups, Instagram pages, and Facebook communities with no central home. Artisans had no professional way to list products, buyers had no reliable discovery channel, and community conversation was buried in group chats that new members couldn't access. The niche was underserved and fragmented with no platform designed specifically for it.",
+    solution: "Built CrochetHub — a Flutter application that combines a social feed and a marketplace in a single platform, designed specifically for the crochet community. Artisans create profiles, list products with photos and pricing, and post to the community feed. Buyers browse listings, follow creators, and connect directly. The platform brings together functions that previously required three or four different apps into one focused, purpose-built space.",
+    stack: ["Flutter", "Firebase", "Dart"],
+    features: [
+      "Product marketplace: artisans list items with photos, descriptions, and pricing — a professional storefront that WhatsApp cannot offer",
+      "Community feed: public posts, creator updates, and community interaction in a single scrollable timeline",
+      "Creator profiles: each artisan gets a dedicated profile showcasing their work, listings, and follower count — builds credibility and repeat buyers",
+      "Single platform: replaces WhatsApp groups, Instagram pages, and scattered DMs with one focused community destination"
+    ],
+    github: "https://github.com/J-Derek/crochethub",
+    live: "https://crotchethub.netlify.app/",
+    screenshot: screenshotCrochetHub,
+    color: "#ff84eb",
+    status: "Shipped · 2024"
+  },
+  {
+    id: "minnie-miss",
+    number: "02",
+    name: "Minnie Miss",
+    logo: logoMinnieMiss,
+    tagline: "Appointment booking platform that moves salons from walk-ins to structured scheduling",
+    problem: "Most salons in Nairobi operate on a pure walk-in basis — customers arrive, join an unpredictable queue, and wait with no visibility into how long it will take. Staff have no way to forecast their day, allocate time per stylist, or reduce the idle-or-overwhelmed cycle that walk-in-only businesses face. There was no affordable, mobile-first booking tool built for local salon operations.",
+    solution: "Built Minnie Miss (formerly TheSalon) — a Flutter booking application that brings structured scheduling to salons without requiring expensive point-of-sale systems or enterprise software. Customers browse available services, select a stylist, and book a specific time slot from their phone. Staff get a clean management view showing the day's confirmed appointments, assigned stylists, and time allocations — replacing guesswork with a structured daily schedule.",
+    stack: ["Flutter", "Firebase", "Dart"],
+    features: [
+      "Service browsing: customers see all available services with descriptions before booking — sets expectations and reduces chair-time disputes",
+      "Stylist selection and time slot booking: customers pick who they want and when, giving them control while giving the salon predictability",
+      "Staff schedule view: stylists and managers see the full day's appointments at a glance — no paper registers, no verbal handoffs",
+      "Reduces no-shows and idle time: confirmed digital bookings create accountability on both sides of the appointment"
+    ],
+    github: "https://github.com/J-Derek/thesalon",
+    live: "https://thesalon-seven.vercel.app/",
+    screenshot: screenshotMinnieMiss,
+    color: "#ffb43e",
+    status: "Shipped · 2024"
+  },
+  {
+    id: "exam-timetable",
+    number: "03",
+    name: "Exam Timetable",
+    logo: logoExamTimetable,
+    tagline: "Searchable digital portal for university-wide exam schedules",
+    problem: "University examination periods at Daystar were managed via dense campus-wide PDF spreadsheets. Students struggled to find their specific units among thousands of entries on mobile devices, leading to venue confusion and unnecessary stress during the most critical weeks of the semester.",
+    solution: "Developed a digital exam hub that ingests complex timetable data and presents it through a searchable, filterable interface. Students enter their course codes and instantly get their personalized schedule, venue details, and invigilator info — transforming a 20-page document into a 2-second search experience.",
+    stack: ["TypeScript", "Node.js", "React", "Vercel", "Tailwind CSS"],
+    features: [
+      "Instant search & filtering: find any exam by course code, unit name, or venue in real-time",
+      "Department-wise views: explore schedules by academic department to see broader venue allocations",
+      "Mobile-optimized: designed specifically for students checking their next venue while on the move between campuses",
+      "Vercel deployment: high-availability hosting ensuring the portal stays up during peak traffic periods"
+    ],
+    github: "https://github.com/J-Derek/examtimetable",
+    live: "https://examtimetable.vercel.app/",
+    screenshot: screenshotExamTimetable,
+    color: "#a355ff",
+    status: "In Development"
+  },
+  {
+    id: "remember-todo",
+    number: "04",
+    name: "Remember To-Do",
+    logo: logoRememberTodo,
+    tagline: "Minimalist, high-performance task management application",
+    problem: "Most task managers are weighed down by enterprise features that create friction for simple daily organization. Users need a way to capture thoughts at the speed of thought, without navigating complex hierarchies or slow cloud synchronization lag.",
+    solution: "Built Remember To-Do as a 'velocity-first' productivity tool. By prioritizing a clean, distraction-free UI and local-first persistence, the app ensures that managing a day's priorities feels like a natural extension of the user's workflow rather than a chore.",
+    stack: ["Flutter", "Dart", "Hive", "Provider"],
+    features: [
+      "Zero-friction entry: optimized for one-tap task creation and quick-swipe completion",
+      "Local-first architecture: uses Hive for ultra-fast data persistence with near-zero latency",
+      "Contextual themes: dynamic UI that adapts to the user's focus and priority levels",
+      "Minimalist design language: removes every non-essential element to focus entirely on the tasks at hand"
+    ],
+    github: "https://github.com/J-Derek/remembertodo",
+    live: "https://remembertodo-sepia.vercel.app/",
+    screenshot: screenshotRememberTodo,
+    color: "#ffc83e",
+    status: "In Development"
+  },
+  {
+    id: "stayeasy-daystar",
+    number: "05",
+    name: "StayEasy Daystar Homes",
+    logo: logoStayEasy,
+    tagline: "Verified accommodation marketplace for Athi River and Nairobi campuses",
+    problem: "Daystar students seeking off-campus housing are often forced to rely on unverified word-of-mouth or physical posters. This lack of a central directory leads to wasted time visiting unavailable properties and potential security risks in unverified hostel environments.",
+    solution: "Designed StayEasy as a trusted housing bridge. Built with a modern tech stack via Lovable, the platform provides a curated directory of hostels and private rentals, complete with verified amenities, pricing transparency, and direct routes to property managers.",
+    stack: ["TypeScript", "React", "Vite", "Tailwind CSS", "shadcn-ui", "Supabase"],
+    features: [
+      "Verified listings: every property includes high-quality imagery and confirmed amenity lists (Wi-Fi, Security, Water)",
+      "Smart filtering: search by distance from campus, budget, or specific student-centric needs",
+      "Direct inquiry routing: connects students to property managers instantly through integrated contact hooks",
+      "Property management dashboard: landlords can update vacancies and manage listings in real-time"
+    ],
+    github: "https://github.com/J-Derek/stayeasy-daystar-homes",
+    live: "https://stayeasy-delta.vercel.app/",
+    screenshot: screenshotStayEasy,
+    color: "#00d2d3",
+    status: "In Development"
+  },
+  {
+    id: "ridecare-access",
+    number: "06",
+    name: "RideCare Access Now",
+    logo: logoRideCare,
+    tagline: "Accessible ride-hailing for users with specialized mobility needs",
+    problem: "Mainstream ride-sharing apps rarely account for the specific needs of passengers with mobility challenges. Whether it's a lack of wheelchair-accessible vehicles or drivers who aren't trained for assisted transit, a significant demographic is left behind by current urban mobility solutions.",
+    solution: "Conceptualized and initiated RideCare to fill the accessibility gap. The platform focuses on 'Specialized Matching' — ensuring that users who need specific vehicle types or assisted care are paired only with drivers and fleets equipped to provide them.",
+    stack: ["Flutter", "Dart", "Firebase", "Google Maps SDK"],
+    features: [
+      "Accessibility-first matching: users specify their exact needs (ramp, lift, extra legroom) as a primary booking filter",
+      "Trained driver network: platform prioritizes drivers with certifications in assisted passenger transit",
+      "Real-time safety telemetry: enhanced live tracking with automated emergency check-ins for vulnerable passengers",
+      "Inclusive UI: designed with high-contrast modes and screen-reader optimizations from the ground up"
+    ],
+    github: "https://github.com/J-Derek/ridecare-access-now",
+    live: "https://ridecareaccess.netlify.app/",
+    screenshot: screenshotRideCare,
+    color: "#00e676",
+    status: "In Development"
+  },
+  {
+    id: "autobite",
+    number: "07",
     name: "AutoBite",
     logo: logoAutoBite,
     tagline: "Replacing paper meal cards with a live QR system across an enterprise cafeteria",
@@ -34,7 +168,7 @@ export const projects = [
   },
   {
     id: "kiu-fresh",
-    number: "02",
+    number: "08",
     name: "Kiu Fresh",
     logo: logoKiuFresh,
     tagline: "End-to-end water delivery platform with M-Pesa payment and live order tracking",
@@ -55,7 +189,7 @@ export const projects = [
   },
   {
     id: "accesspro",
-    number: "03",
+    number: "09",
     name: "AccessPro Daystar",
     logo: logoAccessPro,
     tagline: "Digital seat booking for university intercampus buses — from walk-up to tap-to-book",
@@ -74,48 +208,8 @@ export const projects = [
     status: "Shipped · 2024"
   },
   {
-    id: "crochethub",
-    number: "04",
-    name: "CrochetHub",
-    logo: logoCrochetHub,
-    tagline: "Unified social marketplace bringing Kenya's crochet community off WhatsApp",
-    problem: "Kenya's crochet community — artisans, buyers, and enthusiasts — was scattered across WhatsApp groups, Instagram pages, and Facebook communities with no central home. Artisans had no professional way to list products, buyers had no reliable discovery channel, and community conversation was buried in group chats that new members couldn't access. The niche was underserved and fragmented with no platform designed specifically for it.",
-    solution: "Built CrochetHub — a Flutter application that combines a social feed and a marketplace in a single platform, designed specifically for the crochet community. Artisans create profiles, list products with photos and pricing, and post to the community feed. Buyers browse listings, follow creators, and connect directly. The platform brings together functions that previously required three or four different apps into one focused, purpose-built space.",
-    stack: ["Flutter", "Firebase", "Dart"],
-    features: [
-      "Product marketplace: artisans list items with photos, descriptions, and pricing — a professional storefront that WhatsApp cannot offer",
-      "Community feed: public posts, creator updates, and community interaction in a single scrollable timeline",
-      "Creator profiles: each artisan gets a dedicated profile showcasing their work, listings, and follower count — builds credibility and repeat buyers",
-      "Single platform: replaces WhatsApp groups, Instagram pages, and scattered DMs with one focused community destination"
-    ],
-    github: "https://github.com/J-Derek/crochethub",
-    live: null,
-    color: "#ff84eb",
-    status: "Shipped · 2024"
-  },
-  {
-    id: "minnie-miss",
-    number: "05",
-    name: "Minnie Miss",
-    logo: logoMinnieMiss,
-    tagline: "Appointment booking platform that moves salons from walk-ins to structured scheduling",
-    problem: "Most salons in Nairobi operate on a pure walk-in basis — customers arrive, join an unpredictable queue, and wait with no visibility into how long it will take. Staff have no way to forecast their day, allocate time per stylist, or reduce the idle-or-overwhelmed cycle that walk-in-only businesses face. There was no affordable, mobile-first booking tool built for local salon operations.",
-    solution: "Built Minnie Miss (formerly TheSalon) — a Flutter booking application that brings structured scheduling to salons without requiring expensive point-of-sale systems or enterprise software. Customers browse available services, select a stylist, and book a specific time slot from their phone. Staff get a clean management view showing the day's confirmed appointments, assigned stylists, and time allocations — replacing guesswork with a structured daily schedule.",
-    stack: ["Flutter", "Firebase", "Dart"],
-    features: [
-      "Service browsing: customers see all available services with descriptions before booking — sets expectations and reduces chair-time disputes",
-      "Stylist selection and time slot booking: customers pick who they want and when, giving them control while giving the salon predictability",
-      "Staff schedule view: stylists and managers see the full day's appointments at a glance — no paper registers, no verbal handoffs",
-      "Reduces no-shows and idle time: confirmed digital bookings create accountability on both sides of the appointment"
-    ],
-    github: "https://github.com/J-Derek/thesalon",
-    live: null,
-    color: "#ffb43e",
-    status: "Shipped · 2024"
-  },
-  {
     id: "onyx",
-    number: "06",
+    number: "10",
     name: "Onyx",
     logo: logoOnyx,
     tagline: "A personal multimedia player built from scratch because nothing else felt right",
@@ -132,86 +226,6 @@ export const projects = [
     live: null,
     color: "#8e8e93",
     status: "Shipped · 2025"
-  },
-  {
-    id: "exam-timetable",
-    number: "07",
-    name: "Exam Timetable",
-    logo: logoExamTimetable,
-    tagline: "Searchable digital portal for university-wide exam schedules",
-    problem: "University examination periods at Daystar were managed via dense campus-wide PDF spreadsheets. Students struggled to find their specific units among thousands of entries on mobile devices, leading to venue confusion and unnecessary stress during the most critical weeks of the semester.",
-    solution: "Developed a digital exam hub that ingests complex timetable data and presents it through a searchable, filterable interface. Students enter their course codes and instantly get their personalized schedule, venue details, and invigilator info — transforming a 20-page document into a 2-second search experience.",
-    stack: ["TypeScript", "Node.js", "React", "Vercel", "Tailwind CSS"],
-    features: [
-      "Instant search & filtering: find any exam by course code, unit name, or venue in real-time",
-      "Department-wise views: explore schedules by academic department to see broader venue allocations",
-      "Mobile-optimized: designed specifically for students checking their next venue while on the move between campuses",
-      "Vercel deployment: high-availability hosting ensuring the portal stays up during peak traffic periods"
-    ],
-    github: "https://github.com/J-Derek/examtimetable",
-    live: "https://examtimetable.vercel.app",
-    color: "#a355ff",
-    status: "In Development"
-  },
-  {
-    id: "remember-todo",
-    number: "08",
-    name: "Remember To-Do",
-    logo: logoRememberTodo,
-    tagline: "Minimalist, high-performance task management application",
-    problem: "Most task managers are weighed down by enterprise features that create friction for simple daily organization. Users need a way to capture thoughts at the speed of thought, without navigating complex hierarchies or slow cloud synchronization lag.",
-    solution: "Built Remember To-Do as a 'velocity-first' productivity tool. By prioritizing a clean, distraction-free UI and local-first persistence, the app ensures that managing a day's priorities feels like a natural extension of the user's workflow rather than a chore.",
-    stack: ["Flutter", "Dart", "Hive", "Provider"],
-    features: [
-      "Zero-friction entry: optimized for one-tap task creation and quick-swipe completion",
-      "Local-first architecture: uses Hive for ultra-fast data persistence with near-zero latency",
-      "Contextual themes: dynamic UI that adapts to the user's focus and priority levels",
-      "Minimalist design language: removes every non-essential element to focus entirely on the tasks at hand"
-    ],
-    github: "https://github.com/J-Derek/remembertodo",
-    live: null,
-    color: "#ffc83e",
-    status: "In Development"
-  },
-  {
-    id: "stayeasy-daystar",
-    number: "09",
-    name: "StayEasy Daystar Homes",
-    logo: logoStayEasy,
-    tagline: "Verified accommodation marketplace for Athi River and Nairobi campuses",
-    problem: "Daystar students seeking off-campus housing are often forced to rely on unverified word-of-mouth or physical posters. This lack of a central directory leads to wasted time visiting unavailable properties and potential security risks in unverified hostel environments.",
-    solution: "Designed StayEasy as a trusted housing bridge. Built with a modern tech stack via Lovable, the platform provides a curated directory of hostels and private rentals, complete with verified amenities, pricing transparency, and direct routes to property managers.",
-    stack: ["TypeScript", "React", "Vite", "Tailwind CSS", "shadcn-ui", "Supabase"],
-    features: [
-      "Verified listings: every property includes high-quality imagery and confirmed amenity lists (Wi-Fi, Security, Water)",
-      "Smart filtering: search by distance from campus, budget, or specific student-centric needs",
-      "Direct inquiry routing: connects students to property managers instantly through integrated contact hooks",
-      "Property management dashboard: landlords can update vacancies and manage listings in real-time"
-    ],
-    github: "https://github.com/J-Derek/stayeasy-daystar-homes",
-    live: "https://stayeasy-daystar.lovable.app",
-    color: "#00d2d3",
-    status: "In Development"
-  },
-  {
-    id: "ridecare-access",
-    number: "10",
-    name: "RideCare Access Now",
-    logo: logoRideCare,
-    tagline: "Accessible ride-hailing for users with specialized mobility needs",
-    problem: "Mainstream ride-sharing apps rarely account for the specific needs of passengers with mobility challenges. Whether it's a lack of wheelchair-accessible vehicles or drivers who aren't trained for assisted transit, a significant demographic is left behind by current urban mobility solutions.",
-    solution: "Conceptualized and initiated RideCare to fill the accessibility gap. The platform focuses on 'Specialized Matching' — ensuring that users who need specific vehicle types or assisted care are paired only with drivers and fleets equipped to provide them.",
-    stack: ["Flutter", "Dart", "Firebase", "Google Maps SDK"],
-    features: [
-      "Accessibility-first matching: users specify their exact needs (ramp, lift, extra legroom) as a primary booking filter",
-      "Trained driver network: platform prioritizes drivers with certifications in assisted passenger transit",
-      "Real-time safety telemetry: enhanced live tracking with automated emergency check-ins for vulnerable passengers",
-      "Inclusive UI: designed with high-contrast modes and screen-reader optimizations from the ground up"
-    ],
-    github: "https://github.com/J-Derek/ridecare-access-now",
-    live: null,
-    color: "#00e676",
-    status: "In Development"
   },
   {
     id: "itax-harmony-hub",

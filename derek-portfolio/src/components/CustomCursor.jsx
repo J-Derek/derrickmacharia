@@ -3,6 +3,7 @@ import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 const CustomCursor = () => {
   const [cursorState, setCursorState] = useState('default');
+  const [isVisible, setIsVisible] = useState(false);
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -17,6 +18,7 @@ const CustomCursor = () => {
     const updateMousePosition = (e) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
+      setIsVisible(true);
     };
 
     const handleMouseOver = (e) => {
@@ -47,6 +49,8 @@ const CustomCursor = () => {
   };
 
   const size = sizes[cursorState];
+
+  if (!isVisible) return null;
 
   return (
     <motion.div

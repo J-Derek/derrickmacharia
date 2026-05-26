@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ArrowRight, ExternalLink, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, ChevronRight, ChevronLeft } from 'lucide-react';
 import { projects } from '../data/projects';
 import Magnetic from '../components/Magnetic';
 
@@ -14,15 +13,12 @@ const ProjectDetail = () => {
   const projectIndex = projects.findIndex(p => p.id === slug);
   const project = projects[projectIndex];
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-
   if (!project) {
     return <Navigate to="/" replace />;
   }
 
   const nextProject = projects[(projectIndex + 1) % projects.length];
+  const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
 
   return (
     <div className="min-h-screen bg-bg-primary pb-24">
@@ -42,10 +38,32 @@ const ProjectDetail = () => {
           </button>
         </Magnetic>
         
-        <div className="pointer-events-auto hidden md:flex items-center gap-2 bg-bg-elevated/80 backdrop-blur-md border border-border px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest text-text-muted">
-          <Link to="/" className="hover:text-accent transition-colors">Work</Link>
-          <ChevronRight size={12} />
-          <span className="text-text-primary">{project.name}</span>
+        {/* Breadcrumb with Prev/Next */}
+        <div className="pointer-events-auto hidden md:flex items-center gap-1 bg-bg-elevated/80 backdrop-blur-md border border-border rounded-full overflow-hidden">
+          {/* Previous arrow */}
+          <Link 
+            to={`/projects/${prevProject.id}`}
+            className="flex items-center justify-center w-9 h-9 text-text-muted hover:text-accent hover:bg-accent/10 transition-all rounded-full"
+            title={`Previous: ${prevProject.name}`}
+          >
+            <ChevronLeft size={16} />
+          </Link>
+          
+          {/* Breadcrumb text */}
+          <div className="flex items-center gap-2 px-2 py-2 text-[10px] font-mono uppercase tracking-widest text-text-muted">
+            <Link to="/" className="hover:text-accent transition-colors">Work</Link>
+            <ChevronRight size={12} />
+            <span className="text-text-primary">{project.name}</span>
+          </div>
+          
+          {/* Next arrow */}
+          <Link 
+            to={`/projects/${nextProject.id}`}
+            className="flex items-center justify-center w-9 h-9 text-text-muted hover:text-accent hover:bg-accent/10 transition-all rounded-full"
+            title={`Next: ${nextProject.name}`}
+          >
+            <ChevronRight size={16} />
+          </Link>
         </div>
       </nav>
 
@@ -97,38 +115,71 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Main Mockup / Visual Transition */}
+      {/* Main Mockup / Visual — Screenshot or Logo Fallback */}
       <section className="container mx-auto px-6 md:px-12 mb-24">
         <motion.div 
           layoutId={`mockup-container-${project.id}`}
-          className="aspect-[16/9] md:aspect-[21/9] rounded-3xl bg-bg-elevated border border-border overflow-hidden relative flex items-center justify-center p-8 md:p-16"
+          className="aspect-[16/9] md:aspect-[21/9] rounded-3xl bg-bg-elevated border border-border overflow-hidden relative flex items-center justify-center p-4 md:p-8"
         >
-          <motion.div 
-            layoutId={`mockup-content-${project.id}`}
-            className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
-          >
-            <div className="h-10 border-b border-border bg-bg-elevated flex items-center px-6">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-border"></div>
-                <div className="w-3 h-3 rounded-full bg-border"></div>
-                <div className="w-3 h-3 rounded-full bg-border"></div>
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-center gap-6 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]">
-              <div className="w-32 h-32 rounded-3xl flex items-center justify-center border border-border bg-bg-elevated shadow-2xl overflow-hidden">
-                {project.logo ? (
-                  <img src={project.logo} alt={`${project.name} logo`} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="text-5xl font-bold" style={{ color: project.color }}>
-                    {project.name.charAt(0)}
+          {project.screenshot ? (
+            /* Live project — show real screenshot inside a browser chrome frame */
+            <motion.div 
+              layoutId={`mockup-content-${project.id}`}
+              className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
+            >
+              {/* Browser chrome bar */}
+              <div className="h-10 min-h-[40px] border-b border-border bg-bg-elevated flex items-center px-6 shrink-0">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-border"></div>
+                  <div className="w-3 h-3 rounded-full bg-border"></div>
+                  <div className="w-3 h-3 rounded-full bg-border"></div>
+                </div>
+                {project.live && (
+                  <div className="ml-6 flex-1 max-w-md">
+                    <div className="bg-bg-primary/50 rounded-md px-3 py-1 text-[10px] font-mono text-text-muted truncate">
+                      {project.live}
+                    </div>
                   </div>
                 )}
               </div>
-              <span className="font-display text-4xl md:text-6xl font-bold opacity-10 uppercase tracking-widest">
-                {project.name}
-              </span>
-            </div>
-          </motion.div>
+              {/* Screenshot content */}
+              <div className="flex-1 overflow-hidden relative">
+                <img 
+                  src={project.screenshot} 
+                  alt={`${project.name} live preview`}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            </motion.div>
+          ) : (
+            /* No screenshot — fallback to logo + name */
+            <motion.div 
+              layoutId={`mockup-content-${project.id}`}
+              className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
+            >
+              <div className="h-10 border-b border-border bg-bg-elevated flex items-center px-6">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-border"></div>
+                  <div className="w-3 h-3 rounded-full bg-border"></div>
+                  <div className="w-3 h-3 rounded-full bg-border"></div>
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col items-center justify-center gap-6 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]">
+                <div className="w-32 h-32 rounded-3xl flex items-center justify-center border border-border bg-bg-elevated shadow-2xl overflow-hidden">
+                  {project.logo ? (
+                    <img src={project.logo} alt={`${project.name} logo`} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="text-5xl font-bold" style={{ color: project.color }}>
+                      {project.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <span className="font-display text-4xl md:text-6xl font-bold opacity-10 uppercase tracking-widest">
+                  {project.name}
+                </span>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       </section>
 
@@ -215,22 +266,41 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Next Project Footer */}
-      <section className="mt-32 pt-32 border-t border-border container mx-auto px-6 md:px-12 text-center">
-        <span className="font-mono text-sm tracking-widest text-text-muted uppercase">Next Case Study</span>
-        <Link 
-          to={`/projects/${nextProject.id}`}
-          className="group block mt-8"
-        >
-          <h2 className="font-display text-5xl md:text-8xl font-bold text-text-primary group-hover:text-accent transition-colors duration-500">
-            {nextProject.name}
-          </h2>
-          <div className="flex justify-center mt-8">
-            <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-bg-primary transition-all duration-500">
-              <ArrowRight size={32} className="group-hover:translate-x-1 transition-transform" />
-            </div>
-          </div>
-        </Link>
+      {/* Previous / Next Project Footer */}
+      <section className="mt-32 pt-32 border-t border-border container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Previous Project */}
+          <Link 
+            to={`/projects/${prevProject.id}`}
+            className="group text-left"
+          >
+            <span className="font-mono text-sm tracking-widest text-text-muted uppercase block mb-4">
+              ← Previous
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary group-hover:text-accent transition-colors duration-500">
+              {prevProject.name}
+            </h2>
+            <p className="text-text-secondary mt-3 text-sm line-clamp-2 max-w-md">
+              {prevProject.tagline}
+            </p>
+          </Link>
+
+          {/* Next Project */}
+          <Link 
+            to={`/projects/${nextProject.id}`}
+            className="group text-right"
+          >
+            <span className="font-mono text-sm tracking-widest text-text-muted uppercase block mb-4">
+              Next →
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary group-hover:text-accent transition-colors duration-500">
+              {nextProject.name}
+            </h2>
+            <p className="text-text-secondary mt-3 text-sm line-clamp-2 max-w-md ml-auto">
+              {nextProject.tagline}
+            </p>
+          </Link>
+        </div>
       </section>
     </div>
   );

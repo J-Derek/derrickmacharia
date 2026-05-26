@@ -21,7 +21,7 @@ const skillsData = [
 
 const Skills = () => {
   return (
-    <section className="py-24 md:py-48 bg-bg-primary">
+    <section id="skills" className="py-24 md:py-48 bg-bg-primary">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
