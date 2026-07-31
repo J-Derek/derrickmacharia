@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import ScrollIndicator from './components/ScrollIndicator';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
-import Backdrop from './components/Backdrop';
+import DotGridBackground from './components/DotGridBackground';
 
 function App() {
   const location = useLocation();
@@ -35,7 +35,9 @@ function App() {
 
         {/* Main app — renders behind the preloader so content is ready on reveal */}
         <ScrollToTop />
-        <Backdrop />
+        <div className="fixed inset-0 z-0 pointer-events-auto">
+          <DotGridBackground dotColor="var(--foreground)" dotSize={2} dotSpacing={32} />
+        </div>
         <ScrollIndicator />
         <Navbar />
         

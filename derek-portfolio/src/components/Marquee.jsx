@@ -2,13 +2,14 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const Marquee = ({ items, reverse = false, className = "" }) => {
   const reducedMotion = useReducedMotion();
-  const list = [...items, ...items];
+  // Render 10 copies to ensure it covers even 4K ultra-wide screens without running out of text
+  const list = Array(10).fill(items).flat();
 
   return (
     <div className={`overflow-hidden ${className}`} aria-hidden="true">
       <motion.div
         className="flex whitespace-nowrap w-max"
-        animate={reducedMotion ? {} : { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
+        animate={reducedMotion ? {} : { x: reverse ? ["-10%", "0%"] : ["0%", "-10%"] }}
         transition={
           reducedMotion
             ? {}
