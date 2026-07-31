@@ -1,7 +1,7 @@
 import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ArrowRight, ExternalLink, ChevronRight, ChevronLeft } from 'lucide-react';
+import { ArrowLeft, ExternalLink, ChevronRight, ChevronLeft } from 'lucide-react';
 import { projects } from '../data/projects';
 import Magnetic from '../components/Magnetic';
 
@@ -21,7 +21,7 @@ const ProjectDetail = () => {
   const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
 
   return (
-    <div className="min-h-screen bg-bg-primary pb-24">
+    <div className="min-h-screen bg-background pb-24">
       <Helmet>
         <title>{project.name} | Derrick Macharia</title>
         <meta name="description" content={project.tagline || project.problem} />
@@ -32,34 +32,34 @@ const ProjectDetail = () => {
         <Magnetic>
           <button 
             onClick={() => navigate("/")}
-            className="pointer-events-auto flex items-center gap-2 bg-bg-elevated/80 backdrop-blur-md border border-border px-5 py-2.5 rounded-full text-sm font-medium text-text-primary hover:border-accent/50 transition-all"
+            className="pointer-events-auto flex items-center gap-2 bg-card/80 backdrop-blur-md border border-border px-5 py-2.5 rounded-full text-sm font-medium text-foreground hover:border-accent/50 transition-all"
           >
             <ArrowLeft size={16} /> Back Home
           </button>
         </Magnetic>
         
         {/* Breadcrumb with Prev/Next */}
-        <div className="pointer-events-auto hidden md:flex items-center gap-1 bg-bg-elevated/80 backdrop-blur-md border border-border rounded-full overflow-hidden">
+        <div className="pointer-events-auto hidden md:flex items-center gap-1 bg-card/80 backdrop-blur-md border border-border rounded-full overflow-hidden">
           {/* Previous arrow */}
           <Link 
-            to={`/projects/${prevProject.id}`}
-            className="flex items-center justify-center w-9 h-9 text-text-muted hover:text-accent hover:bg-accent/10 transition-all rounded-full"
+            to={`/project/${prevProject.id}`}
+            className="flex items-center justify-center w-9 h-9 text-foreground/60 hover:text-accent hover:bg-accent/10 transition-all rounded-full"
             title={`Previous: ${prevProject.name}`}
           >
             <ChevronLeft size={16} />
           </Link>
           
           {/* Breadcrumb text */}
-          <div className="flex items-center gap-2 px-2 py-2 text-[10px] font-mono uppercase tracking-widest text-text-muted">
+          <div className="flex items-center gap-2 px-2 py-2 text-[10px] font-mono uppercase tracking-widest text-foreground/60">
             <Link to="/" className="hover:text-accent transition-colors">Work</Link>
             <ChevronRight size={12} />
-            <span className="text-text-primary">{project.name}</span>
+            <span className="text-foreground">{project.name}</span>
           </div>
           
           {/* Next arrow */}
           <Link 
-            to={`/projects/${nextProject.id}`}
-            className="flex items-center justify-center w-9 h-9 text-text-muted hover:text-accent hover:bg-accent/10 transition-all rounded-full"
+            to={`/project/${nextProject.id}`}
+            className="flex items-center justify-center w-9 h-9 text-foreground/60 hover:text-accent hover:bg-accent/10 transition-all rounded-full"
             title={`Next: ${nextProject.name}`}
           >
             <ChevronRight size={16} />
@@ -82,11 +82,11 @@ const ProjectDetail = () => {
               </div>
               <motion.h1
                 layoutId={`project-name-${project.id}`}
-                className="font-display text-[clamp(48px,8vw,120px)] leading-[0.9] font-bold text-text-primary tracking-tighter mb-8"
+                className="font-bold text-[clamp(48px,8vw,120px)] leading-[0.9] text-foreground tracking-tighter mb-8"
               >
                 {project.name}<span className="text-accent">.</span>
               </motion.h1>
-              <p className="text-xl md:text-2xl text-text-secondary leading-relaxed max-w-2xl">
+              <p className="text-xl md:text-2xl text-foreground/60 leading-relaxed max-w-2xl">
                 {project.tagline || project.problem}
               </p>
             </motion.div>
@@ -98,16 +98,16 @@ const ProjectDetail = () => {
               className="flex flex-wrap gap-8 mt-12 pt-12 border-t border-border"
             >
               <div>
-                <span className="block font-mono text-[10px] uppercase tracking-widest text-text-muted mb-2">Role</span>
-                <span className="text-text-primary font-medium">Lead Developer</span>
+                <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-2">Role</span>
+                <span className="text-foreground font-medium">Lead Developer</span>
               </div>
               <div>
-                <span className="block font-mono text-[10px] uppercase tracking-widest text-text-muted mb-2">Stack</span>
-                <span className="text-text-primary font-medium">{project.stack.join(", ")}</span>
+                <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-2">Stack</span>
+                <span className="text-foreground font-medium">{project.stack.join(", ")}</span>
               </div>
               {project.github && (
                 <div>
-                  <span className="block font-mono text-[10px] uppercase tracking-widest text-text-muted mb-2">Source</span>
+                  <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-2">Source</span>
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline flex items-center gap-1">
                     GitHub <GithubIcon size={14} />
                   </a>
@@ -121,15 +121,15 @@ const ProjectDetail = () => {
       {/* Main Mockup / Visual — Screenshot or Logo Fallback */}
       <section className="container mx-auto px-6 md:px-12 mb-24">
         <div
-          className="aspect-[16/9] md:aspect-[21/9] rounded-3xl bg-bg-elevated border border-border overflow-hidden relative flex items-center justify-center p-4 md:p-8"
+          className="aspect-[16/9] md:aspect-[21/9] rounded-3xl bg-card border border-border overflow-hidden relative flex items-center justify-center p-4 md:p-8"
         >
           {project.screenshot ? (
             /* Live project — show real screenshot inside a browser chrome frame */
             <div
-              className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
+              className="w-full h-full bg-background rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
             >
               {/* Browser chrome bar */}
-              <div className="h-10 min-h-[40px] border-b border-border bg-bg-elevated flex items-center px-6 shrink-0">
+              <div className="h-10 min-h-[40px] border-b border-border bg-card flex items-center px-6 shrink-0">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-border"></div>
                   <div className="w-3 h-3 rounded-full bg-border"></div>
@@ -137,7 +137,7 @@ const ProjectDetail = () => {
                 </div>
                 {project.live && (
                   <div className="ml-6 flex-1 max-w-md">
-                    <div className="bg-bg-primary/50 rounded-md px-3 py-1 text-[10px] font-mono text-text-muted truncate">
+                    <div className="bg-background/50 rounded-md px-3 py-1 text-[10px] font-mono text-foreground/60 truncate">
                       {project.live}
                     </div>
                   </div>
@@ -155,9 +155,9 @@ const ProjectDetail = () => {
           ) : (
             /* No screenshot — fallback to logo + name */
             <div 
-              className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
+              className="w-full h-full bg-background rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
             >
-              <div className="h-10 border-b border-border bg-bg-elevated flex items-center px-6">
+              <div className="h-10 border-b border-border bg-card flex items-center px-6">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-border"></div>
                   <div className="w-3 h-3 rounded-full bg-border"></div>
@@ -165,7 +165,7 @@ const ProjectDetail = () => {
                 </div>
               </div>
               <div className="flex-1 flex flex-col items-center justify-center gap-6 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]">
-                <div className="w-32 h-32 rounded-3xl flex items-center justify-center border border-border bg-bg-elevated shadow-2xl overflow-hidden">
+                <div className="w-32 h-32 rounded-3xl flex items-center justify-center border border-border bg-card shadow-2xl overflow-hidden">
                   {project.logo ? (
                     <img src={project.logo} alt={`${project.name} logo`} className="w-full h-full object-cover" />
                   ) : (
@@ -174,7 +174,7 @@ const ProjectDetail = () => {
                     </div>
                   )}
                 </div>
-                <span className="font-display text-4xl md:text-6xl font-bold opacity-10 uppercase tracking-widest">
+                <span className="font-sans text-4xl md:text-6xl font-bold opacity-10 uppercase tracking-widest">
                   {project.name}
                 </span>
               </div>
@@ -192,8 +192,8 @@ const ProjectDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="font-display text-3xl font-semibold text-text-primary mb-6">The Challenge</h3>
-              <p className="text-lg text-text-secondary leading-relaxed">
+              <h3 className="font-sans text-3xl font-semibold text-foreground mb-6">The Challenge</h3>
+              <p className="text-lg text-foreground/60 leading-relaxed">
                 {project.problem}
               </p>
             </motion.div>
@@ -203,8 +203,8 @@ const ProjectDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="font-display text-3xl font-semibold text-text-primary mb-6">The Solution</h3>
-              <p className="text-lg text-text-secondary leading-relaxed">
+              <h3 className="font-sans text-3xl font-semibold text-foreground mb-6">The Solution</h3>
+              <p className="text-lg text-foreground/60 leading-relaxed">
                 {project.solution}
               </p>
             </motion.div>
@@ -214,14 +214,14 @@ const ProjectDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="font-display text-3xl font-semibold text-text-primary mb-6">Core Features</h3>
+              <h3 className="font-sans text-3xl font-semibold text-foreground mb-6">Core Features</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {project.features.map((feature, i) => (
-                  <div key={i} className="p-6 rounded-2xl bg-bg-elevated border border-border hover:border-accent/30 transition-colors">
+                  <div key={i} className="p-6 rounded-2xl bg-card border border-border hover:border-accent/30 transition-colors">
                     <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent font-mono text-xs mb-4">
                       {i + 1}
                     </div>
-                    <p className="text-text-primary font-medium">{feature}</p>
+                    <p className="text-foreground font-medium">{feature}</p>
                   </div>
                 ))}
               </div>
@@ -229,11 +229,11 @@ const ProjectDetail = () => {
           </div>
 
           <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-12">
-            <div className="p-8 rounded-2xl bg-bg-elevated border border-border">
-              <h4 className="font-display text-xl font-bold text-text-primary mb-6">Technologies</h4>
+            <div className="p-8 rounded-2xl bg-card border border-border">
+              <h4 className="font-sans text-xl font-bold text-foreground mb-6">Technologies</h4>
               <div className="flex flex-wrap gap-2">
                 {project.stack.map(tech => (
-                  <span key={tech} className="font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 bg-bg-primary border border-border text-text-secondary rounded-md">
+                  <span key={tech} className="font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 bg-background border border-border text-foreground/60 rounded-md">
                     {tech}
                   </span>
                 ))}
@@ -246,7 +246,7 @@ const ProjectDetail = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-text-primary text-bg-primary px-8 py-4 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Live Preview <ExternalLink size={18} />
                 </a>
@@ -256,7 +256,7 @@ const ProjectDetail = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-bg-elevated border border-border text-text-primary px-8 py-4 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-3 bg-card border border-border text-foreground px-8 py-4 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   View Source <GithubIcon size={18} />
                 </a>
@@ -271,32 +271,32 @@ const ProjectDetail = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Previous Project */}
           <Link 
-            to={`/projects/${prevProject.id}`}
+            to={`/project/${prevProject.id}`}
             className="group text-left"
           >
-            <span className="font-mono text-sm tracking-widest text-text-muted uppercase block mb-4">
+            <span className="font-mono text-sm tracking-widest text-foreground/40 uppercase block mb-4">
               ← Previous
             </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary group-hover:text-accent transition-colors duration-500">
+            <h2 className="font-sans text-3xl md:text-5xl font-bold text-foreground group-hover:text-accent transition-colors duration-500">
               {prevProject.name}
             </h2>
-            <p className="text-text-secondary mt-3 text-sm line-clamp-2 max-w-md">
+            <p className="text-foreground/60 mt-3 text-sm line-clamp-2 max-w-md">
               {prevProject.tagline}
             </p>
           </Link>
 
           {/* Next Project */}
           <Link 
-            to={`/projects/${nextProject.id}`}
+            to={`/project/${nextProject.id}`}
             className="group text-right"
           >
-            <span className="font-mono text-sm tracking-widest text-text-muted uppercase block mb-4">
+            <span className="font-mono text-sm tracking-widest text-foreground/40 uppercase block mb-4">
               Next →
             </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-text-primary group-hover:text-accent transition-colors duration-500">
+            <h2 className="font-sans text-3xl md:text-5xl font-bold text-foreground group-hover:text-accent transition-colors duration-500">
               {nextProject.name}
             </h2>
-            <p className="text-text-secondary mt-3 text-sm line-clamp-2 max-w-md ml-auto">
+            <p className="text-foreground/60 mt-3 text-sm line-clamp-2 max-w-md ml-auto">
               {nextProject.tagline}
             </p>
           </Link>

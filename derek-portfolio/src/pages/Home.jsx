@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
+import WorkIndex from '../components/WorkIndex';
+import Stack from '../components/Stack';
 import About from '../components/About';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import Experience from '../components/Experience';
 import Contact from '../components/Contact';
 
 const Home = () => {
@@ -14,10 +13,9 @@ const Home = () => {
         <meta name="description" content="I build software that solves real problems. Full stack developer based in Nairobi." />
       </Helmet>
       <Hero />
+      <WorkIndex />
+      <Stack />
       <About />
-      <Projects />
-      <Skills />
-      <Experience />
       <Contact />
     </>
   );

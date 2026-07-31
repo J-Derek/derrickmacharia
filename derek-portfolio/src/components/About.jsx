@@ -1,69 +1,81 @@
-import { motion } from 'framer-motion';
-import Magnetic from './Magnetic';
+import { motion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
+
+const TIMELINE = [
+  { year: "2025", role: "Software Engineer", org: "Freelance" },
+  { year: "2024", role: "Industrial Attaché", org: "KPLC" },
+  { year: "2023", role: "Developer", org: "Daystar University" },
+];
 
 const About = () => {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <section id="about" className="py-24 md:py-48 bg-bg-primary overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
+    <section id="about" className="px-6 md:px-12 py-24 border-t border-border">
+      <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        {/* Label */}
+        <div className="md:col-span-2">
+          <h2 className="font-mono text-xs tracking-widest uppercase text-foreground/40">
+            About
+          </h2>
+        </div>
+
+        {/* Bio */}
+        <div className="md:col-span-5">
+          <motion.p
+            initial={reducedMotion ? {} : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-2xl md:text-3xl font-semibold leading-snug tracking-tight text-foreground"
           >
-            <div className="mb-8">
-              <span className="font-mono text-sm tracking-widest text-accent uppercase">
-                01 // Expertise
-              </span>
-              <h2 className="mt-6 font-display text-[clamp(40px,6vw,80px)] leading-[1] font-bold text-text-primary tracking-tighter">
-                Solving complex problems<br />
-                <span className="text-accent">with elegant code.</span>
-              </h2>
-            </div>
+            Building products that bridge the gap between complex engineering
+            and beautiful, intuitive design.
+          </motion.p>
 
-            <div className="space-y-8 text-lg md:text-xl text-text-secondary font-sans leading-relaxed max-w-xl">
-              <p>
-                I am a results-driven Software Developer and UI/UX Designer specialized in building high-performance, user-centered applications. I bridge the gap between technical complexity and intuitive design.
-              </p>
-              <p>
-                From architecting robust backends to crafting polished, interactive frontends, I focus on scalability, performance, and building software that doesn't just work—it excels in the real world.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Visual Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end"
+          <motion.p
+            initial={reducedMotion ? {} : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 text-foreground/60 leading-relaxed"
           >
-            <Magnetic intensity={0.15}>
-              <div className="relative group cursor-none">
-                {/* Background Glow */}
-                <div className="absolute inset-0 bg-accent/20 rounded-2xl blur-3xl group-hover:bg-accent/30 transition-colors duration-700"></div>
-                
-                <div className="relative z-10 w-full max-w-sm aspect-square md:aspect-[4/3] rounded-2xl bg-bg-elevated border border-border p-8 md:p-10 shadow-2xl transition-all duration-700 flex flex-col justify-center">
-                  <div className="flex gap-2 mb-8">
-                    <div className="w-3 h-3 rounded-full bg-accent/40"></div>
-                    <div className="w-3 h-3 rounded-full bg-border"></div>
-                    <div className="w-3 h-3 rounded-full bg-border"></div>
-                  </div>
-                  <div className="space-y-4 font-mono text-sm md:text-base">
-                    <p className="text-accent">const developer = {'{'}</p>
-                    <p className="text-text-primary pl-6">expertise: <span className="text-text-secondary">'Full Stack'</span>,</p>
-                    <p className="text-text-primary pl-6">priority: <span className="text-text-secondary">'User Experience'</span>,</p>
-                    <p className="text-text-primary pl-6">mission: <span className="text-text-secondary">'Ship Excellence'</span></p>
-                    <p className="text-accent">{'}'};</p>
-                    <p className="text-text-muted pt-4 font-italic">// No compromises.</p>
-                  </div>
-                </div>
-              </div>
-            </Magnetic>
-          </motion.div>
+            I specialize in full-stack development with a strong focus on mobile (Flutter)
+            and web (React). Whether I’m designing a database schema or polishing an
+            animation curve, I care deeply about the millimeter details that separate
+            good from excellent.
+          </motion.p>
+        </div>
+
+        {/* Portrait placeholder + timeline */}
+        <div className="md:col-span-5 flex flex-col gap-8">
+          <div className="overflow-hidden rounded bg-foreground/5 aspect-[4/3]">
+            <img
+              src="/workspace.jpg"
+              alt="Workspace"
+              width={600}
+              height={450}
+              loading="lazy"
+              className="w-full h-full object-cover grayscale opacity-80 mix-blend-luminosity"
+            />
+          </div>
+
+          <div className="space-y-0">
+            {TIMELINE.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={reducedMotion ? {} : { opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+                className="flex items-center gap-4 py-3 border-b border-border last:border-0"
+              >
+                <span className="font-mono text-xs text-foreground/30 w-10">{item.year}</span>
+                <span className="text-sm text-foreground">{item.role}</span>
+                <span className="ml-auto font-mono text-xs text-foreground/40">{item.org}</span>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,81 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:ital,wght@0,300..500;1,300..500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #080808;
-  --color-bg-secondary: #0f0f0f;
-  --color-bg-elevated: #1a1a1a;
-  --color-accent: #00FF87;
-  --color-accent-dim: #00ff8733;
-  --color-text-primary: #F5F5F0;
-  --color-text-secondary: #888880;
-  --color-text-muted: #666660;
-  --color-border: #1f1f1f;
+  --color-bg-primary: var(--background);
+  --color-bg-secondary: var(--card);
+  --color-bg-elevated: var(--card);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-border: var(--border);
 
-  --font-display: "Clash Display", sans-serif;
-  --font-sans: "General Sans", sans-serif;
-  --color-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter Tight", system-ui, sans-serif;
+  --font-display: "Inter Tight", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --background: #080808;
+  --foreground: #f0ede8;
+  --card: #111111;
+  --border: rgba(240, 237, 232, 0.1);
+  --muted-foreground: #7a7774;
+  --accent: #c8ff47;
+  --accent-text: #b5f524;
+  --accent-foreground: #0c0c0c;
+  --ring: #c8ff47;
 }
 
 :root[data-theme='light'] {
-  --color-bg-primary: #F2F0ED;
-  --color-bg-secondary: #E8E6E1;
-  --color-bg-elevated: #DDDBD6;
-  --color-accent: #008C4A;
-  --color-accent-dim: #008c4a22;
-  --color-text-primary: #171717;
-  --color-text-secondary: #4A4A4A;
-  --color-text-muted: #787872;
-  --color-border: #C8C5BE;
+  --background: #f0ede8;
+  --foreground: #0c0c0c;
+  --card: #e8e4de;
+  --border: rgba(12, 12, 12, 0.12);
+  --muted-foreground: #6b6862;
+  --accent: #008c4a;
+  --accent-text: #008c4a;
+  --accent-foreground: #ffffff;
+  --ring: #008c4a;
 }
 
 @layer base {
   body {
-    @apply bg-bg-primary text-text-primary font-sans antialiased selection:bg-accent selection:text-bg-primary overflow-x-hidden;
+    @apply bg-bg-primary text-text-primary font-sans antialiased overflow-x-hidden;
+    /* Selection styles */
+    ::selection {
+      @apply bg-accent text-accent-foreground;
+    }
   }
 }
 
 @layer utilities {
-  .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  .mesh-bg {
+    background: radial-gradient(circle at 50% 50%, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
   }
 }
 
-/* Custom CSS classes for specific aesthetic choices */
-.mesh-bg {
-  background: radial-gradient(circle at 50% 50%, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
-}
-
-.glow-effect {
-  box-shadow: 0 0 40px var(--color-accent-dim);
-}
-
-.text-gradient {
-  background: linear-gradient(to right, var(--color-text-primary), var(--color-text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-bg-elevated);
+  background: var(--card);
   border-radius: 10px;
-  border: 2px solid var(--color-bg-primary);
+  border: 2px solid var(--background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: var(--muted-foreground);
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-bg-elevated) var(--color-bg-primary);
+  scrollbar-color: var(--card) var(--background);
 }
+

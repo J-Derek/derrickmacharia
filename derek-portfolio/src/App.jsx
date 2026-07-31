@@ -4,10 +4,10 @@ import { MotionConfig, AnimatePresence } from 'framer-motion';
 import { ReactLenis } from 'lenis/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 import ScrollIndicator from './components/ScrollIndicator';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
+import Backdrop from './components/Backdrop';
 
 function App() {
   const location = useLocation();
@@ -26,7 +26,6 @@ function App() {
   return (
     <ReactLenis root>
       <MotionConfig reducedMotion="user">
-
         {/* Preloader sits on top of everything via z-[9999], exits with slide-up animation */}
         <AnimatePresence>
           {isLoading && (
@@ -36,19 +35,21 @@ function App() {
 
         {/* Main app — renders behind the preloader so content is ready on reveal */}
         <ScrollToTop />
-        <CustomCursor />
+        <Backdrop />
         <ScrollIndicator />
         <Navbar />
-        <main className="min-h-screen">
+        
+        <main className="min-h-screen relative z-10">
           <AnimatePresence mode="wait">
             {element && React.cloneElement(element, { key: location.pathname })}
           </AnimatePresence>
         </main>
+        
         <Footer />
-
       </MotionConfig>
     </ReactLenis>
   );
 }
 
 export default App;
+

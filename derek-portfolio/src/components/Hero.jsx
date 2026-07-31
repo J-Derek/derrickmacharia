@@ -1,181 +1,94 @@
-import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import Magnetic from './Magnetic';
-import DynamicBackground from './DynamicBackground';
-import profileImg from '../assets/profile.jpeg';
+import { motion, useReducedMotion } from "framer-motion";
+import Marquee from "./Marquee";
+
+const NAMES_TICKER = [
+  "Derrick Macharia",
+  "Full-Stack Dev",
+  "UI/UX Enthusiast",
+  "React & Node",
+  "Open to Projects",
+  "Engineering × Design",
+];
 
 const Hero = () => {
-  const derrickLetters = "Derrick".split("");
-  const machariaLetters = "Macharia".split("");
+  const reducedMotion = useReducedMotion();
 
-  // Stagger configurations for name transition
-  const baseDelay = 0.5;
-  const letterStagger = 0.04;
-
-  // Subtitle words staggered in after the name completes
-  const subtitleWords = ["Full", "Stack", "Developer", "|", "UI/UX", "Designer"];
-  const subtitleBaseDelay = baseDelay + (derrickLetters.length + machariaLetters.length) * letterStagger + 0.2;
+  const fadeUp = (delay = 0) =>
+    reducedMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+        };
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden mesh-bg pt-20">
-      {/* Main Content Wrapper */}
-      <div className="flex-grow flex items-center justify-center w-full">
-        <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center justify-center text-center py-10">
+    <section className="relative min-h-screen flex flex-col justify-end pt-16 pb-16 px-6 md:px-12 overflow-hidden">
+      {/* Background strip */}
+      <div className="absolute inset-x-0 top-1/3 h-px bg-border" aria-hidden="true" />
 
-          {/* Top Circular Profile Photo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-32 h-32 md:w-44 md:h-44 mx-auto mb-6 group"
+      <div className="relative z-10 max-w-[1800px] mx-auto w-full">
+        <motion.p
+          {...fadeUp(0.1)}
+          className="font-mono text-xs tracking-widest uppercase text-foreground/40 mb-8"
+        >
+          Full-stack developer — creative engineer
+        </motion.p>
+
+        <motion.h1
+          {...fadeUp(0.2)}
+          className="font-bold leading-none tracking-tight text-foreground"
+          style={{
+            fontSize: "clamp(3.5rem, 11vw, 12rem)",
+            fontFamily: "inherit",
+          }}
+        >
+          Derrick
+          <br />
+          Macharia
+        </motion.h1>
+
+        <motion.div
+          {...fadeUp(0.4)}
+          className="mt-12 flex flex-col sm:flex-row items-start sm:items-end gap-8 justify-between"
+        >
+          <p className="max-w-sm text-foreground/60 text-base leading-relaxed">
+            Building products at the intersection of engineering and design.
+            Crafting elegant, high-performance web experiences.
+          </p>
+          <motion.a
+            href="#work"
+            whileHover={reducedMotion ? {} : { scale: 1.02 }}
+            transition={{ duration: 0.18 }}
+            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
           >
-            <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:bg-accent/30 transition-colors duration-500"></div>
-            <div className="relative z-10 w-full h-full rounded-full border-[3px] border-border overflow-hidden bg-bg-elevated shadow-xl transition-transform duration-500 group-hover:-translate-y-2">
-              <img
-                src={profileImg}
-                alt="Derrick Macharia"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-          </motion.div>
-
-          {/* Hello Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-2"
-          >
-            <p className="font-sans text-sm md:text-base font-medium text-text-secondary">
-              Hello, I'm
-            </p>
-          </motion.div>
-
-          {/* Name with elegant clean stagger animation */}
-          <h1 className="mb-4 font-display text-[clamp(40px,8vw,90px)] leading-[1] font-bold text-text-primary tracking-tight">
-            <div className="flex flex-wrap justify-center items-end gap-x-3">
-              <div className="block whitespace-nowrap">
-                {derrickLetters.map((char, index) => (
-                  <motion.span
-                    key={`d-${index}`}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: baseDelay + index * letterStagger,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    className="char inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </div>
-              <div className="block whitespace-nowrap">
-                {machariaLetters.map((char, index) => (
-                  <motion.span
-                    key={`m-${index}`}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: baseDelay + (derrickLetters.length + index) * letterStagger,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    className="char inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: baseDelay + (derrickLetters.length + machariaLetters.length) * letterStagger + 0.1,
-                    ease: "easeOut"
-                  }}
-                  className="final-dot text-accent inline-block ml-1"
-                >
-                  .
-                </motion.span>
-              </div>
-            </div>
-          </h1>
-
-          {/* Professional Identity Label — words stagger in after the name */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: subtitleBaseDelay - 0.1 }}
-            className="mb-8"
-          >
-            <h2 className="font-mono text-xs md:text-sm tracking-[0.2em] text-text-secondary uppercase flex flex-wrap justify-center gap-x-2">
-              {subtitleWords.map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: subtitleBaseDelay + i * 0.07,
-                    ease: [0.16, 1, 0.3, 1]
-                  }}
-                  className="inline-block"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </h2>
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex flex-wrap items-center justify-center gap-4"
-          >
-            <Magnetic>
-              <a
-                href="/DerrickMachariaCV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 rounded-full font-medium text-text-primary border border-border hover:border-accent hover:text-accent transition-colors bg-bg-elevated/30"
-              >
-                Download CV
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="#contact"
-                className="bg-text-primary text-bg-primary px-8 py-3 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 shadow-lg"
-              >
-                Contact Info
-              </a>
-            </Magnetic>
-          </motion.div>
-        </div>
+            View work
+          </motion.a>
+        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Hero image strip */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="w-full pb-10 flex flex-col items-center gap-2"
+        {...fadeUp(0.5)}
+        className="mt-16 overflow-hidden rounded relative"
       >
-        <span className="font-mono text-[10px] tracking-widest text-text-muted uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          <ChevronDown size={16} className="text-text-muted" />
-        </motion.div>
+        <img
+          src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1800&q=85"
+          alt="Abstract workspace"
+          width={1800}
+          height={600}
+          loading="eager"
+          className="w-full h-[240px] md:h-[400px] object-cover grayscale opacity-80 mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
       </motion.div>
 
-      {/* Dynamic Background */}
-      <DynamicBackground />
+      <motion.div {...fadeUp(0.65)}>
+        <Marquee
+          items={NAMES_TICKER}
+          className="mt-4 py-3 border-t border-border"
+        />
+      </motion.div>
     </section>
   );
 };
