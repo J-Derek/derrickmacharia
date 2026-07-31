@@ -7,7 +7,7 @@ const Marquee = ({ items, reverse = false, className = "" }) => {
   return (
     <div className={`overflow-hidden ${className}`} aria-hidden="true">
       <motion.div
-        className="flex whitespace-nowrap gap-12"
+        className="flex whitespace-nowrap w-max"
         animate={reducedMotion ? {} : { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
         transition={
           reducedMotion
