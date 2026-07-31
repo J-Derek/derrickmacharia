@@ -23,7 +23,7 @@ const Hero = () => {
         };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-end pt-16 pb-16 px-6 md:px-12 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-end pt-32 pb-16 px-6 md:px-12 overflow-hidden">
       {/* Background strip */}
       <div className="absolute inset-x-0 top-1/3 h-px bg-border" aria-hidden="true" />
 
@@ -60,7 +60,7 @@ const Hero = () => {
             href="#work"
             whileHover={reducedMotion ? {} : { scale: 1.02 }}
             transition={{ duration: 0.18 }}
-            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
           >
             View work
           </motion.a>

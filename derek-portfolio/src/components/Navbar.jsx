@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLenis } from 'lenis/react';
+import profileImg from '../assets/profile.jpeg';
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -71,9 +72,13 @@ const Navbar = () => {
               });
             }
           }}
-          className="font-mono text-sm tracking-widest uppercase text-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
         >
-          DM
+          <img 
+            src={profileImg} 
+            alt="Derrick Macharia" 
+            className="w-8 h-8 rounded-full object-cover transition-transform duration-300 hover:scale-110"
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -91,10 +96,18 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-4">
+          <a 
+            href="/DerrickMachariaCV.pdf" 
+            download
+            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 border border-foreground/20 text-xs font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Resume
+          </a>
+
           <button
             onClick={toggleTheme}
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="w-8 h-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+            className="w-8 h-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
@@ -122,7 +135,11 @@ const Navbar = () => {
             className="fixed inset-0 z-[60] bg-background flex flex-col"
           >
             <div className="flex items-center justify-between px-6 h-16 border-b border-border">
-              <span className="font-mono text-sm tracking-widest uppercase text-foreground">DM</span>
+              <img 
+                src={profileImg} 
+                alt="Derrick Macharia" 
+                className="w-8 h-8 rounded-full object-cover"
+              />
               <button
                 onClick={closeMobile}
                 aria-label="Close menu"
@@ -151,6 +168,21 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
+              
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.06 }}
+                className="pt-6 mt-6 border-t border-border"
+              >
+                <a 
+                  href="/DerrickMachariaCV.pdf" 
+                  download
+                  className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 text-sm font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  Download Resume
+                </a>
+              </motion.div>
             </nav>
           </motion.div>
         )}
