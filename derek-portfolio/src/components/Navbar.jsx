@@ -77,7 +77,7 @@ const Navbar = () => {
           <img 
             src={profileImg} 
             alt="Derrick Macharia" 
-            className="w-8 h-8 rounded-full object-cover transition-transform duration-300 hover:scale-110"
+            className="w-10 h-10 rounded-full object-cover transition-transform duration-500 ease-out origin-top-left hover:scale-[8] md:hover:scale-[10] relative z-[100] shadow-sm hover:shadow-2xl"
           />
         </Link>
 
