@@ -28,13 +28,11 @@ const Marquee = ({ items, speed = 30, reverse = false, className = "" }) => {
       `}</style>
       <div className={`overflow-hidden ${className}`} aria-hidden="true">
         <div
+          className="flex whitespace-nowrap w-max"
           style={
             reducedMotion
               ? {}
               : {
-                  display: "flex",
-                  whiteSpace: "nowrap",
-                  width: "max-content",
                   willChange: "transform",
                   animation: `scroll-left ${speed}s linear infinite`,
                   animationDirection: reverse ? "reverse" : "normal",
