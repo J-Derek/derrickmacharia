@@ -1,34 +1,53 @@
 import { useReducedMotion } from "framer-motion";
 
-const Marquee = ({ items, reverse = false, className = "" }) => {
+const Marquee = ({ items, speed = 30, reverse = false, className = "" }) => {
   const reducedMotion = useReducedMotion();
-  // Render 10 copies to ensure it covers even 4K ultra-wide screens without running out of text
-  const list = Array(10).fill(items).flat();
+
+  // Ensure the base copy is long enough to fill any ultra-wide screen.
+  // 5 copies of the array gives ~4750px of content per wrapper.
+  const baseItems = Array(5).fill(items).flat();
+
+  const renderItems = () =>
+    baseItems.map((item, i) => (
+      <span
+        key={i}
+        className="flex-shrink-0 text-sm font-mono tracking-widest uppercase text-foreground/40"
+      >
+        {item}
+        <span className="mx-6 text-accent">—</span>
+      </span>
+    ));
 
   return (
-    <div className={`overflow-hidden ${className}`} aria-hidden="true">
-      <div
-        className="flex whitespace-nowrap w-max"
-        style={
-          reducedMotion
-            ? {}
-            : {
-                animation: `marquee 40s linear infinite`,
-                animationDirection: reverse ? "reverse" : "normal",
-              }
+    <>
+      <style>{`
+        @keyframes scroll-left {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
         }
-      >
-        {list.map((item, i) => (
-          <span
-            key={i}
-            className="flex-shrink-0 text-sm font-mono tracking-widest uppercase text-foreground/40"
-          >
-            {item}
-            <span className="mx-6 text-accent">—</span>
-          </span>
-        ))}
+      `}</style>
+      <div className={`overflow-hidden ${className}`} aria-hidden="true">
+        <div
+          style={
+            reducedMotion
+              ? {}
+              : {
+                  display: "flex",
+                  whiteSpace: "nowrap",
+                  width: "max-content",
+                  willChange: "transform",
+                  animation: `scroll-left ${speed}s linear infinite`,
+                  animationDirection: reverse ? "reverse" : "normal",
+                }
+          }
+        >
+          {/* Copy A */}
+          <div className="flex shrink-0 items-center">{renderItems()}</div>
+          {/* Copy B — identical */}
+          <div className="flex shrink-0 items-center">{renderItems()}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
