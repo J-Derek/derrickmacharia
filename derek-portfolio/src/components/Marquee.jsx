@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 
 const Marquee = ({ items, reverse = false, className = "" }) => {
   const reducedMotion = useReducedMotion();
@@ -7,13 +7,15 @@ const Marquee = ({ items, reverse = false, className = "" }) => {
 
   return (
     <div className={`overflow-hidden ${className}`} aria-hidden="true">
-      <motion.div
+      <div
         className="flex whitespace-nowrap w-max"
-        animate={reducedMotion ? {} : { x: reverse ? ["-10%", "0%"] : ["0%", "-10%"] }}
-        transition={
+        style={
           reducedMotion
             ? {}
-            : { duration: 24, ease: "linear", repeat: Infinity }
+            : {
+                animation: `marquee 40s linear infinite`,
+                animationDirection: reverse ? "reverse" : "normal",
+              }
         }
       >
         {list.map((item, i) => (
@@ -25,7 +27,7 @@ const Marquee = ({ items, reverse = false, className = "" }) => {
             <span className="mx-6 text-accent">—</span>
           </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

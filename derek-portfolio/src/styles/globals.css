@@ -57,6 +57,11 @@
   }
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-10%); }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
