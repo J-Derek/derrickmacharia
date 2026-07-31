@@ -1,4 +1,4 @@
-const Marquee = ({ items, speed = 30, reverse = false, className = "" }) => {
+const Marquee = ({ items, speed = 120, reverse = false, className = "" }) => {
   // Ensure the base copy is long enough to fill any ultra-wide screen.
   // 5 copies of the array gives ~4750px of content per wrapper.
   const baseItems = Array(5).fill(items).flat();
