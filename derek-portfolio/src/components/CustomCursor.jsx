@@ -31,13 +31,20 @@ const CustomCursor = () => {
       }
     };
 
+    const handleMouseEnterDoc = () => setIsVisible(true);
+    const handleMouseLeaveDoc = () => setIsVisible(false);
+
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseenter', handleMouseEnterDoc);
+    document.addEventListener('mouseleave', handleMouseLeaveDoc);
     document.body.style.cursor = 'none';
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseenter', handleMouseEnterDoc);
+      document.removeEventListener('mouseleave', handleMouseLeaveDoc);
       document.body.style.cursor = 'auto';
     };
   }, [mouseX, mouseY]);

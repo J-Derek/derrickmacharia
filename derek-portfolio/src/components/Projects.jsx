@@ -1,13 +1,72 @@
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ArrowRight, Plus, Minus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import { Plus, Minus } from 'lucide-react';
 import { projects } from '../data/projects';
-
 import ProjectCard from './ProjectCard';
+
+/**
+ * FloatingPreview — mouse-following thumbnail that appears on project hover.
+ * Position is spring-animated so it lags slightly behind the cursor.
+ * Projects without a screenshot fall back to a logo on the project's brand color.
+ */
+const FloatingPreview = ({ project, mousePos }) => {
+  const springConfig = { stiffness: 280, damping: 28, mass: 0.5 };
+  const springX = useSpring(mousePos.x, springConfig);
+  const springY = useSpring(mousePos.y, springConfig);
+
+  useEffect(() => {
+    springX.set(mousePos.x + 24);
+    springY.set(mousePos.y - 70);
+  }, [mousePos.x, mousePos.y, springX, springY]);
+
+  const hasVisual = project?.screenshot || project?.logo;
+
+  return (
+    <AnimatePresence>
+      {project && hasVisual && (
+        <motion.div
+          key={project.id}
+          initial={{ opacity: 0, scale: 0.88 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.88 }}
+          transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed top-0 left-0 pointer-events-none z-[999] w-72 h-48 rounded-2xl overflow-hidden border border-border/60 shadow-2xl"
+          style={{ x: springX, y: springY }}
+        >
+          {project.screenshot ? (
+            <img
+              src={project.screenshot}
+              alt={`${project.name} preview`}
+              className="w-full h-full object-cover object-top"
+            />
+          ) : (
+            <div
+              className="w-full h-full flex flex-col items-center justify-center gap-4"
+              style={{ backgroundColor: `${project.color}18`, borderColor: `${project.color}30` }}
+            >
+              <img
+                src={project.logo}
+                alt={`${project.name} logo`}
+                className="w-20 h-20 object-contain rounded-2xl"
+              />
+              <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: project.color }}>
+                {project.status}
+              </span>
+            </div>
+          )}
+
+          {/* Subtle overlay so the image doesn't look raw */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/50 to-transparent" />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const Projects = () => {
   const [showAll, setShowAll] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef(null);
   const displayProjects = showAll ? projects : projects.slice(0, 4);
 
@@ -16,12 +75,21 @@ const Projects = () => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleMouseMove = (e) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <section 
-      id="work" 
-      ref={sectionRef} 
+    <section
+      id="work"
+      ref={sectionRef}
       className="py-24 md:py-40 bg-bg-primary overflow-visible relative"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setHoveredProject(null)}
     >
+      {/* Mouse-following project thumbnail preview */}
+      <FloatingPreview project={hoveredProject} mousePos={mousePos} />
+
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,22 +119,22 @@ const Projects = () => {
             <div className="col-span-2">Technologies</div>
             <div className="col-span-1 text-right">Link</div>
           </div>
-          
+
           <div className="flex flex-col">
             <AnimatePresence>
               {displayProjects.map((project, index) => (
-                <ProjectCard 
-                  key={project.id} 
-                  project={project} 
-                  index={index} 
-                  onHover={() => {}}
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  onHover={setHoveredProject}
                 />
               ))}
             </AnimatePresence>
           </div>
 
           {!showAll && projects.length > 4 && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="mt-12 flex justify-center"
@@ -82,7 +150,7 @@ const Projects = () => {
           )}
 
           {showAll && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="mt-12 flex justify-center"
@@ -98,7 +166,6 @@ const Projects = () => {
           )}
         </div>
       </div>
-
     </section>
   );
 };

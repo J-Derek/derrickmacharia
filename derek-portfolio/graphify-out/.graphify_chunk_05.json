@@ -1,0 +1,333 @@
+{
+  "nodes": [
+    {
+      "id": "assets_hero",
+      "label": "Hero Section Visual Asset",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_profile",
+      "label": "Developer Profile Photo Asset",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\profile.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screenshots_screenshot_crochethub",
+      "label": "CrochetHub App UI Screenshot",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\screenshots\\screenshot_crochethub.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screenshots_screenshot_examtimetable",
+      "label": "Exam Timetable App UI Screenshot",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\screenshots\\screenshot_examtimetable.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screenshots_screenshot_minniemiss",
+      "label": "Minnie Miss App UI Screenshot",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\screenshots\\screenshot_minniemiss.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screenshots_screenshot_remembertodo",
+      "label": "Remember Todo App UI Screenshot",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\screenshots\\screenshot_remembertodo.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screenshots_screenshot_ridecare",
+      "label": "RideCare App UI Screenshot",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\screenshots\\screenshot_ridecare.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "screenshots_screenshot_stayeasy",
+      "label": "StayEasy App UI Screenshot",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\screenshots\\screenshot_stayeasy.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_accesspro",
+      "label": "AccessPro Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_accesspro.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_autobite",
+      "label": "AutoBite Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_autobite.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_crochethub",
+      "label": "CrochetHub Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_crochethub.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_exam_timetable",
+      "label": "Exam Timetable Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_exam_timetable.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_itax",
+      "label": "iTax Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_itax.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_kiu_fresh",
+      "label": "KIU Fresh Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_kiu_fresh.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_minnie_miss",
+      "label": "Minnie Miss Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_minnie_miss.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_onyx",
+      "label": "Onyx Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_onyx.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_remember_todo",
+      "label": "Remember Todo Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_remember_todo.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_ridecare",
+      "label": "RideCare Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_ridecare.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logos_logo_stayeasy",
+      "label": "StayEasy Project Logo",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\logos\\logo_stayeasy.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "logos_logo_crochethub",
+      "target": "screenshots_screenshot_crochethub",
+      "relation": "brand_identity_for",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "logos_logo_exam_timetable",
+      "target": "screenshots_screenshot_examtimetable",
+      "relation": "brand_identity_for",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "logos_logo_minnie_miss",
+      "target": "screenshots_screenshot_minniemiss",
+      "relation": "brand_identity_for",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "logos_logo_remember_todo",
+      "target": "screenshots_screenshot_remembertodo",
+      "relation": "brand_identity_for",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "logos_logo_ridecare",
+      "target": "screenshots_screenshot_ridecare",
+      "relation": "brand_identity_for",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "logos_logo_stayeasy",
+      "target": "screenshots_screenshot_stayeasy",
+      "relation": "brand_identity_for",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "screenshots_screenshot_crochethub",
+      "target": "screenshots_screenshot_examtimetable",
+      "relation": "semantically_similar_to",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.75
+    },
+    {
+      "source": "screenshots_screenshot_examtimetable",
+      "target": "screenshots_screenshot_minniemiss",
+      "relation": "semantically_similar_to",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.75
+    },
+    {
+      "source": "screenshots_screenshot_minniemiss",
+      "target": "screenshots_screenshot_remembertodo",
+      "relation": "semantically_similar_to",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.75
+    },
+    {
+      "source": "screenshots_screenshot_remembertodo",
+      "target": "screenshots_screenshot_ridecare",
+      "relation": "semantically_similar_to",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.75
+    },
+    {
+      "source": "screenshots_screenshot_ridecare",
+      "target": "screenshots_screenshot_stayeasy",
+      "relation": "semantically_similar_to",
+      "relation_type": "INFERRED",
+      "confidence_score": 0.75
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hyperedge_project_screenshots",
+      "label": "Project UI Screenshots",
+      "members": [
+        "screenshots_screenshot_crochethub",
+        "screenshots_screenshot_examtimetable",
+        "screenshots_screenshot_minniemiss",
+        "screenshots_screenshot_remembertodo",
+        "screenshots_screenshot_ridecare",
+        "screenshots_screenshot_stayeasy"
+      ]
+    },
+    {
+      "id": "hyperedge_project_logos",
+      "label": "Project Logos & Brand Identity Assets",
+      "members": [
+        "logos_logo_accesspro",
+        "logos_logo_autobite",
+        "logos_logo_crochethub",
+        "logos_logo_exam_timetable",
+        "logos_logo_itax",
+        "logos_logo_kiu_fresh",
+        "logos_logo_minnie_miss",
+        "logos_logo_onyx",
+        "logos_logo_remember_todo",
+        "logos_logo_ridecare",
+        "logos_logo_stayeasy"
+      ]
+    },
+    {
+      "id": "hyperedge_hero_profile_assets",
+      "label": "Portfolio Personal Visual Assets",
+      "members": [
+        "assets_hero",
+        "assets_profile"
+      ]
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

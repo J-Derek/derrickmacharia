@@ -1,0 +1,162 @@
+{
+  "nodes": [
+    {
+      "id": "public_favicon",
+      "label": "Site Favicon SVG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\public\\favicon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_icons",
+      "label": "Social & UI Icon Sprite Sheet SVG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\public\\icons.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_react",
+      "label": "React Logo SVG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\react.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_vite",
+      "label": "Vite Logo SVG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\assets\\vite.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_android_chrome_192x192",
+      "label": "Android Chrome Icon 192x192 PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\assets\\android-chrome-192x192.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_android_chrome_512x512",
+      "label": "Android Chrome Icon 512x512 PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\assets\\android-chrome-512x512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_apple_touch_icon",
+      "label": "Apple Touch Icon PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\assets\\apple-touch-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_favicon_16x16",
+      "label": "Favicon 16x16 PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\assets\\favicon-16x16.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_favicon_32x32",
+      "label": "Favicon 32x32 PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\assets\\favicon-32x32.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "assets_favicon_large",
+      "label": "Large Favicon PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\assets\\favicon-large.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_preview",
+      "label": "Logomaker Documentation Preview PNG",
+      "file_type": "image",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\preview.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scripts_convert_fonts",
+      "label": "Font Conversion Shell Script",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\scripts\\convert-fonts.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "assets_favicon_32x32",
+      "target": "assets_favicon_16x16",
+      "relation": "INFERRED",
+      "label": "favicon resolution variant",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "assets_android_chrome_512x512",
+      "target": "assets_android_chrome_192x192",
+      "relation": "INFERRED",
+      "label": "chrome icon resolution variant",
+      "confidence_score": 0.85
+    },
+    {
+      "source": "docs_preview",
+      "target": "assets_favicon_large",
+      "relation": "INFERRED",
+      "label": "logomaker preview asset",
+      "confidence_score": 0.75
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

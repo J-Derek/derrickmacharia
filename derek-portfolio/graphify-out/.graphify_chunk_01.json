@@ -1,0 +1,441 @@
+{
+  "nodes": [
+    {
+      "id": "derek_portfolio_eslint_config_config",
+      "label": "ESLint Configuration",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\eslint.config.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_electron_createwindow",
+      "label": "createWindow",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\electron.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_electron_setupautoupdater",
+      "label": "setupAutoUpdater",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\electron.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_inline_fonts_data_inlinefonts",
+      "label": "inlineFontsData",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\inline-fonts-data.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_capturetextstyles_captureadvancedstyles",
+      "label": "captureAdvancedStyles",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\captureTextStyles.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_exportcopyhandlers_copyto_clipboard",
+      "label": "copyToClipboard",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportCopyHandlers.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_exporthandler_handleexport",
+      "label": "handleExport",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportHandler.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_fontmanager_fontmanager",
+      "label": "FontManager",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\fontManager.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_main_initapp",
+      "label": "initApp",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\main.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_misc_helpers",
+      "label": "miscHelpers",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\misc.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_notificationsdropinalerts_showalert",
+      "label": "showAlert",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\notificationsDropInAlerts.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_randomize_randomizeall",
+      "label": "randomizeAll",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\randomize.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "renderers_gifrenderer_exportgif",
+      "label": "exportGIF",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\GIFRenderer.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "renderers_pngrenderer_exportpng",
+      "label": "exportPNG",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\PNGRenderer.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "renderers_renderercore_generatesvgblob",
+      "label": "generateSVGBlob",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\RendererCore.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "renderers_renderercore_convertsvgtopng",
+      "label": "convertSVGtoPNG",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\RendererCore.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "renderers_svgrenderer_exportsvg",
+      "label": "exportSVG",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\SVGRenderer.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_settingsmanager_settingsmanager",
+      "label": "SettingsManager",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\settingsManager.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_uiinit_initui",
+      "label": "initUI",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\uiInit.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "js_urlparamshandler_parseurlparams",
+      "label": "parseURLParams",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\urlParamsHandler.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_cssutils_parsecss",
+      "label": "parseCSS",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\utils\\cssUtils.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_download_triggerdownload",
+      "label": "triggerDownload",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\utils\\download.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "renderers_renderercore_generatesvgblob",
+      "target": "js_capturetextstyles_captureadvancedstyles",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\RendererCore.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "renderers_pngrenderer_exportpng",
+      "target": "renderers_renderercore_generatesvgblob",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\PNGRenderer.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "renderers_pngrenderer_exportpng",
+      "target": "renderers_renderercore_convertsvgtopng",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\PNGRenderer.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "renderers_svgrenderer_exportsvg",
+      "target": "renderers_renderercore_generatesvgblob",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\SVGRenderer.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "renderers_gifrenderer_exportgif",
+      "target": "renderers_renderercore_generatesvgblob",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\GIFRenderer.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_exporthandler_handleexport",
+      "target": "renderers_pngrenderer_exportpng",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportHandler.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_exporthandler_handleexport",
+      "target": "renderers_svgrenderer_exportsvg",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportHandler.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_exporthandler_handleexport",
+      "target": "renderers_gifrenderer_exportgif",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportHandler.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_exporthandler_handleexport",
+      "target": "utils_download_triggerdownload",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportHandler.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_exportcopyhandlers_copyto_clipboard",
+      "target": "renderers_renderercore_generatesvgblob",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\exportCopyHandlers.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_main_initapp",
+      "target": "js_uiinit_initui",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\main.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_main_initapp",
+      "target": "js_urlparamshandler_parseurlparams",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\main.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_main_initapp",
+      "target": "js_fontmanager_fontmanager",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\main.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "js_main_initapp",
+      "target": "js_settingsmanager_settingsmanager",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\main.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "renderers_renderercore_generatesvgblob",
+      "target": "js_fontmanager_fontmanager",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\RendererCore.js",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "renderers_pngrenderer_exportpng",
+      "target": "renderers_svgrenderer_exportsvg",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\PNGRenderer.js",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "export_renderers_pipeline",
+      "label": "Logo Export Renderers Pipeline",
+      "nodes": [
+        "renderers_pngrenderer_exportpng",
+        "renderers_svgrenderer_exportsvg",
+        "renderers_gifrenderer_exportgif",
+        "renderers_renderercore_generatesvgblob"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\renderers\\RendererCore.js"
+    },
+    {
+      "id": "application_initialization_flow",
+      "label": "Logo Maker Application Initialization Flow",
+      "nodes": [
+        "js_main_initapp",
+        "js_uiinit_initui",
+        "js_urlparamshandler_parseurlparams",
+        "js_fontmanager_fontmanager",
+        "js_settingsmanager_settingsmanager"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\js\\main.js"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

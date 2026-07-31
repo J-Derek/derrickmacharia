@@ -22,9 +22,12 @@ const ProjectCard = ({ project, index, onHover }) => {
             <span className="hidden md:block font-mono text-[10px] text-text-muted group-hover:text-accent transition-colors">
               {project.number || `0${index + 1}`}
             </span>
-            <h3 className="font-display text-[clamp(32px,4vw,56px)] leading-[0.9] font-bold text-text-primary tracking-tighter group-hover:text-accent transition-all duration-500 group-hover:translate-x-3">
+            <motion.h3
+              layoutId={`project-name-${project.id}`}
+              className="font-display text-[clamp(32px,4vw,56px)] leading-[0.9] font-bold text-text-primary tracking-tighter group-hover:text-accent transition-all duration-500 group-hover:translate-x-3"
+            >
               {project.name}
-            </h3>
+            </motion.h3>
           </div>
 
           {/* Tagline / Outcome */}

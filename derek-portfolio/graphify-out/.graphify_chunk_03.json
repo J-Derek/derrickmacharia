@@ -1,0 +1,544 @@
+{
+  "nodes": [
+    {
+      "id": "components_about_about",
+      "label": "About Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\About.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_contact_contact",
+      "label": "Contact Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Contact.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_customcursor_customcursor",
+      "label": "CustomCursor Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\CustomCursor.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_dynamicbackground_dynamicbackground",
+      "label": "DynamicBackground Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\DynamicBackground.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_dynamicbackground_particlewave",
+      "label": "ParticleWave GPU Wave Grid",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\DynamicBackground.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_dynamicbackground_interactiveparticles",
+      "label": "InteractiveParticles Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\DynamicBackground.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_experience_experience",
+      "label": "Experience Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Experience.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_footer_footer",
+      "label": "Footer Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Footer.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_hero_hero",
+      "label": "Hero Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Hero.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_magnetic_magnetic",
+      "label": "Magnetic Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Magnetic.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_navbar_navbar",
+      "label": "Navbar Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Navbar.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_preloader_preloader",
+      "label": "Preloader Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Preloader.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_projectcard_projectcard",
+      "label": "ProjectCard Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\ProjectCard.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_projects_projects",
+      "label": "Projects Section Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Projects.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_projects_floatingpreview",
+      "label": "FloatingPreview Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Projects.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_scrollindicator_scrollindicator",
+      "label": "ScrollIndicator Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\ScrollIndicator.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_scrolltotop_scrolltotop",
+      "label": "ScrollToTop Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\ScrollToTop.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "components_skills_skills",
+      "label": "Skills Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Skills.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "data_projects_projects",
+      "label": "Projects Data Store",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\data\\projects.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pages_home_home",
+      "label": "Home Page Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pages_projectdetail_projectdetail",
+      "label": "ProjectDetail Page Component",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\ProjectDetail.jsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "derekportfolio_viteconfig_config",
+      "label": "Vite Configuration",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\vite.config.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "derekportfolio_index_html",
+      "label": "Index HTML Template",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "pages_home_home",
+      "target": "components_hero_hero",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_home_home",
+      "target": "components_about_about",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_home_home",
+      "target": "components_projects_projects",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_home_home",
+      "target": "components_skills_skills",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_home_home",
+      "target": "components_experience_experience",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_home_home",
+      "target": "components_contact_contact",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_projects_projects",
+      "target": "components_projectcard_projectcard",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Projects.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_projects_projects",
+      "target": "components_projects_floatingpreview",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Projects.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_projects_projects",
+      "target": "data_projects_projects",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Projects.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_projectcard_projectcard",
+      "target": "data_projects_projects",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\ProjectCard.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_projectdetail_projectdetail",
+      "target": "data_projects_projects",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\ProjectDetail.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "pages_projectdetail_projectdetail",
+      "target": "components_magnetic_magnetic",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\ProjectDetail.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_hero_hero",
+      "target": "components_magnetic_magnetic",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Hero.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_hero_hero",
+      "target": "components_dynamicbackground_dynamicbackground",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Hero.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_about_about",
+      "target": "components_magnetic_magnetic",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\About.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_dynamicbackground_dynamicbackground",
+      "target": "components_dynamicbackground_particlewave",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\DynamicBackground.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_dynamicbackground_dynamicbackground",
+      "target": "components_dynamicbackground_interactiveparticles",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\DynamicBackground.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_navbar_navbar",
+      "target": "components_projects_projects",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Navbar.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_navbar_navbar",
+      "target": "components_about_about",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Navbar.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_navbar_navbar",
+      "target": "components_contact_contact",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\Navbar.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_scrolltotop_scrolltotop",
+      "target": "components_navbar_navbar",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\ScrollToTop.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_scrollindicator_scrollindicator",
+      "target": "components_scrolltotop_scrolltotop",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\ScrollIndicator.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "components_customcursor_customcursor",
+      "target": "components_magnetic_magnetic",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\CustomCursor.jsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "derekportfolio_viteconfig_config",
+      "target": "derekportfolio_index_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\vite.config.js",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hyperedge_scroll_navigation_flow",
+      "label": "Portfolio Single Page Scroll Layout Flow",
+      "nodes": [
+        "pages_home_home",
+        "components_navbar_navbar",
+        "components_scrollindicator_scrollindicator",
+        "components_scrolltotop_scrolltotop"
+      ],
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\pages\\Home.jsx"
+    },
+    {
+      "id": "hyperedge_project_showcase_flow",
+      "label": "Project Showcase Data & Detail Flow",
+      "nodes": [
+        "data_projects_projects",
+        "components_projects_projects",
+        "components_projectcard_projectcard",
+        "pages_projectdetail_projectdetail"
+      ],
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\data\\projects.js"
+    },
+    {
+      "id": "hyperedge_physics_motion_system",
+      "label": "Physics & Mouse Motion Interaction System",
+      "nodes": [
+        "components_customcursor_customcursor",
+        "components_magnetic_magnetic",
+        "components_dynamicbackground_dynamicbackground"
+      ],
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\src\\components\\CustomCursor.jsx"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

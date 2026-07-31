@@ -1,0 +1,392 @@
+{
+  "nodes": [
+    {
+      "id": "derekportfolio_readme_root",
+      "label": "Derek Portfolio Main README",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_changelog_log",
+      "label": "Logomaker Changelog",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\CHANGELOG.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_license_mit",
+      "label": "Logomaker MIT License",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\LICENSE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_readme_main",
+      "label": "Logomaker Main Documentation",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_readme_vibe_coding",
+      "label": "Vibe Coding Experiment Rationale",
+      "file_type": "concept",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_doc",
+      "label": "Logomaker Architecture Guide",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\architecture.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_font_loading",
+      "label": "Font Loading Multi-Strategy Architecture",
+      "file_type": "concept",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\architecture.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_build_doc",
+      "label": "Logomaker Build System Guide",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\build.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_build_deploy_target",
+      "label": "Deploy Build Target",
+      "file_type": "concept",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\build.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_build_portable_target",
+      "label": "Portable Build Target",
+      "file_type": "concept",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\build.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_codeofconduct_doc",
+      "label": "Code of Conduct",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\code-of-conduct.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_contributing_doc",
+      "label": "Contributing Guide",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\contributing.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_development_doc",
+      "label": "Development Guide",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\development.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_fontmanager_doc",
+      "label": "FontManager Specifications",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\fontmanager.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_fontmanager_chunked_lazy_loading",
+      "label": "Hybrid Chunked Lazy Loading Strategy",
+      "file_type": "concept",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\fontmanager.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_release_doc",
+      "label": "Release Process Guide",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\release.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_electronbuilder_config",
+      "label": "Electron Builder Configuration",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\electron-builder.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_indexportabletemplate_html",
+      "label": "Portable HTML Template",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\index-portable.template.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "logomaker_indextemplate_html",
+      "label": "Deploy HTML Template",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\index.template.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workflows_deployghpages_workflow",
+      "label": "Deploy GitHub Pages Action",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\.github\\workflows\\deploy-gh-pages.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workflows_deploy_workflow",
+      "label": "Deploy Workflow",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\.github\\workflows\\deploy.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workflows_release_workflow",
+      "label": "Release Electron Action",
+      "file_type": "code",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\.github\\workflows\\release.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "public_derrickmachariacv_resume",
+      "label": "Derrick Macharia Resume PDF",
+      "file_type": "document",
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\public\\DerrickMachariaCV.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "logomaker_readme_main",
+      "target": "docs_architecture_doc",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "logomaker_readme_main",
+      "target": "docs_build_doc",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "logomaker_readme_main",
+      "target": "docs_fontmanager_doc",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "source_weight": 1.0
+    },
+    {
+      "source": "logomaker_readme_main",
+      "target": "docs_development_doc",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "logomaker_readme_main",
+      "target": "docs_release_doc",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "logomaker_readme_main",
+      "target": "logomaker_readme_vibe_coding",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_build_doc",
+      "target": "logomaker_indextemplate_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\build.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_build_doc",
+      "target": "logomaker_indexportabletemplate_html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\build.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_fontmanager_doc",
+      "target": "docs_fontmanager_chunked_lazy_loading",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\fontmanager.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_build_deploy_target",
+      "target": "docs_build_portable_target",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\docs\\build.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workflows_deployghpages_workflow",
+      "target": "docs_build_deploy_target",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\.github\\workflows\\deploy-gh-pages.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "logomaker_electronbuilder_config",
+      "target": "docs_build_portable_target",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\electron-builder.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workflows_release_workflow",
+      "target": "logomaker_electronbuilder_config",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\DevTools\\projects\\derekportfolio\\derek-portfolio\\logomaker\\.github\\workflows\\release.yml",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

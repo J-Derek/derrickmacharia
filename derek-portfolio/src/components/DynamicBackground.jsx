@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 /* ─────────────────────────────────────────────
-   Mouse-reactive floating particles
+   Mouse-reactive floating particles (unchanged)
    
    These sit in front of the fog layer on a
    dedicated render pass, so they're always
@@ -19,6 +19,7 @@ const DRIFT_SPEED = 0.12;
 
 const InteractiveParticles = () => {
   const pointsRef = useRef();
+  const timeRef = useRef(0);
   const mouse3D = useRef(new THREE.Vector3(100, 100, 0)); // Start off-screen
   const mouseActive = useRef(false);
   const { camera, size } = useThree();
@@ -36,26 +37,23 @@ const InteractiveParticles = () => {
     const liveSize = new Float32Array(PARTICLE_COUNT);
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      // Spread particles across the visible viewport area
-      // Camera is at z=10 looking at origin, fov 60 → visible width ~12 units at z=0
       const x = (Math.random() - 0.5) * 16;
       const y = (Math.random() - 0.5) * 10;
-      const z = 2 + Math.random() * 3; // z = 2..5 → IN FRONT of fog, closer to camera
+      const z = 2 + Math.random() * 3;
 
       home[i * 3] = x;      home[i * 3 + 1] = y;      home[i * 3 + 2] = z;
       pos[i * 3] = x;       pos[i * 3 + 1] = y;       pos[i * 3 + 2] = z;
       vel[i * 3] = 0;       vel[i * 3 + 1] = 0;       vel[i * 3 + 2] = 0;
 
-      baseAlpha[i] = 0.25 + Math.random() * 0.35; // 25–60% base visibility
-      baseSize[i] = 0.06 + Math.random() * 0.08;  // nice visible size
+      baseAlpha[i] = 0.25 + Math.random() * 0.35;
+      baseSize[i] = 0.06 + Math.random() * 0.08;
 
       liveAlpha[i] = baseAlpha[i];
       liveSize[i] = baseSize[i];
 
-      // Green-family tint with slight hue variation
-      colors[i * 3]     = 0.0 + Math.random() * 0.08;    // R: near 0
-      colors[i * 3 + 1] = 0.75 + Math.random() * 0.25;   // G: 0.75–1.0
-      colors[i * 3 + 2] = 0.35 + Math.random() * 0.2;    // B: 0.35–0.55
+      colors[i * 3]     = 0.0 + Math.random() * 0.08;
+      colors[i * 3 + 1] = 0.75 + Math.random() * 0.25;
+      colors[i * 3 + 2] = 0.35 + Math.random() * 0.2;
 
       phases[i * 2]     = Math.random() * Math.PI * 2;
       phases[i * 2 + 1] = Math.random() * Math.PI * 2;
@@ -70,7 +68,6 @@ const InteractiveParticles = () => {
       const nx = (e.clientX / size.width) * 2 - 1;
       const ny = -(e.clientY / size.height) * 2 + 1;
 
-      // Unproject onto z=3.5 plane (midpoint of particle depth)
       const vec = new THREE.Vector3(nx, ny, 0.5);
       vec.unproject(camera);
       const dir = vec.sub(camera.position).normalize();
@@ -92,9 +89,10 @@ const InteractiveParticles = () => {
     };
   }, [camera, size]);
 
-  useFrame((state) => {
+  useFrame((_, delta) => {
     if (!pointsRef.current) return;
-    const time = state.clock.elapsedTime;
+    timeRef.current += delta;
+    const time = timeRef.current;
     const posArr = pointsRef.current.geometry.attributes.position.array;
     const alphaArr = pointsRef.current.geometry.attributes.alpha.array;
     const sizeArr = pointsRef.current.geometry.attributes.size.array;
@@ -102,16 +100,13 @@ const InteractiveParticles = () => {
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const i3 = i * 3;
 
-      // Ambient organic drift
       const driftX = Math.sin(time * DRIFT_SPEED + data.phases[i * 2]) * 0.005;
       const driftY = Math.cos(time * DRIFT_SPEED * 0.8 + data.phases[i * 2 + 1]) * 0.005;
 
-      // Spring toward home position
       data.vel[i3]     += (data.home[i3]     - posArr[i3])     * RETURN_SPEED + driftX;
       data.vel[i3 + 1] += (data.home[i3 + 1] - posArr[i3 + 1]) * RETURN_SPEED + driftY;
       data.vel[i3 + 2] += (data.home[i3 + 2] - posArr[i3 + 2]) * RETURN_SPEED * 0.3;
 
-      // Mouse attraction
       let proximity = 0;
       if (mouseActive.current) {
         const dx = mouse3D.current.x - posArr[i3];
@@ -126,17 +121,14 @@ const InteractiveParticles = () => {
         }
       }
 
-      // Damping
       data.vel[i3]     *= 0.90;
       data.vel[i3 + 1] *= 0.90;
       data.vel[i3 + 2] *= 0.90;
 
-      // Integrate position
       posArr[i3]     += data.vel[i3];
       posArr[i3 + 1] += data.vel[i3 + 1];
       posArr[i3 + 2] += data.vel[i3 + 2];
 
-      // Smoothly modulate alpha & size based on cursor proximity
       const targetAlpha = data.baseAlpha[i] + proximity * 0.5;
       const targetSize = data.baseSize[i] + proximity * 0.08;
       alphaArr[i] += (targetAlpha - alphaArr[i]) * 0.1;
@@ -180,7 +172,6 @@ const InteractiveParticles = () => {
           void main() {
             float d = length(gl_PointCoord - vec2(0.5));
             if (d > 0.5) discard;
-            // Soft glow: bright center fading to edge
             float glow = smoothstep(0.5, 0.0, d);
             float alpha = glow * vAlpha;
             gl_FragColor = vec4(vColor * 1.2, alpha);
@@ -192,59 +183,94 @@ const InteractiveParticles = () => {
 };
 
 /* ─────────────────────────────────────────────
-   Ambient wave grid (existing effect, unchanged)
-   ───────────────────────────────────────────── */
-const ParticleWave = () => {
-  const mesh = useRef();
-  const count = 55;
+   GPU-driven wave grid
 
-  const [positions, phase] = useMemo(() => {
-    const pos = new Float32Array(count * count * 3);
-    const ph = new Float32Array(count * count);
-    for (let i = 0; i < count; i++) {
-      for (let j = 0; j < count; j++) {
-        const idx = i * count + j;
-        pos[idx * 3] = (i - count / 2) * 0.9;
-        pos[idx * 3 + 1] = 0;
-        pos[idx * 3 + 2] = (j - count / 2) * 0.9;
+   BEFORE: 3,025 Math.sin/cos calls per frame on the CPU,
+   then a full Float32Array upload to the GPU every frame.
+
+   AFTER: geometry is static (uploaded once at mount),
+   a uTime uniform is updated with a single float assignment,
+   and ALL wave math runs inside the vertex shader on the GPU.
+   CPU cost per frame: O(1) — one float increment.
+   ───────────────────────────────────────────── */
+
+// Shader strings are module-level constants — no allocation per render
+const WAVE_VERTEX = `
+  uniform float uTime;
+  attribute float phase;
+  void main() {
+    vec3 pos = position;
+    // GPU computes displacement: identical math to the old CPU loop
+    pos.y = sin(pos.x * 0.5 + uTime + phase) * 0.2
+           + cos(pos.z * 0.5 + uTime + phase) * 0.2;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+    gl_PointSize = 2.0;
+  }
+`;
+
+const WAVE_FRAGMENT = `
+  void main() {
+    float d = length(gl_PointCoord - vec2(0.5));
+    if (d > 0.5) discard;
+    // #00FF87 at 30% opacity — visually identical to original pointsMaterial
+    gl_FragColor = vec4(0.0, 1.0, 0.529, 0.3);
+  }
+`;
+
+const ParticleWave = () => {
+  const meshRef = useRef();
+  const COUNT = 55;
+
+  // Static geometry — built once, never mutated again
+  const { positions, phases } = useMemo(() => {
+    const pos = new Float32Array(COUNT * COUNT * 3);
+    const ph = new Float32Array(COUNT * COUNT);
+    for (let i = 0; i < COUNT; i++) {
+      for (let j = 0; j < COUNT; j++) {
+        const idx = i * COUNT + j;
+        pos[idx * 3]     = (i - COUNT / 2) * 0.9;
+        pos[idx * 3 + 1] = 0; // Y is computed in vertex shader
+        pos[idx * 3 + 2] = (j - COUNT / 2) * 0.9;
         ph[idx] = Math.random() * Math.PI * 2;
       }
     }
-    return [pos, ph];
+    return { positions: pos, phases: ph };
   }, []);
 
-  useFrame((state) => {
-    const time = state.clock.elapsedTime;
-    const pos = mesh.current.geometry.attributes.position.array;
+  // Stable uniforms object — only uTime.value changes each frame
+  const uniforms = useMemo(() => ({ uTime: { value: 0 } }), []);
 
-    for (let i = 0; i < count; i++) {
-      for (let j = 0; j < count; j++) {
-        const idx = i * count + j;
-        const x = pos[idx * 3];
-        const z = pos[idx * 3 + 2];
-        pos[idx * 3 + 1] = Math.sin(x * 0.5 + time + phase[idx]) * 0.2 +
-                          Math.cos(z * 0.5 + time + phase[idx]) * 0.2;
-      }
+  // Single float increment per frame — CPU cost is now O(1), no THREE.Clock access
+  useFrame((_, delta) => {
+    if (meshRef.current) {
+      meshRef.current.material.uniforms.uTime.value += delta;
     }
-    mesh.current.geometry.attributes.position.needsUpdate = true;
   });
 
   return (
-    <points ref={mesh}>
+    <points ref={meshRef}>
       <bufferGeometry>
+        {/* Positions never change after mount */}
         <bufferAttribute
           attach="attributes-position"
-          count={positions.length / 3}
+          count={COUNT * COUNT}
           array={positions}
           itemSize={3}
         />
+        {/* Phase offsets are per-vertex constants, uploaded once */}
+        <bufferAttribute
+          attach="attributes-phase"
+          count={COUNT * COUNT}
+          array={phases}
+          itemSize={1}
+        />
       </bufferGeometry>
-      <pointsMaterial
-        size={0.015}
-        color="#00FF87"
+      <shaderMaterial
         transparent
-        opacity={0.3}
-        sizeAttenuation
+        depthWrite={false}
+        uniforms={uniforms}
+        vertexShader={WAVE_VERTEX}
+        fragmentShader={WAVE_FRAGMENT}
       />
     </points>
   );

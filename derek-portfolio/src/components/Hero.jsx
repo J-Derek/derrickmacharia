@@ -1,34 +1,27 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import SplitType from 'split-type';
 import Magnetic from './Magnetic';
 import DynamicBackground from './DynamicBackground';
 import profileImg from '../assets/profile.jpeg';
 
 const Hero = () => {
-  const titleRef = useRef(null);
-
-  useEffect(() => {
-    if (titleRef.current) {
-      const splitTitle = new SplitType(titleRef.current, { types: 'words' });
-      return () => splitTitle.revert();
-    }
-  }, []);
-
   const derrickLetters = "Derrick".split("");
   const machariaLetters = "Macharia".split("");
-  
+
   // Stagger configurations for name transition
   const baseDelay = 0.5;
   const letterStagger = 0.04;
+
+  // Subtitle words staggered in after the name completes
+  const subtitleWords = ["Full", "Stack", "Developer", "|", "UI/UX", "Designer"];
+  const subtitleBaseDelay = baseDelay + (derrickLetters.length + machariaLetters.length) * letterStagger + 0.2;
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden mesh-bg pt-20">
       {/* Main Content Wrapper */}
       <div className="flex-grow flex items-center justify-center w-full">
         <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center justify-center text-center py-10">
-          
+
           {/* Top Circular Profile Photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: -20 }}
@@ -38,16 +31,16 @@ const Hero = () => {
           >
             <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:bg-accent/30 transition-colors duration-500"></div>
             <div className="relative z-10 w-full h-full rounded-full border-[3px] border-border overflow-hidden bg-bg-elevated shadow-xl transition-transform duration-500 group-hover:-translate-y-2">
-              <img 
-                src={profileImg} 
-                alt="Derrick Macharia" 
+              <img
+                src={profileImg}
+                alt="Derrick Macharia"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
             </div>
           </motion.div>
 
           {/* Hello Text */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -94,7 +87,7 @@ const Hero = () => {
                     {char}
                   </motion.span>
                 ))}
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
@@ -110,20 +103,34 @@ const Hero = () => {
             </div>
           </h1>
 
-          {/* Professional Identity Label */}
-          <motion.div 
+          {/* Professional Identity Label — words stagger in after the name */}
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: subtitleBaseDelay - 0.1 }}
             className="mb-8"
           >
-            <h2 ref={titleRef} className="font-mono text-xs md:text-sm tracking-[0.2em] text-text-secondary uppercase">
-              Full Stack Developer | UI/UX Designer
+            <h2 className="font-mono text-xs md:text-sm tracking-[0.2em] text-text-secondary uppercase flex flex-wrap justify-center gap-x-2">
+              {subtitleWords.map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: subtitleBaseDelay + i * 0.07,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  className="inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))}
             </h2>
           </motion.div>
 
           {/* CTAs */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
@@ -166,7 +173,7 @@ const Hero = () => {
           <ChevronDown size={16} className="text-text-muted" />
         </motion.div>
       </motion.div>
-      
+
       {/* Dynamic Background */}
       <DynamicBackground />
     </section>

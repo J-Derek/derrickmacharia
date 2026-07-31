@@ -80,9 +80,12 @@ const ProjectDetail = () => {
                 <span className="w-12 h-[1px] bg-accent"></span>
                 <span className="font-mono text-sm tracking-widest text-accent uppercase">Case Study</span>
               </div>
-              <h1 className="font-display text-[clamp(48px,8vw,120px)] leading-[0.9] font-bold text-text-primary tracking-tighter mb-8">
+              <motion.h1
+                layoutId={`project-name-${project.id}`}
+                className="font-display text-[clamp(48px,8vw,120px)] leading-[0.9] font-bold text-text-primary tracking-tighter mb-8"
+              >
                 {project.name}<span className="text-accent">.</span>
-              </h1>
+              </motion.h1>
               <p className="text-xl md:text-2xl text-text-secondary leading-relaxed max-w-2xl">
                 {project.tagline || project.problem}
               </p>
@@ -117,14 +120,12 @@ const ProjectDetail = () => {
 
       {/* Main Mockup / Visual — Screenshot or Logo Fallback */}
       <section className="container mx-auto px-6 md:px-12 mb-24">
-        <motion.div 
-          layoutId={`mockup-container-${project.id}`}
+        <div
           className="aspect-[16/9] md:aspect-[21/9] rounded-3xl bg-bg-elevated border border-border overflow-hidden relative flex items-center justify-center p-4 md:p-8"
         >
           {project.screenshot ? (
             /* Live project — show real screenshot inside a browser chrome frame */
-            <motion.div 
-              layoutId={`mockup-content-${project.id}`}
+            <div
               className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
             >
               {/* Browser chrome bar */}
@@ -150,11 +151,10 @@ const ProjectDetail = () => {
                   className="w-full h-full object-cover object-top"
                 />
               </div>
-            </motion.div>
+            </div>
           ) : (
             /* No screenshot — fallback to logo + name */
-            <motion.div 
-              layoutId={`mockup-content-${project.id}`}
+            <div 
               className="w-full h-full bg-bg-primary rounded-2xl border border-border shadow-2xl relative overflow-hidden flex flex-col"
             >
               <div className="h-10 border-b border-border bg-bg-elevated flex items-center px-6">
@@ -178,9 +178,9 @@ const ProjectDetail = () => {
                   {project.name}
                 </span>
               </div>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </section>
 
       {/* Project Content */}
