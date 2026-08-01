@@ -27,7 +27,7 @@ export const projects = [
     tagline: "A modern, intelligent job matching and tracking assistant",
     problem: "The job search process is fragmented across multiple platforms, spreadsheets, and emails. Candidates struggle to track applications, follow up at the right time, and manage interview schedules without losing context.",
     solution: "Developed Pickd to unify the job search experience. It acts as an intelligent assistant that tracks applications, parsing job descriptions to match candidate skills, and providing a clean dashboard for managing the entire hiring pipeline.",
-    stack: ["React", "TypeScript", "Node.js", "Tailwind CSS"],
+    stack: ["Flutter", "Dart", "Firebase"],
     features: [
       "Application tracking pipeline: visualize where you stand with every company",
       "Intelligent skill matching: compares your resume against job descriptions",
