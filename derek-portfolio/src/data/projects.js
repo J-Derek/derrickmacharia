@@ -20,6 +20,27 @@ import screenshotRideCare from '../assets/screenshots/screenshot_ridecare.png';
 
 export const projects = [
   {
+    id: "pickd",
+    number: "00",
+    name: "Pickd",
+    logo: null,
+    tagline: "A modern, intelligent job matching and tracking assistant",
+    problem: "The job search process is fragmented across multiple platforms, spreadsheets, and emails. Candidates struggle to track applications, follow up at the right time, and manage interview schedules without losing context.",
+    solution: "Developed Pickd to unify the job search experience. It acts as an intelligent assistant that tracks applications, parsing job descriptions to match candidate skills, and providing a clean dashboard for managing the entire hiring pipeline.",
+    stack: ["React", "TypeScript", "Node.js", "Tailwind CSS"],
+    features: [
+      "Application tracking pipeline: visualize where you stand with every company",
+      "Intelligent skill matching: compares your resume against job descriptions",
+      "Automated follow-up reminders: never miss an opportunity to reconnect",
+      "Clean, distraction-free UI: focuses entirely on the tasks that move the needle"
+    ],
+    github: "https://github.com/J-Derek/pickd",
+    live: null,
+    screenshot: null,
+    color: "#ff3366",
+    status: "Shipped · 2025"
+  },
+  {
     id: "crochethub",
     number: "01",
     name: "CrochetHub",
@@ -27,7 +48,7 @@ export const projects = [
     tagline: "Unified social marketplace bringing Kenya's crochet community off WhatsApp",
     problem: "Kenya's crochet community — artisans, buyers, and enthusiasts — was scattered across WhatsApp groups, Instagram pages, and Facebook communities with no central home. Artisans had no professional way to list products, buyers had no reliable discovery channel, and community conversation was buried in group chats that new members couldn't access. The niche was underserved and fragmented with no platform designed specifically for it.",
     solution: "Built CrochetHub — a Flutter application that combines a social feed and a marketplace in a single platform, designed specifically for the crochet community. Artisans create profiles, list products with photos and pricing, and post to the community feed. Buyers browse listings, follow creators, and connect directly. The platform brings together functions that previously required three or four different apps into one focused, purpose-built space.",
-    stack: ["Flutter", "Firebase", "Dart"],
+    stack: ["React", "Firebase", "TypeScript"],
     features: [
       "Product marketplace: artisans list items with photos, descriptions, and pricing — a professional storefront that WhatsApp cannot offer",
       "Community feed: public posts, creator updates, and community interaction in a single scrollable timeline",
@@ -48,7 +69,7 @@ export const projects = [
     tagline: "Appointment booking platform that moves salons from walk-ins to structured scheduling",
     problem: "Most salons in Nairobi operate on a pure walk-in basis — customers arrive, join an unpredictable queue, and wait with no visibility into how long it will take. Staff have no way to forecast their day, allocate time per stylist, or reduce the idle-or-overwhelmed cycle that walk-in-only businesses face. There was no affordable, mobile-first booking tool built for local salon operations.",
     solution: "Built Minnie Miss (formerly TheSalon) — a Flutter booking application that brings structured scheduling to salons without requiring expensive point-of-sale systems or enterprise software. Customers browse available services, select a stylist, and book a specific time slot from their phone. Staff get a clean management view showing the day's confirmed appointments, assigned stylists, and time allocations — replacing guesswork with a structured daily schedule.",
-    stack: ["Flutter", "Firebase", "Dart"],
+    stack: ["React", "Firebase", "TypeScript"],
     features: [
       "Service browsing: customers see all available services with descriptions before booking — sets expectations and reduces chair-time disputes",
       "Stylist selection and time slot booking: customers pick who they want and when, giving them control while giving the salon predictability",
@@ -90,7 +111,7 @@ export const projects = [
     tagline: "Minimalist, high-performance task management application",
     problem: "Most task managers are weighed down by enterprise features that create friction for simple daily organization. Users need a way to capture thoughts at the speed of thought, without navigating complex hierarchies or slow cloud synchronization lag.",
     solution: "Built Remember To-Do as a 'velocity-first' productivity tool. By prioritizing a clean, distraction-free UI and local-first persistence, the app ensures that managing a day's priorities feels like a natural extension of the user's workflow rather than a chore.",
-    stack: ["Flutter", "Dart", "Hive", "Provider"],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
     features: [
       "Zero-friction entry: optimized for one-tap task creation and quick-swipe completion",
       "Local-first architecture: uses Hive for ultra-fast data persistence with near-zero latency",
@@ -132,7 +153,7 @@ export const projects = [
     tagline: "Accessible ride-hailing for users with specialized mobility needs",
     problem: "Mainstream ride-sharing apps rarely account for the specific needs of passengers with mobility challenges. Whether it's a lack of wheelchair-accessible vehicles or drivers who aren't trained for assisted transit, a significant demographic is left behind by current urban mobility solutions.",
     solution: "Conceptualized and initiated RideCare to fill the accessibility gap. The platform focuses on 'Specialized Matching' — ensuring that users who need specific vehicle types or assisted care are paired only with drivers and fleets equipped to provide them.",
-    stack: ["Flutter", "Dart", "Firebase", "Google Maps SDK"],
+    stack: ["React", "TypeScript", "Firebase", "Google Maps SDK"],
     features: [
       "Accessibility-first matching: users specify their exact needs (ramp, lift, extra legroom) as a primary booking filter",
       "Trained driver network: platform prioritizes drivers with certifications in assisted passenger transit",
@@ -215,7 +236,7 @@ export const projects = [
     tagline: "A personal multimedia player built from scratch because nothing else felt right",
     problem: "Most media player apps are either cluttered with features built for the masses or stripped down to the point of being unusable for someone with a specific vision of how their media experience should feel. This project wasn't commissioned by a client — it was built out of personal dissatisfaction with the available options and a desire to ship a complete, polished application entirely on personal initiative.",
     solution: "Designed and built Onyx — a personal Flutter multimedia player for music, movies, and media content from a unified interface. The entire scope was self-defined: no client brief, no external requirements, no deadline other than a personal one. The project demonstrates the ability to identify a personal problem, make every product decision independently, and ship a finished application without external accountability or direction.",
-    stack: ["Flutter", "Dart"],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
     features: [
       "Unified playback: music and video from a single interface — no switching between apps",
       "Clean, intentional UI: designed from scratch to feel exactly right, not adapted from a template",
@@ -235,7 +256,7 @@ export const projects = [
     tagline: "A user-centric reimagining of the Kenya Revenue Authority portal",
     problem: "The official KRA iTax portal is a case study in UI friction — dated tables, confusing navigation, and a lack of visual feedback make tax compliance an intimidating and error-prone process for the average citizen.",
     solution: "Took on the personal challenge of redesigning the iTax experience for the modern web. Harmony Hub focuses on 'Dashboards over Databases,' translating complex tax obligations into a clean, guided journey that prioritizes user comprehension and ease of use.",
-    stack: ["Flutter", "Dart", "Framer Motion", "Material 3"],
+    stack: ["React", "TypeScript", "Framer Motion", "Tailwind CSS"],
     features: [
       "Simplified compliance tracking: a clear, color-coded dashboard showing filing status and upcoming deadlines",
       "Guided filing wizards: breaks down complex returns into simple, step-by-step conversational forms",
