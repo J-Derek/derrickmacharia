@@ -5,10 +5,38 @@ import { useReducedMotion } from "framer-motion";
 const Contact = () => {
   const reducedMotion = useReducedMotion();
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target);
+    formData.append("access_key", "a4306a98-4513-4801-b0eb-5b71387f556a");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      });
+      const result = await response.json();
+      if (result.success) {
+        setSent(true);
+      } else {
+        console.error("Submission failed", result);
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,9 +169,10 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+                disabled={isSubmitting}
+                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send message
+                {isSubmitting ? "Sending..." : "Send message"}
               </button>
             </form>
           )}
