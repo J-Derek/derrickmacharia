@@ -9,6 +9,7 @@ import logoRememberTodo from '../assets/logos/logo_remember_todo.png';
 import logoStayEasy from '../assets/logos/logo_stayeasy.png';
 import logoRideCare from '../assets/logos/logo_ridecare.png';
 import logoItax from '../assets/logos/logo_itax.png';
+import logoPickd from '../assets/logos/pickd_logo_enhanced.jpg';
 
 // Live project screenshots
 import screenshotCrochetHub from '../assets/screenshots/screenshot_crochethub.png';
@@ -23,7 +24,7 @@ export const projects = [
     id: "pickd",
     number: "00",
     name: "Pickd",
-    logo: null,
+    logo: logoPickd,
     tagline: "A modern, intelligent job matching and tracking assistant",
     problem: "The job search process is fragmented across multiple platforms, spreadsheets, and emails. Candidates struggle to track applications, follow up at the right time, and manage interview schedules without losing context.",
     solution: "Developed Pickd to unify the job search experience. It acts as an intelligent assistant that tracks applications, parsing job descriptions to match candidate skills, and providing a clean dashboard for managing the entire hiring pipeline.",
