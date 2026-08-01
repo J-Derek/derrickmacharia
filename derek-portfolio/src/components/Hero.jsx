@@ -60,7 +60,7 @@ const Hero = () => {
             href="#work"
             whileHover={reducedMotion ? {} : { scale: 1.02 }}
             transition={{ duration: 0.18 }}
-            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
           >
             View work
           </motion.a>

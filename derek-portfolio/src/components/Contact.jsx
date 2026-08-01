@@ -33,7 +33,8 @@ const Contact = () => {
 
           <div className="space-y-4 font-mono text-sm">
             {[
-              { label: "Email", value: "hello@derrickmacharia.dev" },
+              { label: "Email", value: "derrickmacharia2022@gmail.com" },
+              { label: "WhatsApp", value: "+254735319205" },
               { label: "Location", value: "Nairobi, Kenya" },
               { label: "Status", value: "Open for work" },
             ].map((item) => (
@@ -129,7 +130,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
               >
                 Send message
               </button>

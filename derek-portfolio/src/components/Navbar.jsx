@@ -72,7 +72,7 @@ const Navbar = () => {
               });
             }
           }}
-          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+          className="relative z-[999] isolate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
         >
           <img 
             src={profileImg} 
@@ -99,7 +99,7 @@ const Navbar = () => {
           <a 
             href="/DerrickMachariaCV.pdf" 
             download
-            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 border border-foreground/20 text-xs font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 border border-foreground/20 text-xs font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Resume
           </a>
@@ -178,7 +178,7 @@ const Navbar = () => {
                 <a 
                   href="/DerrickMachariaCV.pdf" 
                   download
-                  className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 text-sm font-mono tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   Download Resume
                 </a>
