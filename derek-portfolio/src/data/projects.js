@@ -39,7 +39,7 @@ export const projects = [
     live: null,
     screenshot: null,
     color: "#ff3366",
-    status: "Shipped · 2025"
+    status: "Shipped · 2026"
   },
   {
     id: "crochethub",

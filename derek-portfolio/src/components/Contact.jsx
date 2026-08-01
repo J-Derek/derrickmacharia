@@ -33,14 +33,25 @@ const Contact = () => {
 
           <div className="space-y-4 font-mono text-sm">
             {[
-              { label: "Email", value: "derrickmacharia2022@gmail.com" },
-              { label: "WhatsApp", value: "+254735319205" },
+              { label: "Email", value: "derrickmacharia2022@gmail.com", isEmail: true },
+              { label: "WhatsApp", value: "+254735319205", isWhatsapp: true },
               { label: "Location", value: "Nairobi, Kenya" },
               { label: "Status", value: "Open for work" },
             ].map((item) => (
-              <div key={item.label} className="flex gap-4">
+              <div key={item.label} className="flex gap-4 items-center">
                 <span className="text-foreground/30 w-20">{item.label}</span>
-                <span className="text-foreground">{item.value}</span>
+                {item.isWhatsapp ? (
+                  <a href={`https://wa.me/${item.value.replace('+', '')}`} target="_blank" rel="noreferrer" className="text-foreground hover:text-accent transition-colors flex items-center">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="inline-block mr-2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+                    Message me
+                  </a>
+                ) : item.isEmail ? (
+                  <a href={`mailto:${item.value}`} className="text-foreground hover:text-accent transition-colors">
+                    {item.value}
+                  </a>
+                ) : (
+                  <span className="text-foreground">{item.value}</span>
+                )}
               </div>
             ))}
           </div>
