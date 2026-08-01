@@ -29,6 +29,9 @@ const Contact = () => {
       const result = await response.json();
       if (result.success) {
         setSent(true);
+        setTimeout(() => {
+          setSent(false);
+        }, 5000);
       } else {
         console.error("Submission failed", result);
       }
