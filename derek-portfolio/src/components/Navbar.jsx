@@ -77,7 +77,7 @@ const Navbar = () => {
           <img 
             src={profileImg} 
             alt="Derrick Macharia" 
-            className="w-10 h-10 rounded-full object-cover transition-all duration-[1500ms] ease-in-out origin-top-left hover:scale-[4] md:hover:scale-[5] relative z-[100] shadow-sm hover:shadow-2xl"
+            className="w-10 h-10 rounded-full object-cover transition-all duration-200 border border-border/60 hover:ring-2 hover:ring-accent relative z-[100]"
           />
         </Link>
 
@@ -132,7 +132,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-background flex flex-col"
+            className="fixed inset-0 z-[60] bg-background bg-bg-primary flex flex-col" style={{ backgroundColor: "var(--background)" }}
           >
             <div className="flex items-center justify-between px-6 h-16 border-b border-border">
               <img 

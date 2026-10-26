@@ -6,10 +6,12 @@ const Contact = () => {
   const reducedMotion = useReducedMotion();
   const [sent, setSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
     const formData = new FormData(e.target);
     formData.append("access_key", "a4306a98-4513-4801-b0eb-5b71387f556a");
@@ -33,10 +35,10 @@ const Contact = () => {
           setSent(false);
         }, 5000);
       } else {
-        console.error("Submission failed", result);
+        console.error("Submission failed", result); setError(result.message || "Failed to send message. Please message me via WhatsApp or email directly.");
       }
     } catch (error) {
-      console.error("Error submitting form", error);
+      console.error("Error submitting form", error); setError("Network error sending message. Please reach out via WhatsApp or email.");
     } finally {
       setIsSubmitting(false);
     }
@@ -177,6 +179,9 @@ const Contact = () => {
               >
                 {isSubmitting ? "Sending..." : "Send message"}
               </button>
+              {error && (
+                <p className="text-red-400 font-mono text-xs mt-2">{error}</p>
+              )}
             </form>
           )}
         </div>

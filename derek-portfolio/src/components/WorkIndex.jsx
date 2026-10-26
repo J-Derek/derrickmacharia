@@ -96,7 +96,14 @@ function ProjectCard({ project, index, reducedMotion }) {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full bg-border/20 flex items-center justify-center font-mono text-foreground/30 text-xs">No image</div>
+          project.logo ? (
+          <div className="w-full h-full bg-card/80 flex flex-col items-center justify-center p-6 gap-3">
+            <img src={project.logo} alt={project.name} className="w-16 h-16 object-contain rounded-xl opacity-85 group-hover:scale-105 transition-transform" />
+            <span className="font-mono text-[10px] tracking-widest uppercase text-foreground/40">{project.name}</span>
+          </div>
+        ) : (
+          <div className="w-full h-full bg-card/40 flex items-center justify-center font-mono text-foreground/30 text-xs">{project.name}</div>
+        )
         )}
         <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-300" />
       </div>

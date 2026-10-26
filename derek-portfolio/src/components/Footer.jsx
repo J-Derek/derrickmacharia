@@ -1,7 +1,5 @@
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/J-Derek" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Twitter", href: "https://twitter.com" },
 ];
 
 const Footer = () => {

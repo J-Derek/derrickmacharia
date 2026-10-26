@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx'
 import Home from './pages/Home.jsx';
 import ProjectDetail from './pages/ProjectDetail.jsx';
+import NotFound from './pages/NotFound.jsx';
 import './styles/globals.css'
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/project/:slug",
         element: <ProjectDetail />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       }
     ],
   },

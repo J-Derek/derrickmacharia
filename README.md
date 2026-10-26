@@ -4,22 +4,20 @@
 <br />
 <div align="center">
   <a href="https://derekmacharia.xo.je/?i=1">
-    <img src="public/favicon.svg" alt="Logo" width="80" height="80">
+    <img src="derek-portfolio/public/favicon.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Derek Macharia Portfolio</h3>
+  <h3 align="center">Derrick Macharia — Portfolio</h3>
 
   <p align="center">
-    A modern, high-performance portfolio showcasing full-stack mobile and web development.
-    <br />
-    <a href="https://github.com/J-Derek/derek-portfolio"><strong>Explore the docs Â»</strong></a>
+    A modern, high-performance portfolio showcasing full-stack mobile and web engineering.
     <br />
     <br />
-    <a href="https://derekmacharia.xo.je/?i=1">View Demo</a>
-    Â·
-    <a href="https://github.com/J-Derek/derek-portfolio/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    Â·
-    <a href="https://github.com/J-Derek/derek-portfolio/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://derekmacharia.xo.je/?i=1"><strong>View Live Demo »</strong></a>
+    ·
+    <a href="https://github.com/J-Derek/derrickmacharia/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/J-Derek/derrickmacharia/issues">Request Feature</a>
   </p>
 </div>
 
@@ -40,7 +38,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -48,7 +46,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a modern React single-page application (SPA) portfolio site built with Vite, Tailwind CSS v4, and Framer Motion. It showcases a grid/list project layout, glass-morphism filtering, advanced GPU-driven scroll indicators, and Web3Forms contact integration.
+A modern single-page application (SPA) portfolio built with React 19, Vite, Tailwind CSS v4, and Framer Motion. Engineered with smooth Lenis scrolling, responsive grid and list views, dynamic theme switching, and instant contact routing.
 
 ### Built With
 
@@ -60,44 +58,48 @@ This is a modern React single-page application (SPA) portfolio site built with V
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple steps:
 
 ### Prerequisites
 
-* npm
-  ```sh
+* Node.js (v18+) & npm
+  `sh
   npm install npm@latest -g
-  ```
+  `
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/J-Derek/derek-portfolio.git
-   ```
-2. Install NPM packages
-   ```sh
+1. Clone the repository
+   `sh
+   git clone https://github.com/J-Derek/derrickmacharia.git
+   `
+2. Navigate to the project directory
+   `sh
+   cd derrickmacharia/derek-portfolio
+   `
+3. Install dependencies
+   `sh
    npm install
-   ```
-3. Start the dev server
-   ```sh
+   `
+4. Start the development server
+   `sh
    npm run dev
-   ```
+   `
 
-<!-- USAGE -->
-## Usage
+<!-- FEATURES -->
+## Features
 
-Use this space to showcase how your portfolio operates. The site includes:
-- Animated scroll-driven UI elements.
-- Form submissions wired to Web3Forms for direct inbox delivery.
-- Filterable project showcases (Web vs Mobile).
+- **Fluid Scroll Architecture:** Integrated Lenis smooth-scrolling with GPU-accelerated motion curves.
+- **Interactive Project Showcase:** Switch seamlessly between granular list view and visual grid cards with category filters.
+- **Direct Contact Messaging:** Form submissions integrated with Web3Forms and real-time validation.
+- **Adaptive Theming:** System-aware and manual dark/light mode toggle with CSS variable synchronization.
 
 <!-- CONTACT -->
 ## Contact
 
-Derek Macharia - [derrickmacharia2022@gmail.com](mailto:derrickmacharia2022@gmail.com) - WhatsApp: [+254735319205](https://wa.me/254735319205)
+Derrick Macharia - [derrickmacharia2022@gmail.com](mailto:derrickmacharia2022@gmail.com) - WhatsApp: [+254735319205](https://wa.me/254735319205)
 
-Project Link: [https://github.com/J-Derek/derek-portfolio](https://github.com/J-Derek/derek-portfolio)
+Project Link: [https://github.com/J-Derek/derrickmacharia](https://github.com/J-Derek/derrickmacharia)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

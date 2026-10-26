@@ -24,13 +24,13 @@ const ScrollIndicator = () => {
     <div
       className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:block pointer-events-none"
     >
-      {/* ── Background layer: static grey dashes ── */}
+      {/* ── Background layer: static dashes with theme-adaptive contrast ── */}
       <div className="flex flex-col gap-2 items-end">
         {Array.from({ length: NUM_SEGMENTS }).map((_, i) => (
           <div
             key={i}
             style={{ width: 8, height: 1.5 }}
-            className="rounded-full bg-white/10"
+            className="rounded-full bg-text-muted/20"
           />
         ))}
       </div>

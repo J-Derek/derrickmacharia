@@ -4,7 +4,7 @@ import { useReducedMotion } from "framer-motion";
 const STACK = [
   {
     category: "Mobile",
-    items: ["Flutter", "Dart", "Firebase", "Provider"],
+    items: ["Flutter", "Dart", "Riverpod", "Firebase"],
   },
   {
     category: "Frontend",
@@ -12,7 +12,7 @@ const STACK = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Supabase", "REST APIs"],
+    items: ["Node.js", "PostgreSQL", "Supabase", "REST APIs"],
   },
   {
     category: "Tooling",

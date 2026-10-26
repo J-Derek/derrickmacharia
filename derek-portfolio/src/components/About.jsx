@@ -1,3 +1,4 @@
+import profileImg from '../assets/profile.jpeg';
 import { motion } from "framer-motion";
 import { useReducedMotion } from "framer-motion";
 
@@ -51,8 +52,7 @@ const About = () => {
         <div className="md:col-span-5 flex flex-col gap-8">
           <div className="overflow-hidden rounded bg-foreground/5 aspect-[4/3]">
             <img
-              src="/workspace.jpg"
-              alt="Workspace"
+              src={profileImg} alt="Derrick Macharia"
               width={600}
               height={450}
               loading="lazy"

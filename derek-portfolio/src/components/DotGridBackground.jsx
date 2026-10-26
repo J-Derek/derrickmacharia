@@ -131,12 +131,34 @@ export default function DotGridBackground({
       leaveTs = performance.now();
     };
 
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+      } else if (!prefersReducedMotion) {
+        prevTs = performance.now();
+        if (prefersReducedMotion) {
+      loop(performance.now());
+      cancelAnimationFrame(raf);
+    } else {
+      raf = requestAnimationFrame(loop);
+    }
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseenter", handleMouseEnter);
     window.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     function loop(ts) {
+      if (prefersReducedMotion) {
+      loop(performance.now());
+      cancelAnimationFrame(raf);
+    } else {
       raf = requestAnimationFrame(loop);
+    }
       const dt = Math.min((ts - (prevTs || ts)) / 1000, 0.05);
       prevTs = ts;
       const cfg = cfgRef.current;
@@ -188,13 +210,19 @@ export default function DotGridBackground({
       }
     }
 
-    raf = requestAnimationFrame(loop);
+    if (prefersReducedMotion) {
+      loop(performance.now());
+      cancelAnimationFrame(raf);
+    } else {
+      raf = requestAnimationFrame(loop);
+    }
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

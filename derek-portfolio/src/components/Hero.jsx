@@ -24,8 +24,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-end pt-32 pb-16 px-6 md:px-12 overflow-hidden">
-      {/* Background strip */}
-      <div className="absolute inset-x-0 top-1/3 h-px bg-border" aria-hidden="true" />
+      
 
       <div className="relative z-10 max-w-[1800px] mx-auto w-full">
         <motion.p
@@ -73,7 +72,7 @@ const Hero = () => {
         className="mt-16 overflow-hidden rounded relative"
       >
         <img
-          src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1800&q=85"
+          src="/workspace.jpg"
           alt="Abstract workspace"
           width={1800}
           height={600}

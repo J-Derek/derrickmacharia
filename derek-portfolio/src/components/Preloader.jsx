@@ -9,10 +9,11 @@ const Preloader = ({ onComplete }) => {
       setCounter((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 500);
+          setTimeout(onComplete, 200);
           return 100;
         }
-        return prev + 1;
+        const increment = Math.max(4, Math.floor((100 - prev) / 3));
+        return Math.min(100, prev + increment);
       });
     }, 20);
 
