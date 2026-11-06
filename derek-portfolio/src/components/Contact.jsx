@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "framer-motion";
 
@@ -8,12 +8,22 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
+  const resetTimer = useRef(null);
+
+  useEffect(() => () => clearTimeout(resetTimer.current), []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setError(null);
-    
-    const formData = new FormData(e.target);
+
+    const formData = new FormData(e.currentTarget);
+    // Honeypot: real users never fill this in
+    if (formData.get("botcheck")) {
+      setIsSubmitting(false);
+      return;
+    }
     formData.append("access_key", "a4306a98-4513-4801-b0eb-5b71387f556a");
 
     const object = Object.fromEntries(formData);
@@ -31,14 +41,14 @@ const Contact = () => {
       const result = await response.json();
       if (result.success) {
         setSent(true);
-        setTimeout(() => {
-          setSent(false);
-        }, 5000);
+        resetTimer.current = setTimeout(() => setSent(false), 6000);
       } else {
-        console.error("Submission failed", result); setError(result.message || "Failed to send message. Please message me via WhatsApp or email directly.");
+        console.error("Submission failed", result);
+        setError(result.message || "Failed to send message. Please message me via WhatsApp or email directly.");
       }
-    } catch (error) {
-      console.error("Error submitting form", error); setError("Network error sending message. Please reach out via WhatsApp or email.");
+    } catch (err) {
+      console.error("Error submitting form", err);
+      setError("Network error sending message. Please reach out via WhatsApp or email.");
     } finally {
       setIsSubmitting(false);
     }
@@ -71,15 +81,15 @@ const Contact = () => {
               { label: "Location", value: "Nairobi, Kenya" },
               { label: "Status", value: "Open for work" },
             ].map((item) => (
-              <div key={item.label} className="flex gap-4 items-center">
-                <span className="text-foreground/30 w-20">{item.label}</span>
+              <div key={item.label} className="flex gap-4 items-center min-w-0">
+                <span className="text-foreground/40 w-20 shrink-0">{item.label}</span>
                 {item.isWhatsapp ? (
-                  <a href={`https://wa.me/${item.value.replace('+', '')}`} target="_blank" rel="noreferrer" className="text-foreground hover:text-accent transition-colors flex items-center">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="inline-block mr-2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+                  <a href={`https://wa.me/${item.value.replace('+', '')}`} target="_blank" rel="noreferrer" className="text-foreground hover:text-accent-text transition-colors flex items-center">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="inline-block mr-2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
                     Message me
                   </a>
                 ) : item.isEmail ? (
-                  <a href={`mailto:${item.value}`} className="text-foreground hover:text-accent transition-colors">
+                  <a href={`mailto:${item.value}`} className="text-foreground hover:text-accent-text transition-colors break-all">
                     {item.value}
                   </a>
                 ) : (
@@ -96,12 +106,14 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="flex items-center justify-center h-64 text-foreground/60 font-mono text-sm"
+              role="status"
+              className="flex items-center justify-center h-64 text-foreground/60 font-mono text-sm text-center"
             >
               Message sent. I will get back to you soon.
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label
@@ -117,7 +129,7 @@ const Contact = () => {
                     required
                     autoComplete="name"
                     placeholder="Your name"
-                    className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
+                    className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -134,7 +146,7 @@ const Contact = () => {
                     required
                     autoComplete="email"
                     placeholder="your@email.com"
-                    className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
+                    className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
                   />
                 </div>
               </div>
@@ -151,7 +163,7 @@ const Contact = () => {
                   name="project"
                   type="text"
                   placeholder="Tell me about your project"
-                  className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
+                  className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
                 />
               </div>
 
@@ -168,19 +180,20 @@ const Contact = () => {
                   rows={5}
                   required
                   placeholder="What are you trying to build?"
-                  className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors resize-none"
+                  className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-busy={isSubmitting}
+                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Sending..." : "Send message"}
               </button>
               {error && (
-                <p className="text-red-400 font-mono text-xs mt-2">{error}</p>
+                <p role="alert" className="text-danger font-mono text-xs mt-2">{error}</p>
               )}
             </form>
           )}

@@ -28,7 +28,9 @@ function resolveVar(raw, el) {
   try {
     const resolved = getComputedStyle(el).getPropertyValue(varName).trim();
     if (resolved) return resolved;
-  } catch (_) {}
+  } catch {
+    /* fall through to fallback */
+  }
   if (fallback) return resolveVar(fallback, el);
   return "#888888";
 }
@@ -55,13 +57,17 @@ export default function DotGridBackground({
     scaleOnHover,
     enableRevolve,
   });
-  cfgRef.current.dotColor = dotColor;
-  cfgRef.current.dotSize = dotSize;
-  cfgRef.current.dotSpacing = dotSpacing;
-  cfgRef.current.orbitSpeed = orbitSpeed;
-  cfgRef.current.impactRadius = impactRadius;
-  cfgRef.current.scaleOnHover = scaleOnHover;
-  cfgRef.current.enableRevolve = enableRevolve;
+  useEffect(() => {
+    cfgRef.current = {
+      dotColor,
+      dotSize,
+      dotSpacing,
+      orbitSpeed,
+      impactRadius,
+      scaleOnHover,
+      enableRevolve,
+    };
+  }, [dotColor, dotSize, dotSpacing, orbitSpeed, impactRadius, scaleOnHover, enableRevolve]);
 
   const dotsRef = useRef([]);
   const spacingSnapRef = useRef(dotSpacing);
@@ -71,6 +77,7 @@ export default function DotGridBackground({
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     const dpr = window.devicePixelRatio || 1;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let W = 0, H = 0;
     let mouse = { x: -9999, y: -9999 };
     let hovering = false;
@@ -109,7 +116,10 @@ export default function DotGridBackground({
       buildDots();
     }
 
-    const ro = new ResizeObserver(resize);
+    const ro = new ResizeObserver(() => {
+      resize();
+      if (prefersReducedMotion) loop(performance.now());
+    });
     ro.observe(canvas);
     resize();
 
@@ -120,7 +130,7 @@ export default function DotGridBackground({
       hovering = true; // ensure it's considered hovering if mouse moves on window
     };
 
-    const handleMouseEnter = (e) => {
+    const handleMouseEnter = () => {
       hovering = true;
     };
 
@@ -131,34 +141,21 @@ export default function DotGridBackground({
       leaveTs = performance.now();
     };
 
-    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const handleVisibilityChange = () => {
-      if (document.hidden) {
-        cancelAnimationFrame(raf);
-      } else if (!prefersReducedMotion) {
-        prevTs = performance.now();
-        if (prefersReducedMotion) {
-      loop(performance.now());
       cancelAnimationFrame(raf);
-    } else {
-      raf = requestAnimationFrame(loop);
-    }
+      if (!document.hidden && !prefersReducedMotion) {
+        prevTs = performance.now();
+        raf = requestAnimationFrame(loop);
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseenter", handleMouseEnter);
-    window.addEventListener("mouseleave", handleMouseLeave);
+    document.documentElement.addEventListener("mouseenter", handleMouseEnter);
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     function loop(ts) {
-      if (prefersReducedMotion) {
-      loop(performance.now());
-      cancelAnimationFrame(raf);
-    } else {
-      raf = requestAnimationFrame(loop);
-    }
+      if (!prefersReducedMotion) raf = requestAnimationFrame(loop);
       const dt = Math.min((ts - (prevTs || ts)) / 1000, 0.05);
       prevTs = ts;
       const cfg = cfgRef.current;
@@ -212,7 +209,6 @@ export default function DotGridBackground({
 
     if (prefersReducedMotion) {
       loop(performance.now());
-      cancelAnimationFrame(raf);
     } else {
       raf = requestAnimationFrame(loop);
     }
@@ -220,8 +216,8 @@ export default function DotGridBackground({
       cancelAnimationFrame(raf);
       ro.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseenter", handleMouseEnter);
-      window.removeEventListener("mouseleave", handleMouseLeave);
+      document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
+      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
@@ -229,6 +225,7 @@ export default function DotGridBackground({
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       style={{
         display: "block",
         width: width,

@@ -15,16 +15,9 @@ const Marquee = ({ items, speed = 120, reverse = false, className = "" }) => {
     ));
 
   return (
-    <>
-      <style>{`
-        @keyframes scroll-left {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-      `}</style>
       <div className={`overflow-hidden ${className}`} aria-hidden="true">
         <div
-          className="flex whitespace-nowrap w-max"
+          className="marquee-track flex whitespace-nowrap w-max"
           style={{
             willChange: "transform",
             animation: `scroll-left ${speed}s linear infinite`,
@@ -37,7 +30,6 @@ const Marquee = ({ items, speed = 120, reverse = false, className = "" }) => {
           <div className="flex shrink-0 items-center">{renderItems()}</div>
         </div>
       </div>
-    </>
   );
 };
 

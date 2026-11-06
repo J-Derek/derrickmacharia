@@ -12,18 +12,46 @@ const Navbar = () => {
 
   const isHome = location.pathname === '/';
 
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
 
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#080808' : '#f0ede8');
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      /* storage unavailable */
     }
-    localStorage.setItem('theme', theme);
   }, [theme]);
+
+  // Lock scroll and close on Escape while the mobile drawer is open
+  useEffect(() => {
+    if (!mobileOpen) return;
+    lenis?.stop();
+    const onKey = (e) => e.key === 'Escape' && setMobileOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => {
+      lenis?.start();
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [mobileOpen, lenis]);
+
+  // Close the drawer if the viewport grows past the mobile breakpoint
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onChange = (e) => e.matches && setMobileOpen(false);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
@@ -44,6 +72,7 @@ const Navbar = () => {
         e.preventDefault();
         const element = document.getElementById(id);
         if (element && lenis) {
+          lenis.start();
           lenis.scrollTo(element, { 
             offset: -80, // Offset by fixed sticky header height
             duration: 1.2,
@@ -72,12 +101,13 @@ const Navbar = () => {
               });
             }
           }}
-          className="relative z-[999] isolate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+          aria-label="Home"
+          className="rounded-full"
         >
           <img 
             src={profileImg} 
             alt="Derrick Macharia" 
-            className="w-10 h-10 rounded-full object-cover transition-all duration-200 border border-border/60 hover:ring-2 hover:ring-accent relative z-[100]"
+            className="w-10 h-10 rounded-full object-cover transition-shadow duration-200 border border-border hover:ring-2 hover:ring-accent"
           />
         </Link>
 
@@ -88,7 +118,7 @@ const Navbar = () => {
               key={link.href}
               to={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="text-sm font-sans text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+              className="text-sm font-sans text-foreground/60 hover:text-foreground transition-colors rounded"
             >
               {link.name}
             </Link>
@@ -99,7 +129,7 @@ const Navbar = () => {
           <a 
             href="/DerrickMachariaCV.pdf" 
             download
-            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 border border-foreground/20 text-xs font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 border border-foreground/20 text-xs font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-accent-foreground transition-colors rounded-full"
           >
             Resume
           </a>
@@ -107,16 +137,17 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="w-8 h-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+            className="w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors rounded-full"
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden w-8 h-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+            className="md:hidden w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors rounded"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
+            aria-haspopup="dialog"
             aria-expanded={mobileOpen}
           >
             <Menu size={18} />
@@ -132,7 +163,10 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-background bg-bg-primary flex flex-col" style={{ backgroundColor: "var(--background)" }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            className="fixed inset-0 z-[60] bg-background flex flex-col"
           >
             <div className="flex items-center justify-between px-6 h-16 border-b border-border">
               <img 
@@ -143,7 +177,7 @@ const Navbar = () => {
               <button
                 onClick={closeMobile}
                 aria-label="Close menu"
-                className="w-8 h-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+                className="w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors rounded"
               >
                 <X size={18} />
               </button>
@@ -162,7 +196,7 @@ const Navbar = () => {
                   <Link
                     to={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-4xl font-sans font-semibold text-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded inline-block"
+                    className="text-4xl font-sans font-semibold text-foreground hover:text-accent transition-colors rounded inline-block"
                   >
                     {link.name}
                   </Link>
@@ -178,7 +212,7 @@ const Navbar = () => {
                 <a 
                   href="/DerrickMachariaCV.pdf" 
                   download
-                  className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-accent-foreground transition-colors rounded-full"
                 >
                   Download Resume
                 </a>

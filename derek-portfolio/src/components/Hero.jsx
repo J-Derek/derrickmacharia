@@ -1,5 +1,9 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useLenis } from "lenis/react";
 import Marquee from "./Marquee";
+
+const MotionLink = motion.create(Link);
 
 const NAMES_TICKER = [
   "Derrick Macharia",
@@ -12,6 +16,15 @@ const NAMES_TICKER = [
 
 const Hero = () => {
   const reducedMotion = useReducedMotion();
+  const lenis = useLenis();
+
+  const scrollToWork = (e) => {
+    const el = document.getElementById("work");
+    if (el && lenis) {
+      e.preventDefault();
+      lenis.scrollTo(el, { offset: -80, duration: 1.2 });
+    }
+  };
 
   const fadeUp = (delay = 0) =>
     reducedMotion
@@ -24,8 +37,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-end pt-32 pb-16 px-6 md:px-12 overflow-hidden">
-      
-
       <div className="relative z-10 max-w-[1800px] mx-auto w-full">
         <motion.p
           {...fadeUp(0.1)}
@@ -55,14 +66,15 @@ const Hero = () => {
             Building products at the intersection of engineering and design.
             Crafting elegant, high-performance web experiences.
           </p>
-          <motion.a
-            href="#work"
+          <MotionLink
+            to="/#work"
+            onClick={scrollToWork}
             whileHover={reducedMotion ? {} : { scale: 1.02 }}
             transition={{ duration: 0.18 }}
-            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
           >
             View work
-          </motion.a>
+          </MotionLink>
         </motion.div>
       </div>
 
@@ -73,7 +85,8 @@ const Hero = () => {
       >
         <img
           src="/workspace.jpg"
-          alt="Abstract workspace"
+          alt=""
+          aria-hidden="true"
           width={1800}
           height={600}
           loading="eager"
