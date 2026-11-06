@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:ital,wght@0,300..500;1,300..500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -13,6 +12,8 @@
   --color-text-primary: var(--foreground);
   --color-text-secondary: var(--muted-foreground);
   --color-border: var(--border);
+
+  --color-danger: var(--danger);
 
   --font-sans: "Inter Tight", system-ui, sans-serif;
   --font-display: "Inter Tight", system-ui, sans-serif;
@@ -29,6 +30,7 @@
   --accent-text: #b5f524;
   --accent-foreground: #0c0c0c;
   --ring: #c8ff47;
+  --danger: #ff6b6b;
 }
 
 :root[data-theme='light'] {
@@ -41,15 +43,53 @@
   --accent-text: #008c4a;
   --accent-foreground: #ffffff;
   --ring: #008c4a;
+  --danger: #c62828;
 }
 
 @layer base {
+  html {
+    background-color: var(--background);
+    color-scheme: dark;
+  }
+  html[data-theme='light'] {
+    color-scheme: light;
+  }
   body {
     @apply bg-bg-primary text-text-primary font-sans antialiased overflow-x-hidden;
-    /* Selection styles */
-    ::selection {
-      @apply bg-accent text-accent-foreground;
-    }
+  }
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role='button'] {
+    cursor: pointer;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
   }
 }
 

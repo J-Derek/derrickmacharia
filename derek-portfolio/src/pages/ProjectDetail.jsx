@@ -1,15 +1,14 @@
-import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink, ChevronRight, ChevronLeft } from 'lucide-react';
 import { projects } from '../data/projects';
 import Magnetic from '../components/Magnetic';
 
-const GithubIcon = ({size}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>;
+const GithubIcon = ({ size }) => <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>;
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const navigate = useNavigate();
   const projectIndex = projects.findIndex(p => p.id === slug);
   const project = projects[projectIndex];
 
@@ -21,55 +20,47 @@ const ProjectDetail = () => {
   const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
 
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <div className="min-h-screen pb-24">
       <Helmet>
         <title>{project.name} | Derrick Macharia</title>
         <meta name="description" content={project.tagline || project.problem} />
       </Helmet>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center pointer-events-none">
+      {/* Back + prev/next (sits below the global navbar) */}
+      <div className="max-w-[1800px] mx-auto w-full px-6 md:px-12 pt-24 flex items-center justify-between gap-4">
         <Magnetic>
-          <button 
-            onClick={() => navigate("/")}
-            className="pointer-events-auto flex items-center gap-2 bg-card/80 backdrop-blur-md border border-border px-5 py-2.5 rounded-full text-sm font-medium text-foreground hover:border-accent/50 transition-all"
+          <Link
+            to="/#work"
+            className="flex items-center gap-2 bg-card border border-border px-5 py-2.5 rounded-full text-sm font-medium text-foreground hover:border-accent transition-colors"
           >
-            <ArrowLeft size={16} /> Back Home
-          </button>
-        </Magnetic>
-        
-        {/* Breadcrumb with Prev/Next */}
-        <div className="pointer-events-auto hidden md:flex items-center gap-1 bg-card/80 backdrop-blur-md border border-border rounded-full overflow-hidden">
-          {/* Previous arrow */}
-          <Link 
-            to={`/project/${prevProject.id}`}
-            className="flex items-center justify-center w-9 h-9 text-foreground/60 hover:text-accent hover:bg-accent/10 transition-all rounded-full"
-            title={`Previous: ${prevProject.name}`}
-          >
-            <ChevronLeft size={16} />
+            <ArrowLeft size={16} aria-hidden="true" /> All work
           </Link>
-          
-          {/* Breadcrumb text */}
-          <div className="flex items-center gap-2 px-2 py-2 text-[10px] font-mono uppercase tracking-widest text-foreground/60">
-            <Link to="/" className="hover:text-accent transition-colors">Work</Link>
-            <ChevronRight size={12} />
-            <span className="text-foreground">{project.name}</span>
-          </div>
-          
-          {/* Next arrow */}
-          <Link 
-            to={`/project/${nextProject.id}`}
-            className="flex items-center justify-center w-9 h-9 text-foreground/60 hover:text-accent hover:bg-accent/10 transition-all rounded-full"
-            title={`Next: ${nextProject.name}`}
+        </Magnetic>
+
+        <div className="flex items-center bg-card border border-border rounded-full overflow-hidden">
+          <Link
+            to={`/project/${prevProject.id}`}
+            aria-label={`Previous project: ${prevProject.name}`}
+            className="flex items-center justify-center w-10 h-10 text-foreground/60 hover:text-accent-text hover:bg-accent/10 transition-colors"
           >
-            <ChevronRight size={16} />
+            <ChevronLeft size={16} aria-hidden="true" />
+          </Link>
+          <span className="px-2 font-mono text-[10px] tracking-widest text-foreground/60 tabular-nums">
+            {String(projectIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+          </span>
+          <Link
+            to={`/project/${nextProject.id}`}
+            aria-label={`Next project: ${nextProject.name}`}
+            className="flex items-center justify-center w-10 h-10 text-foreground/60 hover:text-accent-text hover:bg-accent/10 transition-colors"
+          >
+            <ChevronRight size={16} aria-hidden="true" />
           </Link>
         </div>
-      </nav>
+      </div>
 
       {/* Hero Header */}
-      <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden">
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <section className="relative pt-16 pb-16 md:pt-24 md:pb-24 overflow-hidden">
+        <div className="max-w-[1800px] mx-auto w-full px-6 md:px-12 relative z-10">
           <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -77,15 +68,12 @@ const ProjectDetail = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="w-12 h-[1px] bg-accent"></span>
-                <span className="font-mono text-sm tracking-widest text-accent uppercase">Case Study</span>
+                <span className="w-12 h-px bg-accent"></span>
+                <span className="font-mono text-sm tracking-widest text-accent-text uppercase">{project.status.startsWith("In") ? "In Development" : "Case Study"}</span>
               </div>
-              <motion.h1
-                layoutId={`project-name-${project.id}`}
-                className="font-bold text-[clamp(48px,8vw,120px)] leading-[0.9] text-foreground tracking-tighter mb-8"
-              >
-                {project.name}<span className="text-accent">.</span>
-              </motion.h1>
+              <h1 className="font-bold text-[clamp(44px,8vw,120px)] leading-[0.95] text-foreground tracking-tighter mb-8 break-words">
+                {project.name}<span className="text-accent-text">.</span>
+              </h1>
               <p className="text-xl md:text-2xl text-foreground/60 leading-relaxed max-w-2xl">
                 {project.tagline || project.problem}
               </p>
@@ -98,17 +86,17 @@ const ProjectDetail = () => {
               className="flex flex-wrap gap-8 mt-12 pt-12 border-t border-border"
             >
               <div>
-                <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-2">Role</span>
+                <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/50 mb-2">Role</span>
                 <span className="text-foreground font-medium">Lead Developer</span>
               </div>
               <div>
-                <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-2">Stack</span>
+                <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/50 mb-2">Stack</span>
                 <span className="text-foreground font-medium">{project.stack.join(", ")}</span>
               </div>
               {project.github && (
                 <div>
-                  <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-2">Source</span>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline flex items-center gap-1">
+                  <span className="block font-mono text-[10px] uppercase tracking-widest text-foreground/50 mb-2">Source</span>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-accent-text hover:underline flex items-center gap-1">
                     GitHub <GithubIcon size={14} />
                   </a>
                 </div>
@@ -119,9 +107,9 @@ const ProjectDetail = () => {
       </section>
 
       {/* Main Mockup / Visual — Screenshot or Logo Fallback */}
-      <section className="container mx-auto px-6 md:px-12 mb-24">
+      <section className="max-w-[1800px] mx-auto w-full px-6 md:px-12 mb-24">
         <div
-          className="aspect-[16/9] md:aspect-[21/9] rounded-3xl bg-card border border-border overflow-hidden relative flex items-center justify-center p-4 md:p-8"
+          className="aspect-[16/9] md:aspect-[21/9] rounded-2xl md:rounded-3xl bg-card border border-border overflow-hidden relative flex items-center justify-center p-3 md:p-8"
         >
           {project.screenshot ? (
             /* Live project — show real screenshot inside a browser chrome frame */
@@ -147,7 +135,7 @@ const ProjectDetail = () => {
               <div className="flex-1 overflow-hidden relative">
                 <img 
                   src={project.screenshot} 
-                  alt={`${project.name} live preview`}
+                  alt={`${project.name} screenshot`}
                   className="w-full h-full object-cover object-top"
                 />
               </div>
@@ -174,7 +162,7 @@ const ProjectDetail = () => {
                     </div>
                   )}
                 </div>
-                <span className="font-sans text-4xl md:text-6xl font-bold opacity-10 uppercase tracking-widest">
+                <span aria-hidden="true" className="font-sans text-3xl md:text-6xl font-bold opacity-10 uppercase tracking-widest text-center px-4">
                   {project.name}
                 </span>
               </div>
@@ -184,7 +172,7 @@ const ProjectDetail = () => {
       </section>
 
       {/* Project Content */}
-      <section className="container mx-auto px-6 md:px-12">
+      <section className="max-w-[1800px] mx-auto w-full px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-8 space-y-16">
             <motion.div
@@ -246,7 +234,7 @@ const ProjectDetail = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 rounded-xl font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Live Preview <ExternalLink size={18} />
                 </a>
@@ -256,7 +244,7 @@ const ProjectDetail = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-card border border-border text-foreground px-8 py-4 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-3 bg-card border border-border text-foreground px-8 py-4 rounded-xl font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   View Source <GithubIcon size={18} />
                 </a>
@@ -267,17 +255,17 @@ const ProjectDetail = () => {
       </section>
 
       {/* Previous / Next Project Footer */}
-      <section className="mt-32 pt-32 border-t border-border container mx-auto px-6 md:px-12">
+      <section className="mt-32 pt-32 border-t border-border max-w-[1800px] mx-auto w-full px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Previous Project */}
           <Link 
             to={`/project/${prevProject.id}`}
             className="group text-left"
           >
-            <span className="font-mono text-sm tracking-widest text-foreground/40 uppercase block mb-4">
+            <span className="font-mono text-sm tracking-widest text-foreground/50 uppercase block mb-4">
               ← Previous
             </span>
-            <h2 className="font-sans text-3xl md:text-5xl font-bold text-foreground group-hover:text-accent transition-colors duration-500">
+            <h2 className="font-sans text-3xl md:text-5xl font-bold break-words text-foreground group-hover:text-accent-text transition-colors duration-500">
               {prevProject.name}
             </h2>
             <p className="text-foreground/60 mt-3 text-sm line-clamp-2 max-w-md">
@@ -288,15 +276,15 @@ const ProjectDetail = () => {
           {/* Next Project */}
           <Link 
             to={`/project/${nextProject.id}`}
-            className="group text-right"
+            className="group text-left md:text-right"
           >
-            <span className="font-mono text-sm tracking-widest text-foreground/40 uppercase block mb-4">
+            <span className="font-mono text-sm tracking-widest text-foreground/50 uppercase block mb-4">
               Next →
             </span>
-            <h2 className="font-sans text-3xl md:text-5xl font-bold text-foreground group-hover:text-accent transition-colors duration-500">
+            <h2 className="font-sans text-3xl md:text-5xl font-bold break-words text-foreground group-hover:text-accent-text transition-colors duration-500">
               {nextProject.name}
             </h2>
-            <p className="text-foreground/60 mt-3 text-sm line-clamp-2 max-w-md ml-auto">
+            <p className="text-foreground/60 mt-3 text-sm line-clamp-2 max-w-md md:ml-auto">
               {nextProject.tagline}
             </p>
           </Link>

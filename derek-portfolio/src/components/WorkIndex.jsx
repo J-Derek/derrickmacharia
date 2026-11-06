@@ -1,14 +1,20 @@
 import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { useFinePointer } from "../hooks/usePreferences";
 import { useReducedMotion } from "framer-motion";
 import { LayoutGrid, List } from "lucide-react";
 
+function getMeta(project) {
+  const year = project.status.includes('·') ? project.status.split('·')[1].trim() : 'In dev';
+  const category = project.stack && project.stack.length > 0 ? project.stack[0] : 'Project';
+  return { year, category };
+}
+
 function ProjectRow({ project, index, onHover, onLeave, active, reducedMotion }) {
   const finePointer = useFinePointer();
-  const navigate = useNavigate();
+  const { year, category } = getMeta(project);
 
   const handleMouseMove = useCallback(
     (e) => {
@@ -17,58 +23,41 @@ function ProjectRow({ project, index, onHover, onLeave, active, reducedMotion })
     [finePointer, onHover, project.id]
   );
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      navigate(`/project/${project.id}`);
-    }
-  };
-
-  const handleClick = () => navigate(`/project/${project.id}`);
-
-  const year = project.status.includes('·') ? project.status.split('·')[1].trim() : 'Present';
-  const category = project.stack && project.stack.length > 0 ? project.stack[0] : 'Project';
-
   return (
     <motion.li
       initial={reducedMotion ? {} : { opacity: 0, y: 16 }}
       animate={reducedMotion ? {} : { opacity: 1, y: 0 }}
       exit={reducedMotion ? {} : { opacity: 0, y: -16 }}
       transition={{ delay: (index % 5) * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 py-6 border-b border-border cursor-pointer transition-colors ${active ? "text-foreground" : "text-foreground/60 hover:text-foreground"}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={onLeave}
-      onFocus={() => finePointer && onHover(project.id, 0, 0)}
-      onBlur={onLeave}
-      onClick={handleClick}
-      tabIndex={0}
-      role="link"
-      aria-label={`${project.name} — ${category}, ${year}`}
-      onKeyDown={handleKeyDown}
+      className="border-b border-border"
     >
-      <span className="font-mono text-xs text-foreground/30 w-8 flex-shrink-0">
-        {project.number}
-      </span>
-      <span
-        className="flex-1 text-2xl md:text-3xl font-semibold tracking-tight"
-        style={{ fontFamily: "inherit" }}
+      <Link
+        to={`/project/${project.id}`}
+        onBlur={onLeave}
+        aria-label={`${project.name} — ${category}, ${year}`}
+        className={`group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0 py-6 transition-colors ${active ? "text-foreground" : "text-foreground/60 hover:text-foreground focus-visible:text-foreground"}`}
       >
-        {project.name}
-      </span>
-      <span className="sm:ml-auto font-mono text-xs tracking-widest uppercase text-foreground/40 sm:w-56 text-left sm:text-right">
-        {category}
-      </span>
-      <span className="font-mono text-xs text-foreground/30 sm:ml-8 sm:w-12 text-left sm:text-right">
-        {year}
-      </span>
+        <span className="font-mono text-xs text-foreground/40 w-8 flex-shrink-0">
+          {project.number}
+        </span>
+        <span className="flex-1 text-2xl md:text-3xl font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-2">
+          {project.name}
+        </span>
+        <span className="sm:ml-auto font-mono text-xs tracking-widest uppercase text-foreground/50 sm:w-56 text-left sm:text-right">
+          {category}
+        </span>
+        <span className="font-mono text-xs text-foreground/40 sm:ml-8 sm:w-16 text-left sm:text-right">
+          {year}
+        </span>
+      </Link>
     </motion.li>
   );
 }
 
 function ProjectCard({ project, index, reducedMotion }) {
-  const navigate = useNavigate();
-  const year = project.status.includes('·') ? project.status.split('·')[1].trim() : 'Present';
-  const category = project.stack && project.stack.length > 0 ? project.stack[0] : 'Project';
+  const { year, category } = getMeta(project);
 
   return (
     <motion.div
@@ -76,44 +65,42 @@ function ProjectCard({ project, index, reducedMotion }) {
       animate={reducedMotion ? {} : { opacity: 1, y: 0, scale: 1 }}
       exit={reducedMotion ? {} : { opacity: 0, y: -24, scale: 0.98 }}
       transition={{ delay: (index % 6) * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      onClick={() => navigate(`/project/${project.id}`)}
-      className="group cursor-pointer flex flex-col gap-4"
-      tabIndex={0}
-      role="link"
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          navigate(`/project/${project.id}`);
-        }
-      }}
     >
-      <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted border border-border/50 relative">
-        {project.screenshot ? (
-          <img 
-            src={project.screenshot} 
-            alt={project.name} 
-            className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-            loading="lazy"
-          />
-        ) : (
-          project.logo ? (
-          <div className="w-full h-full bg-card/80 flex flex-col items-center justify-center p-6 gap-3">
-            <img src={project.logo} alt={project.name} className="w-16 h-16 object-contain rounded-xl opacity-85 group-hover:scale-105 transition-transform" />
-            <span className="font-mono text-[10px] tracking-widest uppercase text-foreground/40">{project.name}</span>
-          </div>
-        ) : (
-          <div className="w-full h-full bg-card/40 flex items-center justify-center font-mono text-foreground/30 text-xs">{project.name}</div>
-        )
-        )}
-        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-300" />
-      </div>
-      <div className="flex flex-col gap-1">
-        <div className="flex justify-between items-center">
-          <h3 className="text-xl font-semibold tracking-tight text-foreground group-hover:text-accent transition-colors">{project.name}</h3>
-          <span className="font-mono text-xs text-foreground/30">{year}</span>
+      <Link to={`/project/${project.id}`} className="group flex flex-col gap-4 rounded-lg">
+        <div className="aspect-[4/3] rounded-lg overflow-hidden bg-card border border-border relative">
+          {project.screenshot ? (
+            <img
+              src={project.screenshot}
+              alt=""
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+              loading="lazy"
+            />
+          ) : project.logo ? (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 gap-3">
+              <img
+                src={project.logo}
+                alt=""
+                loading="lazy"
+                className="w-16 h-16 object-contain rounded-xl opacity-90 group-hover:scale-105 transition-transform"
+              />
+              <span className="font-mono text-[10px] tracking-widest uppercase text-foreground/50">{project.name}</span>
+            </div>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center font-mono text-foreground/40 text-xs">
+              {project.name}
+            </div>
+          )}
         </div>
-        <span className="font-mono text-[10px] tracking-widest uppercase text-foreground/40">{category}</span>
-      </div>
+        <div className="flex flex-col gap-1">
+          <div className="flex justify-between items-center gap-4">
+            <h3 className="text-xl font-semibold tracking-tight text-foreground group-hover:text-accent-text transition-colors">
+              {project.name}
+            </h3>
+            <span className="font-mono text-xs text-foreground/40 shrink-0">{year}</span>
+          </div>
+          <span className="font-mono text-[10px] tracking-widest uppercase text-foreground/50">{category}</span>
+        </div>
+      </Link>
     </motion.div>
   );
 }
@@ -132,11 +119,9 @@ const WorkIndex = () => {
 
   const filteredProjects = useMemo(() => {
     if (filter === 'All') return projects;
-    return projects.filter(p => {
-      const hasFlutter = p.stack.some(s => s.toLowerCase().includes('flutter') || s.toLowerCase().includes('dart'));
-      if (filter === 'Mobile') return hasFlutter;
-      if (filter === 'Web') return !hasFlutter; // Assume if not Flutter, it's web (React, Node, TS)
-      return true;
+    return projects.filter((p) => {
+      const isMobile = p.stack.some((s) => /flutter|dart/i.test(s));
+      return filter === 'Mobile' ? isMobile : !isMobile;
     });
   }, [filter]);
 
@@ -147,17 +132,20 @@ const WorkIndex = () => {
           <h2 className="font-mono text-xs tracking-widest uppercase text-foreground/40">
             Selected work
           </h2>
-          <span className="font-mono text-xs text-foreground/30">{filteredProjects.length} projects</span>
+          <span className="font-mono text-xs text-foreground/40" aria-live="polite">
+            {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+          </span>
         </div>
 
         <div className="flex items-center gap-6 self-stretch md:self-auto justify-between md:justify-end">
           {/* Filters */}
-          <div className="flex items-center gap-4 border border-border/50 rounded-full px-3 py-1.5 bg-card/50 backdrop-blur-sm">
+          <div role="group" aria-label="Filter projects" className="flex items-center gap-1 border border-border rounded-full px-2 py-1.5 bg-card/60 backdrop-blur-sm">
             {['All', 'Mobile', 'Web'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`font-mono text-[10px] tracking-widest uppercase px-3 py-1 rounded-full transition-colors ${filter === f ? 'bg-foreground text-background' : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'}`}
+                aria-pressed={filter === f}
+                className={`font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-full transition-colors ${filter === f ? 'bg-foreground text-background' : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'}`}
               >
                 {f}
               </button>
@@ -165,18 +153,20 @@ const WorkIndex = () => {
           </div>
 
           {/* Layout Toggle */}
-          <div className="flex items-center gap-2 border border-border/50 rounded-full px-2 py-1.5 bg-card/50 backdrop-blur-sm hidden sm:flex">
+          <div role="group" aria-label="Layout" className="hidden sm:flex items-center gap-1 border border-border rounded-full px-2 py-1.5 bg-card/60 backdrop-blur-sm">
             <button
               onClick={() => setLayout('list')}
-              className={`p-1.5 rounded-full transition-colors ${layout === 'list' ? 'bg-foreground text-background' : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'}`}
+              className={`p-1.5 rounded-full transition-colors ${layout === 'list' ? 'bg-foreground text-background' : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'}`}
               aria-label="List view"
+              aria-pressed={layout === 'list'}
             >
               <List size={14} />
             </button>
             <button
               onClick={() => setLayout('grid')}
-              className={`p-1.5 rounded-full transition-colors ${layout === 'grid' ? 'bg-foreground text-background' : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'}`}
+              className={`p-1.5 rounded-full transition-colors ${layout === 'grid' ? 'bg-foreground text-background' : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'}`}
               aria-label="Grid view"
+              aria-pressed={layout === 'grid'}
             >
               <LayoutGrid size={14} />
             </button>
@@ -193,7 +183,6 @@ const WorkIndex = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              role="list" 
               className="relative"
             >
               {filteredProjects.map((project, i) => (
@@ -230,7 +219,7 @@ const WorkIndex = () => {
         </AnimatePresence>
 
         {filteredProjects.length === 0 && (
-          <div className="py-24 text-center font-mono text-sm text-foreground/40 uppercase tracking-widest">
+          <div className="py-24 text-center font-mono text-sm text-foreground/50 uppercase tracking-widest">
             No projects found.
           </div>
         )}
@@ -241,8 +230,8 @@ const WorkIndex = () => {
         <div
           className="pointer-events-none fixed z-40 w-72 h-44 overflow-hidden rounded shadow-2xl transition-opacity duration-200"
           style={{
-            left: cursor.x + 24,
-            top: cursor.y - 88,
+            left: Math.min(cursor.x + 24, window.innerWidth - 300),
+            top: Math.max(80, Math.min(cursor.y - 88, window.innerHeight - 190)),
             opacity: cursor.id ? 1 : 0,
           }}
           aria-hidden="true"

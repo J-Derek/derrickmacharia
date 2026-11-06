@@ -17,12 +17,16 @@ const ScrollIndicator = () => {
   const { scrollYProgress } = useScroll();
 
   // Map scroll 0→1 to an inset bottom value 100%→0%
-  const clipBottom = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
+  const clipPath = useTransform(
+    scrollYProgress,
+    (v) => `inset(0% 0% ${(1 - Math.min(1, Math.max(0, v))) * 100}% 0%)`
+  );
 
   // We use motion.div with a style template to apply the clip-path
   return (
     <div
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:block pointer-events-none"
+      aria-hidden="true"
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block pointer-events-none"
     >
       {/* ── Background layer: static dashes with theme-adaptive contrast ── */}
       <div className="flex flex-col gap-2 items-end">
@@ -30,7 +34,7 @@ const ScrollIndicator = () => {
           <div
             key={i}
             style={{ width: 8, height: 1.5 }}
-            className="rounded-full bg-text-muted/20"
+            className="rounded-full bg-foreground/20"
           />
         ))}
       </div>
@@ -38,7 +42,7 @@ const ScrollIndicator = () => {
       {/* ── Foreground layer: green dashes, revealed via clip-path ── */}
       <motion.div
         className="absolute inset-0 flex flex-col gap-2 items-end"
-        style={{ clipPath: useTransform(clipBottom, bottom => `inset(0% 0% ${bottom} 0%)`) }}
+        style={{ clipPath }}
       >
         {Array.from({ length: NUM_SEGMENTS }).map((_, i) => (
           <div
