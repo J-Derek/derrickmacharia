@@ -1,24 +1,24 @@
-﻿import logoAutoBite from '../assets/logos/logo_autobite.png';
-import logoKiuFresh from '../assets/logos/logo_kiu_fresh.png';
-import logoAccessPro from '../assets/logos/logo_accesspro.png';
-import logoCrochetHub from '../assets/logos/logo_crochethub.png';
-import logoMinnieMiss from '../assets/logos/logo_minnie_miss.png';
-import logoOnyx from '../assets/logos/logo_onyx.png';
-import logoExamTimetable from '../assets/logos/logo_exam_timetable.png';
-import logoRememberTodo from '../assets/logos/logo_remember_todo.png';
-import logoStayEasy from '../assets/logos/logo_stayeasy.png';
-import logoRideCare from '../assets/logos/logo_ridecare.png';
-import logoItax from '../assets/logos/logo_itax.png';
-import logoPickd from '../assets/logos/pickd_logo_enhanced.jpg';
+import logoAutoBite from '../assets/logos/logo_autobite.webp';
+import logoKiuFresh from '../assets/logos/logo_kiu_fresh.webp';
+import logoAccessPro from '../assets/logos/logo_accesspro.webp';
+import logoCrochetHub from '../assets/logos/logo_crochethub.webp';
+import logoMinnieMiss from '../assets/logos/logo_minnie_miss.webp';
+import logoOnyx from '../assets/logos/logo_onyx.webp';
+import logoExamTimetable from '../assets/logos/logo_exam_timetable.webp';
+import logoRememberTodo from '../assets/logos/logo_remember_todo.webp';
+import logoStayEasy from '../assets/logos/logo_stayeasy.webp';
+import logoRideCare from '../assets/logos/logo_ridecare.webp';
+import logoItax from '../assets/logos/logo_itax.webp';
+import logoPickd from '../assets/logos/pickd_logo_enhanced.webp';
 
 // Live project screenshots
-import screenshotPickd from '../assets/screenshots/screenshot_pickd.png';
-import screenshotCrochetHub from '../assets/screenshots/screenshot_crochethub.png';
-import screenshotMinnieMiss from '../assets/screenshots/screenshot_minniemiss.png';
-import screenshotExamTimetable from '../assets/screenshots/screenshot_examtimetable.png';
-import screenshotRememberTodo from '../assets/screenshots/screenshot_remembertodo.png';
-import screenshotStayEasy from '../assets/screenshots/screenshot_stayeasy.png';
-import screenshotRideCare from '../assets/screenshots/screenshot_ridecare.png';
+import screenshotPickd from '../assets/screenshots/screenshot_pickd.webp';
+import screenshotCrochetHub from '../assets/screenshots/screenshot_crochethub.webp';
+import screenshotMinnieMiss from '../assets/screenshots/screenshot_minniemiss.webp';
+import screenshotExamTimetable from '../assets/screenshots/screenshot_examtimetable.webp';
+import screenshotRememberTodo from '../assets/screenshots/screenshot_remembertodo.webp';
+import screenshotStayEasy from '../assets/screenshots/screenshot_stayeasy.webp';
+import screenshotRideCare from '../assets/screenshots/screenshot_ridecare.webp';
 
 export const projects = [
   {
@@ -274,3 +274,10 @@ export const projects = [
     status: "In Development"
   }
 ];
+
+/** Display metadata derived from a project: year (or "In dev") and primary category. */
+export function getMeta(project) {
+  const year = project.status.includes('·') ? project.status.split('·')[1].trim() : 'In dev';
+  const category = project.stack?.[0] ?? 'Project';
+  return { year, category };
+}

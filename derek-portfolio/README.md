@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://derekmacharia.xo.je/?i=1">
+  <a href="https://derrickmacharia-lilac.vercel.app">
     <img src="public/favicon.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -15,7 +15,7 @@
     <a href="https://github.com/J-Derek/derek-portfolio"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://derekmacharia.xo.je/?i=1">View Demo</a>
+    <a href="https://derrickmacharia-lilac.vercel.app">View Demo</a>
     ·
     <a href="https://github.com/J-Derek/derek-portfolio/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·

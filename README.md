@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://derekmacharia.xo.je/?i=1">
+  <a href="https://derrickmacharia-lilac.vercel.app">
     <img src="derek-portfolio/public/favicon.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -13,7 +13,7 @@
     A modern, high-performance portfolio showcasing full-stack mobile and web engineering.
     <br />
     <br />
-    <a href="https://derekmacharia.xo.je/?i=1"><strong>View Live Demo »</strong></a>
+    <a href="https://derrickmacharia-lilac.vercel.app"><strong>View Live Demo »</strong></a>
     ·
     <a href="https://github.com/J-Derek/derrickmacharia/issues">Report Bug</a>
     ·
@@ -46,7 +46,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A modern single-page application (SPA) portfolio built with React 19, Vite, Tailwind CSS v4, and Framer Motion. Engineered with smooth Lenis scrolling, responsive grid and list views, dynamic theme switching, and instant contact routing.
+A modern single-page application (SPA) portfolio built with React 19, Vite, Tailwind CSS v4, and Framer Motion. Editorial, type-led design with a filterable project index, light and dark themes, and a contact form.
 
 ### Built With
 
@@ -89,8 +89,8 @@ To get a local copy up and running, follow these simple steps:
 <!-- FEATURES -->
 ## Features
 
-- **Fluid Scroll Architecture:** Integrated Lenis smooth-scrolling with GPU-accelerated motion curves.
-- **Interactive Project Showcase:** Switch seamlessly between granular list view and visual grid cards with category filters.
+- **Editorial design system:** serif display type, a single page container and restrained motion (see `derek-portfolio/DESIGN.md`).
+- **Project index:** numbered list with Mobile and Web filters, hover previews and a case-study page per project.
 - **Direct Contact Messaging:** Form submissions integrated with Web3Forms and real-time validation.
 - **Adaptive Theming:** System-aware and manual dark/light mode toggle with CSS variable synchronization.
 

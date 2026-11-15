@@ -1,93 +1,57 @@
-import { motion, useReducedMotion } from "framer-motion";
-import Marquee from "./Marquee";
-
-const NAMES_TICKER = [
-  "Derrick Macharia",
-  "Full-Stack Dev",
-  "UI/UX Enthusiast",
-  "React & Node",
-  "Open to Projects",
-  "Engineering × Design",
-];
+import { Link } from 'react-router-dom';
+import { ArrowDown } from 'lucide-react';
+import Reveal from './Reveal';
 
 const Hero = () => {
-  const reducedMotion = useReducedMotion();
-
-  const fadeUp = (delay = 0) =>
-    reducedMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 24 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
-        };
+  const scrollToWork = (e) => {
+    const target = document.getElementById('work');
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView();
+    }
+  };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-end pt-32 pb-16 px-6 md:px-12 overflow-hidden">
-      
-
-      <div className="relative z-10 max-w-[1800px] mx-auto w-full">
-        <motion.p
-          {...fadeUp(0.1)}
-          className="font-mono text-xs tracking-widest uppercase text-foreground/40 mb-8"
-        >
-          Full-stack developer — creative engineer
-        </motion.p>
-
-        <motion.h1
-          {...fadeUp(0.2)}
-          className="font-bold leading-none tracking-tight text-foreground"
-          style={{
-            fontSize: "clamp(3.5rem, 11vw, 12rem)",
-            fontFamily: "inherit",
-          }}
-        >
-          Derrick
-          <br />
-          Macharia
-        </motion.h1>
-
-        <motion.div
-          {...fadeUp(0.4)}
-          className="mt-12 flex flex-col sm:flex-row items-start sm:items-end gap-8 justify-between"
-        >
-          <p className="max-w-sm text-foreground/60 text-base leading-relaxed">
-            Building products at the intersection of engineering and design.
-            Crafting elegant, high-performance web experiences.
-          </p>
-          <motion.a
-            href="#work"
-            whileHover={reducedMotion ? {} : { scale: 1.02 }}
-            transition={{ duration: 0.18 }}
-            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground text-foreground text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+    <section className="flex min-h-[100svh] flex-col justify-end pt-32 pb-10">
+      <div className="container-page">
+        <Reveal>
+          <h1
+            className="font-serif leading-[0.95] tracking-[-0.01em]"
+            style={{ fontSize: 'clamp(3.25rem, 10vw, 8.5rem)' }}
           >
-            View work
-          </motion.a>
-        </motion.div>
+            Derrick
+            <br />
+            Macharia
+          </h1>
+        </Reveal>
+
+        <Reveal delay={0.1} className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-12 md:items-end">
+          <p className="text-lg leading-relaxed text-muted md:col-span-6 md:text-xl">
+            Software developer in Nairobi, Kenya. Building products at the intersection of
+            engineering and design, for mobile and the web.
+          </p>
+          <div className="md:col-span-6 md:justify-self-end">
+            <Link
+              to="/#work"
+              onClick={scrollToWork}
+              className="link-underline inline-flex items-center gap-2 text-lg"
+            >
+              View work <ArrowDown size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal
+          delay={0.2}
+          className="mt-16 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 md:mt-24"
+        >
+          <span className="label flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            Open for work
+          </span>
+          <span className="label">Flutter · React · Node</span>
+        </Reveal>
       </div>
-
-      {/* Hero image strip */}
-      <motion.div
-        {...fadeUp(0.5)}
-        className="mt-16 overflow-hidden rounded relative"
-      >
-        <img
-          src="/workspace.jpg"
-          alt="Abstract workspace"
-          width={1800}
-          height={600}
-          loading="eager"
-          className="w-full h-[240px] md:h-[400px] object-cover grayscale opacity-80 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-      </motion.div>
-
-      <motion.div {...fadeUp(0.65)}>
-        <Marquee
-          items={NAMES_TICKER}
-          className="mt-4 py-3 border-t border-border"
-        />
-      </motion.div>
     </section>
   );
 };
