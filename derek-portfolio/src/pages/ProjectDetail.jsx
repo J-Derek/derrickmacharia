@@ -42,8 +42,7 @@ const ProjectDetail = () => {
 
   const next = projects[(index + 1) % projects.length];
   const prev = projects[(index - 1 + projects.length) % projects.length];
-  const { year } = getMeta(project);
-  const inDevelopment = project.status.startsWith('In');
+  const { state, year } = getMeta(project);
   const chevron =
     'flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:text-foreground';
 
@@ -85,8 +84,8 @@ const ProjectDetail = () => {
       </header>
 
       <dl className="grid grid-cols-2 gap-x-8 gap-y-8 border-y border-border py-8 md:grid-cols-4">
-        <MetaCell label="Role">Lead Developer</MetaCell>
-        <MetaCell label={inDevelopment ? 'Status' : 'Year'}>{inDevelopment ? 'In development' : year}</MetaCell>
+        <MetaCell label="Role">Solo developer</MetaCell>
+        <MetaCell label="Status">{[state, year].filter(Boolean).join(', ')}</MetaCell>
         <MetaCell label="Stack">{project.stack.join(', ')}</MetaCell>
         {(project.live || project.github) && (
           <MetaCell label="Links">
