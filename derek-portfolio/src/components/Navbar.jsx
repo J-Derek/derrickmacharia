@@ -2,50 +2,54 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useLenis } from 'lenis/react';
-import profileImg from '../assets/profile.jpeg';
+
+const SECTIONS = ['Work', 'About', 'Stack', 'Contact'];
+
+const readTheme = () =>
+  document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
-  const lenis = useLenis();
+  const [theme, setTheme] = useState(readTheme);
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
 
-  const isHome = location.pathname === '/';
-
-  const [theme, setTheme] = useState(() => {
-    try {
-      return localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
-    } catch {
-      return 'dark';
-    }
+  const navLinks = SECTIONS.map((name) => {
+    const id = name.toLowerCase();
+    return { name, id, href: isHome ? `#${id}` : `/#${id}` };
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
     document.documentElement.setAttribute('data-theme', theme);
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme === 'dark' ? '#080808' : '#f0ede8');
+      ?.setAttribute('content', theme === 'dark' ? '#0e0e0d' : '#f7f7f5');
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
     try {
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('theme', next);
     } catch {
       /* storage unavailable */
     }
-  }, [theme]);
+  };
 
-  // Lock scroll and close on Escape while the mobile drawer is open
+  // Lock page scroll and close on Escape while the mobile menu is open
   useEffect(() => {
     if (!mobileOpen) return;
-    lenis?.stop();
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const onKey = (e) => e.key === 'Escape' && setMobileOpen(false);
     window.addEventListener('keydown', onKey);
     return () => {
-      lenis?.start();
+      document.body.style.overflow = previous;
       window.removeEventListener('keydown', onKey);
     };
-  }, [mobileOpen, lenis]);
+  }, [mobileOpen]);
 
-  // Close the drawer if the viewport grows past the mobile breakpoint
+  // Close the menu if the viewport grows past the mobile breakpoint
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)');
     const onChange = (e) => e.matches && setMobileOpen(false);
@@ -53,109 +57,75 @@ const Navbar = () => {
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  const navLinks = [
-    { name: 'Work', href: isHome ? '#work' : '/#work' },
-    { name: 'About', href: isHome ? '#about' : '/#about' },
-    { name: 'Stack', href: isHome ? '#stack' : '/#stack' },
-    { name: 'Contact', href: isHome ? '#contact' : '/#contact' },
-  ];
-
-  const handleLinkClick = (e, href) => {
-    const isHash = href.startsWith('#') || href.startsWith('/#');
-    if (isHash) {
-      const id = href.replace('/#', '#').replace('#', '');
-      if (isHome) {
-        e.preventDefault();
-        const element = document.getElementById(id);
-        if (element && lenis) {
-          lenis.start();
-          lenis.scrollTo(element, { 
-            offset: -80, // Offset by fixed sticky header height
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          });
-        }
-      }
-    }
+  const handleSectionClick = (e, id) => {
     setMobileOpen(false);
+    if (!isHome) return; // the router navigates to /#id and ScrollToTop handles it
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      // Let the menu's scroll lock release before scrolling
+      requestAnimationFrame(() => target.scrollIntoView());
+    }
   };
 
-  const closeMobile = () => setMobileOpen(false);
+  const handleHomeClick = (e) => {
+    setMobileOpen(false);
+    if (isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0 });
+    }
+  };
+
+  const themeLabel = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  const iconButton =
+    'flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:text-foreground';
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 h-16 border-b border-border bg-background/80 backdrop-blur-md">
-        <Link
-          to="/"
-          onClick={(e) => {
-            setMobileOpen(false);
-            if (isHome && lenis) {
-              e.preventDefault();
-              lenis.scrollTo(0, {
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-              });
-            }
-          }}
-          aria-label="Home"
-          className="rounded-full"
-        >
-          <img 
-            src={profileImg} 
-            alt="Derrick Macharia" 
-            className="w-10 h-10 rounded-full object-cover transition-shadow duration-200 border border-border hover:ring-2 hover:ring-accent"
-          />
-        </Link>
+      <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-border bg-background/85 backdrop-blur">
+        <div className="container-page flex h-full items-center justify-between gap-6">
+          <Link to="/" onClick={handleHomeClick} className="font-serif text-xl leading-none">
+            Derrick Macharia
+          </Link>
 
-        {/* Desktop nav */}
-        <nav aria-label="Primary" className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className="text-sm font-sans text-foreground/60 hover:text-foreground transition-colors rounded"
+          <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.id}
+                to={link.href}
+                onClick={(e) => handleSectionClick(e, link.id)}
+                className="text-sm text-muted transition-colors hover:text-foreground"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="/DerrickMachariaCV.pdf"
+              download
+              className="mr-2 hidden rounded-full border border-border px-4 py-1.5 text-sm transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground md:inline-flex"
             >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <a 
-            href="/DerrickMachariaCV.pdf" 
-            download
-            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 border border-foreground/20 text-xs font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-accent-foreground transition-colors rounded-full"
-          >
-            Resume
-          </a>
-
-          <button
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors rounded-full"
-          >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors rounded"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
-            aria-haspopup="dialog"
-            aria-expanded={mobileOpen}
-          >
-            <Menu size={18} />
-          </button>
+              Resume
+            </a>
+            <button type="button" onClick={toggleTheme} aria-label={themeLabel} className={iconButton}>
+              {theme === 'dark' ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+              aria-haspopup="dialog"
+              aria-expanded={mobileOpen}
+              className={`${iconButton} md:hidden`}
+            >
+              <Menu size={18} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -166,58 +136,43 @@ const Navbar = () => {
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            className="fixed inset-0 z-[60] bg-background flex flex-col"
+            className="fixed inset-0 z-[60] flex flex-col bg-background"
           >
-            <div className="flex items-center justify-between px-6 h-16 border-b border-border">
-              <img 
-                src={profileImg} 
-                alt="Derrick Macharia" 
-                className="w-8 h-8 rounded-full object-cover"
-              />
+            <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-border">
+              <span className="font-serif text-xl leading-none">Derrick Macharia</span>
               <button
-                onClick={closeMobile}
+                type="button"
+                onClick={() => setMobileOpen(false)}
                 aria-label="Close menu"
-                className="w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors rounded"
+                autoFocus
+                className={iconButton}
               >
-                <X size={18} />
+                <X size={18} aria-hidden="true" />
               </button>
             </div>
-            <nav
-              aria-label="Mobile primary"
-              className="flex flex-col justify-center flex-1 px-8 gap-6"
-            >
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
+
+            <nav aria-label="Mobile" className="container-page flex flex-1 flex-col justify-center gap-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.id}
+                  to={link.href}
+                  onClick={(e) => handleSectionClick(e, link.id)}
+                  className="self-start font-serif text-5xl leading-tight"
                 >
-                  <Link
-                    to={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-4xl font-sans font-semibold text-foreground hover:text-accent transition-colors rounded inline-block"
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
+                  {link.name}
+                </Link>
               ))}
-              
-              <motion.div
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.06 }}
-                className="pt-6 mt-6 border-t border-border"
-              >
-                <a 
-                  href="/DerrickMachariaCV.pdf" 
-                  download
-                  className="inline-flex items-center justify-center px-6 py-3 border border-foreground/20 text-sm font-mono tracking-widest uppercase hover:bg-accent hover:border-accent hover:text-accent-foreground transition-colors rounded-full"
-                >
-                  Download Resume
-                </a>
-              </motion.div>
             </nav>
+
+            <div className="container-page shrink-0 border-t border-border py-6">
+              <a
+                href="/DerrickMachariaCV.pdf"
+                download
+                className="inline-flex rounded-full border border-border px-5 py-2.5 text-sm"
+              >
+                Download resume
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

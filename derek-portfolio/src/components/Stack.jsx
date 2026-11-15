@@ -1,61 +1,33 @@
-import { motion } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
+import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
 
 const STACK = [
-  {
-    category: "Mobile",
-    items: ["Flutter", "Dart", "Riverpod", "Firebase"],
-  },
-  {
-    category: "Frontend",
-    items: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    category: "Backend",
-    items: ["Node.js", "PostgreSQL", "Supabase", "REST APIs"],
-  },
-  {
-    category: "Tooling",
-    items: ["Vite", "Git", "Figma"],
-  },
+  { category: 'Mobile', items: ['Flutter', 'Dart', 'Riverpod', 'Firebase'] },
+  { category: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
+  { category: 'Backend', items: ['Node.js', 'PostgreSQL', 'Supabase', 'REST APIs'] },
+  { category: 'Tooling', items: ['Vite', 'Git', 'Figma'] },
 ];
 
 const Stack = () => {
-  const reducedMotion = useReducedMotion();
-
   return (
-    <section id="stack" className="px-6 md:px-12 py-24 border-t border-border">
-      <div className="max-w-[1800px] mx-auto w-full">
-        <div className="flex items-end justify-between mb-12 border-b border-border pb-4">
-          <h2 className="font-mono text-xs tracking-widest uppercase text-foreground/40">
-            Tech stack
-          </h2>
-          <p className="font-mono text-xs text-foreground/30 hidden sm:block">
-            Tools I reach for first
-          </p>
-        </div>
+    <section id="stack" className="border-t border-border py-24 md:py-36">
+      <div className="container-page">
+        <SectionHeader title="Stack">
+          <p className="label">Tools I reach for first</p>
+        </SectionHeader>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4">
           {STACK.map((column, i) => (
-            <motion.div
-              key={column.category}
-              initial={reducedMotion ? {} : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-background p-8"
-            >
-              <h3 className="font-mono text-xs tracking-widest uppercase text-foreground/40 mb-6">
-                {column.category}
-              </h3>
-              <ul className="space-y-3">
+            <Reveal key={column.category} delay={i * 0.06} className="border-t border-border pt-5">
+              <h3 className="label mb-5">{column.category}</h3>
+              <ul className="space-y-2">
                 {column.items.map((item) => (
-                  <li key={item} className="text-foreground text-base">
+                  <li key={item} className="text-lg">
                     {item}
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

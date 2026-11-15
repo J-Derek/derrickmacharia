@@ -3,7 +3,7 @@
 This document contains essential context and instructions for AI agents working in this repository.
 
 ## Project Overview
-This is a modern React single-page application (SPA) portfolio site built with Vite, Tailwind CSS v4, and Framer Motion. The project resides in the `derek-portfolio` directory.
+This is a React single-page application (SPA) portfolio site built with Vite, Tailwind CSS v4, and Framer Motion. It is deployed on Vercel. The project resides in the `derek-portfolio` directory.
 
 ## Technology Stack
 - **Framework**: React 19 + React Router DOM
@@ -28,41 +28,46 @@ All commands should be run from within the `derek-portfolio` directory.
 ```
 derek-portfolio/
 ├── src/
-│   ├── assets/       # Static assets like images and SVGs
-│   ├── components/   # Reusable UI components (Hero, Navbar, Projects, etc.)
-│   ├── data/         # Static data files (e.g., projects.js)
-│   ├── pages/        # Route components (Home, ProjectDetail)
-│   ├── styles/       # Global CSS including Tailwind configuration
-│   ├── App.jsx       # Root layout component
+│   ├── assets/       # WebP images: logos, screenshots, profile
+│   ├── components/   # Navbar, Hero, WorkIndex, About, Stack, Contact, Footer, Reveal, SectionHeader, ScrollToTop
+│   ├── data/         # projects.js (project list + getMeta helper)
+│   ├── hooks/        # usePreferences.js (useFinePointer)
+│   ├── pages/        # Home, ProjectDetail, NotFound
+│   ├── styles/       # globals.css (Tailwind + theme tokens)
+│   ├── App.jsx       # Root layout
 │   └── main.jsx      # Entry point and router configuration
-├── public/           # Public assets (favicon, icons)
-├── index.html        # HTML template
-├── package.json      # Dependencies and scripts
-└── vite.config.js    # Vite configuration
+├── scripts/          # optimize-images.mjs (one-off image conversion)
+├── public/           # favicon, CV, og image
+├── DESIGN.md         # Design system: read before changing UI
+├── vercel.json       # SPA rewrite for Vercel
+├── index.html
+├── package.json
+└── vite.config.js
 ```
 
 ## Architectural Patterns & Conventions
 
 ### Styling & Theming
-The project uses Tailwind CSS v4. Notice that theme customization is handled directly in `src/styles/globals.css` using the new `@theme` directive, rather than a `tailwind.config.js` file:
+Tailwind CSS v4. Theme tokens are defined in `src/styles/globals.css` with `@theme`, mapped to CSS variables that switch on `:root[data-theme]`:
 
 ```css
 @theme {
-  --color-bg-primary: #080808;
-  --color-bg-secondary: #0f0f0f;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
   /* ... */
-  --color-accent: #00FF87;
 }
 ```
-Utility classes follow these custom theme names (e.g., `bg-bg-primary`, `text-accent`).
+Use only these colour classes: `bg-background`, `text-foreground`, `bg-card`, `border-border`, `text-muted`, `text-accent`, `bg-accent`, `text-accent-foreground`, `text-danger`. Shared helpers: `.container-page`, `.label`, `.link-underline`. See `derek-portfolio/DESIGN.md`.
 
 ### Routing
-Routing is configured in `src/main.jsx` using React Router's `createBrowserRouter`. 
-- `App.jsx` serves as the layout wrapper containing global components like `Navbar`, `Footer`, `CustomCursor`, and `ScrollIndicator`, using `<Outlet />` for page content.
-- Nav links handle cross-page navigation smoothly, checking `useLocation().pathname` to toggle between anchor links (`#section`) or full paths (`/#section`).
+Routing is configured in `src/main.jsx` using React Router's `createBrowserRouter`.
+- `App.jsx` is the layout wrapper (`Navbar`, `ScrollToTop`, `Footer`) with `<Outlet />` for page content.
+- Nav links check `useLocation().pathname` to switch between anchor links (`#section`) and full paths (`/#section`).
 
 ### Animations
-Animations are heavily driven by `framer-motion`. Global animation settings are applied via the `<MotionConfig reducedMotion="user">` wrapper in `App.jsx` to respect user accessibility preferences.
+`framer-motion`, through the single `Reveal` component. `<MotionConfig reducedMotion="user">` in `App.jsx` respects accessibility preferences. Scrolling is native (no smooth-scroll library).
 
 ## Gotchas & Important Notes
 

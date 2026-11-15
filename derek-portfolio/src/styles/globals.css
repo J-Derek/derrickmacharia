@@ -3,125 +3,102 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-bg-primary: var(--background);
-  --color-bg-secondary: var(--card);
-  --color-bg-elevated: var(--card);
-  --color-accent: var(--accent);
-  --color-accent-text: var(--accent-text);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-text-primary: var(--foreground);
-  --color-text-secondary: var(--muted-foreground);
+  --color-card: var(--card);
   --color-border: var(--border);
-
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-danger: var(--danger);
 
-  --font-sans: "Inter Tight", system-ui, sans-serif;
-  --font-display: "Inter Tight", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-:root {
-  --background: #080808;
-  --foreground: #f0ede8;
-  --card: #111111;
-  --border: rgba(240, 237, 232, 0.1);
-  --muted-foreground: #7a7774;
-  --accent: #c8ff47;
-  --accent-text: #b5f524;
-  --accent-foreground: #0c0c0c;
-  --ring: #c8ff47;
-  --danger: #ff6b6b;
-}
-
+:root,
 :root[data-theme='light'] {
-  --background: #f0ede8;
-  --foreground: #0c0c0c;
-  --card: #e8e4de;
-  --border: rgba(12, 12, 12, 0.12);
-  --muted-foreground: #6b6862;
-  --accent: #008c4a;
-  --accent-text: #008c4a;
-  --accent-foreground: #ffffff;
-  --ring: #008c4a;
-  --danger: #c62828;
+  --background: #f7f7f5;
+  --foreground: #121211;
+  --card: #eeeeeb;
+  --border: rgba(18, 18, 17, 0.12);
+  --muted: #66665f;
+  --accent: #7c2d12;
+  --accent-foreground: #f7f7f5;
+  --danger: #b3261e;
+}
+
+:root[data-theme='dark'] {
+  --background: #0e0e0d;
+  --foreground: #ecebe7;
+  --card: #181817;
+  --border: rgba(236, 235, 231, 0.14);
+  --muted: #94938c;
+  --accent: #e0a17a;
+  --accent-foreground: #0e0e0d;
+  --danger: #ff8a80;
 }
 
 @layer base {
   html {
     background-color: var(--background);
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+  html[data-theme='dark'] {
     color-scheme: dark;
   }
-  html[data-theme='light'] {
-    color-scheme: light;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   body {
-    @apply bg-bg-primary text-text-primary font-sans antialiased overflow-x-hidden;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+  }
+  [id] {
+    scroll-margin-top: 6rem;
   }
   ::selection {
-    @apply bg-accent text-accent-foreground;
+    background-color: var(--accent);
+    color: var(--accent-foreground);
   }
   :focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
-  button:not(:disabled),
-  [role='button'] {
+  button:not(:disabled) {
     cursor: pointer;
   }
 }
 
-/* Lenis smooth scroll */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-@keyframes scroll-left {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none !important;
+@layer components {
+  /* The only page container. Every section uses it. */
+  .container-page {
+    @apply mx-auto w-full max-w-[1280px] px-6 md:px-10;
   }
-}
 
-@layer utilities {
-  .mesh-bg {
-    background: radial-gradient(circle at 50% 50%, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+  /* Small uppercase metadata label */
+  .label {
+    @apply text-xs font-medium uppercase tracking-[0.08em] text-muted;
   }
-}
 
-
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--card);
-  border-radius: 10px;
-  border: 2px solid var(--background);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
+  /* Underline that grows from the left on hover */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 300ms var(--ease-out-soft);
+    padding-bottom: 2px;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--card) var(--background);
+  scrollbar-color: var(--border) transparent;
 }
-

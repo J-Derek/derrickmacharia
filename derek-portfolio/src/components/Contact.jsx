@@ -1,13 +1,26 @@
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
+import { useState, useEffect, useRef } from 'react';
+import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
+
+const EMAIL = 'derrickmacharia2022@gmail.com';
+const WHATSAPP = '254735319205';
+
+const fieldClass =
+  'w-full border-0 border-b border-border bg-transparent px-0 py-3 text-base text-foreground placeholder:text-muted/70 transition-colors focus:border-foreground focus:outline-none';
+
+const Field = ({ id, label, children }) => (
+  <div className="flex flex-col gap-1">
+    <label htmlFor={id} className="label">
+      {label}
+    </label>
+    {children}
+  </div>
+);
 
 const Contact = () => {
-  const reducedMotion = useReducedMotion();
   const [sent, setSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
-
   const resetTimer = useRef(null);
 
   useEffect(() => () => clearTimeout(resetTimer.current), []);
@@ -20,183 +33,154 @@ const Contact = () => {
 
     const formData = new FormData(e.currentTarget);
     // Honeypot: real users never fill this in
-    if (formData.get("botcheck")) {
+    if (formData.get('botcheck')) {
       setIsSubmitting(false);
       return;
     }
-    formData.append("access_key", "a4306a98-4513-4801-b0eb-5b71387f556a");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    formData.append('access_key', 'a4306a98-4513-4801-b0eb-5b71387f556a');
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: json
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData)),
       });
       const result = await response.json();
       if (result.success) {
         setSent(true);
         resetTimer.current = setTimeout(() => setSent(false), 6000);
       } else {
-        console.error("Submission failed", result);
-        setError(result.message || "Failed to send message. Please message me via WhatsApp or email directly.");
+        console.error('Submission failed', result);
+        setError(result.message || 'Failed to send message. Please message me via WhatsApp or email directly.');
       }
     } catch (err) {
-      console.error("Error submitting form", err);
-      setError("Network error sending message. Please reach out via WhatsApp or email.");
+      console.error('Error submitting form', err);
+      setError('Network error sending message. Please reach out via WhatsApp or email.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="px-6 md:px-12 py-24 border-t border-border">
-      <div className="max-w-[1800px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12">
-        {/* Left */}
-        <div className="md:col-span-5">
-          <h2 className="font-mono text-xs tracking-widest uppercase text-foreground/40 mb-8">
-            Contact
-          </h2>
-          <motion.p
-            initial={reducedMotion ? {} : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl md:text-4xl font-semibold leading-tight tracking-tight text-foreground mb-10"
-          >
-            Got a project
-            <br />
-            in mind?
-          </motion.p>
+    <section id="contact" className="border-t border-border py-24 md:py-36">
+      <div className="container-page">
+        <SectionHeader title="Contact" />
 
-          <div className="space-y-4 font-mono text-sm">
-            {[
-              { label: "Email", value: "derrickmacharia2022@gmail.com", isEmail: true },
-              { label: "WhatsApp", value: "+254735319205", isWhatsapp: true },
-              { label: "Location", value: "Nairobi, Kenya" },
-              { label: "Status", value: "Open for work" },
-            ].map((item) => (
-              <div key={item.label} className="flex gap-4 items-center min-w-0">
-                <span className="text-foreground/40 w-20 shrink-0">{item.label}</span>
-                {item.isWhatsapp ? (
-                  <a href={`https://wa.me/${item.value.replace('+', '')}`} target="_blank" rel="noreferrer" className="text-foreground hover:text-accent-text transition-colors flex items-center">
-                    <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="inline-block mr-2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-5">
+            <Reveal as="p" className="font-serif text-4xl leading-[1.05] md:text-6xl">
+              Got a project in mind?
+            </Reveal>
+
+            <a href={`mailto:${EMAIL}`} className="link-underline mt-10 inline-block break-all text-lg md:text-xl">
+              {EMAIL}
+            </a>
+
+            <dl className="mt-10 border-t border-border text-sm">
+              <div className="flex gap-4 border-b border-border py-3">
+                <dt className="label w-24 shrink-0">WhatsApp</dt>
+                <dd>
+                  <a
+                    href={`https://wa.me/${WHATSAPP}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline"
+                  >
                     Message me
                   </a>
-                ) : item.isEmail ? (
-                  <a href={`mailto:${item.value}`} className="text-foreground hover:text-accent-text transition-colors break-all">
-                    {item.value}
-                  </a>
-                ) : (
-                  <span className="text-foreground">{item.value}</span>
-                )}
+                </dd>
               </div>
-            ))}
+              <div className="flex gap-4 border-b border-border py-3">
+                <dt className="label w-24 shrink-0">Location</dt>
+                <dd>Nairobi, Kenya</dd>
+              </div>
+              <div className="flex gap-4 border-b border-border py-3">
+                <dt className="label w-24 shrink-0">Status</dt>
+                <dd>Open for work</dd>
+              </div>
+            </dl>
           </div>
-        </div>
 
-        {/* Form */}
-        <div className="md:col-span-7">
-          {sent ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              role="status"
-              className="flex items-center justify-center h-64 text-foreground/60 font-mono text-sm text-center"
-            >
-              Message sent. I will get back to you soon.
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="contact-name"
-                    className="font-mono text-xs tracking-widest uppercase text-foreground/40"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    placeholder="Your name"
-                    className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="contact-email"
-                    className="font-mono text-xs tracking-widest uppercase text-foreground/40"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    placeholder="your@email.com"
-                    className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="contact-project"
-                  className="font-mono text-xs tracking-widest uppercase text-foreground/40"
-                >
-                  Project
-                </label>
+          <div className="md:col-span-6 md:col-start-7">
+            {sent ? (
+              <p role="status" className="flex h-64 items-center text-lg text-muted">
+                Message sent. I will get back to you soon.
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <input
-                  id="contact-project"
-                  name="project"
-                  type="text"
-                  placeholder="Tell me about your project"
-                  className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors"
+                  type="checkbox"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
                 />
-              </div>
 
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="contact-message"
-                  className="font-mono text-xs tracking-widest uppercase text-foreground/40"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="What are you trying to build?"
-                  className="bg-transparent border border-border px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded transition-colors resize-none"
-                />
-              </div>
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                  <Field id="contact-name" label="Name">
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      required
+                      autoComplete="name"
+                      placeholder="Your name"
+                      className={fieldClass}
+                    />
+                  </Field>
+                  <Field id="contact-email" label="Email">
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      placeholder="you@example.com"
+                      className={fieldClass}
+                    />
+                  </Field>
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                aria-busy={isSubmitting}
-                className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background text-sm font-mono tracking-widest uppercase hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Sending..." : "Send message"}
-              </button>
-              {error && (
-                <p role="alert" className="text-danger font-mono text-xs mt-2">{error}</p>
-              )}
-            </form>
-          )}
+                <Field id="contact-project" label="Project (optional)">
+                  <input
+                    id="contact-project"
+                    name="project"
+                    type="text"
+                    placeholder="What is it?"
+                    className={fieldClass}
+                  />
+                </Field>
+
+                <Field id="contact-message" label="Message">
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    required
+                    placeholder="What are you trying to build?"
+                    className={`${fieldClass} resize-none`}
+                  />
+                </Field>
+
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
+                    className="rounded-full bg-foreground px-8 py-3 text-sm font-medium text-background transition-colors hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isSubmitting ? 'Sending…' : 'Send message'}
+                  </button>
+                  {error && (
+                    <p role="alert" className="text-sm text-danger">
+                      {error}
+                    </p>
+                  )}
+                </div>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>

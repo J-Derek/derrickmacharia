@@ -14,8 +14,8 @@ const Home = () => {
       </Helmet>
       <Hero />
       <WorkIndex />
-      <Stack />
       <About />
+      <Stack />
       <Contact />
     </>
   );
