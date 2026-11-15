@@ -12,7 +12,7 @@ const PREVIEW = { width: 320, height: 200 };
 const isMobileProject = (project) => project.stack.some((s) => /flutter|dart/i.test(s));
 
 function ProjectRow({ project, onHover, onLeave }) {
-  const { year, category } = getMeta(project);
+  const { state, year, category } = getMeta(project);
 
   return (
     <li
@@ -22,7 +22,7 @@ function ProjectRow({ project, onHover, onLeave }) {
     >
       <Link
         to={`/project/${project.id}`}
-        className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-1 py-6 md:grid-cols-[3rem_1fr_12rem_4rem_1.5rem] md:py-8"
+        className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-1 py-6 md:grid-cols-[3rem_1fr_10rem_8rem_1.5rem] md:py-8"
       >
         <span className="label tabular-nums">{project.number}</span>
         <span className="font-serif text-3xl leading-tight transition-transform duration-300 ease-(--ease-out-soft) group-hover:translate-x-2 md:text-5xl">
@@ -30,7 +30,7 @@ function ProjectRow({ project, onHover, onLeave }) {
         </span>
         <span className="label col-start-2 md:col-start-auto md:text-right">{category}</span>
         <span className="label col-start-3 row-start-1 tabular-nums md:col-start-auto md:row-start-auto md:text-right">
-          {year}
+          {state === 'Pilot' || state === 'Prototype' ? `${state} ${year}` : year}
         </span>
         <ArrowUpRight
           size={18}
