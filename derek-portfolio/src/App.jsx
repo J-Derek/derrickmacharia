@@ -3,6 +3,7 @@ import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import AmbientBackground from './components/AmbientBackground';
 
 function App() {
   return (
@@ -14,11 +15,14 @@ function App() {
         Skip to content
       </a>
       <ScrollToTop />
+      <AmbientBackground />
       <Navbar />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="relative z-10 min-h-screen">
         <Outlet />
       </main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </MotionConfig>
   );
 }

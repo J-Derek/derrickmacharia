@@ -60,7 +60,7 @@ const WorkIndex = () => {
   const showPreview = finePointer && !reducedMotion && activeProject?.screenshot;
 
   return (
-    <section id="work" className="border-t border-border py-24 md:py-36">
+    <section id="work" className="border-t border-border py-16 md:py-28">
       <div className="container-page">
         <SectionHeader title="Selected work">
           <div className="flex items-baseline gap-6">

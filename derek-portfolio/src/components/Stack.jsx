@@ -10,7 +10,7 @@ const STACK = [
 
 const Stack = () => {
   return (
-    <section id="stack" className="border-t border-border py-24 md:py-36">
+    <section id="stack" className="border-t border-border py-16 md:py-28">
       <div className="container-page">
         <SectionHeader title="Stack">
           <p className="label">Tools I reach for first</p>
