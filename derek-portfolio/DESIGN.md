@@ -21,7 +21,7 @@ Style: editorial minimal. Few elements, large serif type, generous space, hairli
 | `--foreground` | `#121211` | `#ecebe7` | Text |
 | `--card` | `#eeeeeb` | `#181817` | Image panels |
 | `--border` | `rgba(18,18,17,.12)` | `rgba(236,235,231,.14)` | Hairlines |
-| `--muted` | `#66665f` | `#94938c` | Secondary text, labels |
+| `--muted` | `#66665f` | `#a3a29b` | Secondary text, labels |
 | `--accent` | `#7c2d12` | `#e0a17a` | Dot, focus, selection, hover fill |
 | `--accent-foreground` | `#f7f7f5` | `#0e0e0d` | Text on accent |
 | `--danger` | `#b3261e` | `#ff8a80` | Form errors |
@@ -36,7 +36,7 @@ Theme: light by default, follows the system preference on first visit, then the 
 - Section statement: `font-serif text-4xl md:text-6xl leading-[1.05]`.
 - List title: `font-serif text-3xl md:text-5xl`.
 - Lead: `text-lg md:text-xl text-muted`. Body: `text-base` or `text-lg`, `leading-relaxed`.
-- `.label`: 12px, medium, uppercase, tracking 0.08em, muted.
+- `.label`: 13px, medium, uppercase, tracking 0.08em, muted.
 
 ## Layout
 - Sections: `border-t border-border py-24 md:py-36`, each opened by `SectionHeader`.
@@ -45,6 +45,6 @@ Theme: light by default, follows the system preference on first visit, then the 
 
 ## Components
 - `.link-underline`: underline grows from the left on hover and focus.
-- Buttons: one filled pill (contact submit), one outlined pill (Resume). Everything else is a text link.
+- Buttons: filled pills for the main actions (hero `Get in touch`, contact submit, 404 `Back home`), one outlined pill (Resume). Everything else is a text link.
 - Form fields: bottom border only, visible label above.
 - Work rows: number, name, category, year; name shifts 8px on hover; image preview follows the pointer on fine pointers only.

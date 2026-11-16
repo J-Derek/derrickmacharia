@@ -99,13 +99,21 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href="https://github.com/J-Derek"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted transition-colors hover:text-foreground"
+            >
+              GitHub
+            </a>
           </nav>
 
           <div className="flex items-center gap-2">
             <a
               href="/DerrickMachariaCV.pdf"
               download
-              className="mr-2 hidden rounded-full border border-border px-4 py-1.5 text-sm transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground md:inline-flex"
+              className="mr-2 hidden rounded-full border border-foreground/40 px-4 py-1.5 text-sm transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground md:inline-flex"
             >
               Resume
             </a>
@@ -162,6 +170,14 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              <a
+                href="https://github.com/J-Derek"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="self-start font-serif text-5xl leading-tight"
+              >
+                GitHub
+              </a>
             </nav>
 
             <div className="container-page shrink-0 border-t border-border py-6">

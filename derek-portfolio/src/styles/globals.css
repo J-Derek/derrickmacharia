@@ -33,7 +33,7 @@
   --foreground: #ecebe7;
   --card: #181817;
   --border: rgba(236, 235, 231, 0.14);
-  --muted: #94938c;
+  --muted: #a3a29b;
   --accent: #e0a17a;
   --accent-foreground: #0e0e0d;
   --danger: #ff8a80;
@@ -80,7 +80,7 @@
 
   /* Small uppercase metadata label */
   .label {
-    @apply text-xs font-medium uppercase tracking-[0.08em] text-muted;
+    @apply text-[13px] font-medium uppercase tracking-[0.08em] text-muted;
   }
 
   /* Underline that grows from the left on hover */

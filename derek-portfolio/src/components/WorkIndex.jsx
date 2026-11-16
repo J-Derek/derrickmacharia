@@ -13,6 +13,8 @@ const isMobileProject = (project) => project.stack.some((s) => /flutter|dart/i.t
 
 function ProjectRow({ project, onHover, onLeave }) {
   const { state, year, category } = getMeta(project);
+  const thumb = project.screenshot || project.logo;
+  const isEarly = state === 'Pilot' || state === 'Prototype';
 
   return (
     <li
@@ -22,16 +24,26 @@ function ProjectRow({ project, onHover, onLeave }) {
     >
       <Link
         to={`/project/${project.id}`}
-        className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-1 py-6 md:grid-cols-[3rem_1fr_10rem_8rem_1.5rem] md:py-8"
+        className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-x-4 gap-y-1 py-5 md:grid-cols-[3rem_1fr_9rem_6rem_4rem_1.5rem] md:items-baseline md:py-8"
       >
-        <span className="label tabular-nums">{project.number}</span>
+        <span className="label hidden tabular-nums md:block">{project.number}</span>
+        {thumb && (
+          <img
+            src={thumb}
+            alt=""
+            loading="lazy"
+            className="row-span-2 h-14 w-14 rounded-sm border border-border bg-card object-cover object-top md:hidden"
+          />
+        )}
         <span className="font-serif text-3xl leading-tight transition-transform duration-300 ease-(--ease-out-soft) group-hover:translate-x-2 md:text-5xl">
           {project.name}
         </span>
-        <span className="label col-start-2 md:col-start-auto md:text-right">{category}</span>
-        <span className="label col-start-3 row-start-1 tabular-nums md:col-start-auto md:row-start-auto md:text-right">
-          {state === 'Pilot' || state === 'Prototype' ? `${state} ${year}` : year}
+        <span className="label col-start-2 row-start-2 md:col-start-auto md:row-start-auto md:text-right">{category}</span>
+        <span className="label col-start-3 row-start-1 tabular-nums md:hidden">
+          {isEarly ? `${state} ${year}` : year}
         </span>
+        <span className="label hidden md:block md:text-right">{isEarly ? state : ''}</span>
+        <span className="label hidden tabular-nums md:block md:text-right">{year}</span>
         <ArrowUpRight
           size={18}
           aria-hidden="true"
@@ -57,7 +69,8 @@ const WorkIndex = () => {
   }, [filter]);
 
   const activeProject = projects.find((p) => p.id === cursor.id);
-  const showPreview = finePointer && !reducedMotion && activeProject?.screenshot;
+  const previewImage = activeProject?.screenshot || activeProject?.logo;
+  const showPreview = finePointer && !reducedMotion && previewImage;
 
   return (
     <section id="work" className="border-t border-border py-16 md:py-28">
@@ -105,7 +118,15 @@ const WorkIndex = () => {
             top: Math.max(80, Math.min(cursor.y - PREVIEW.height / 2, window.innerHeight - PREVIEW.height - 16)),
           }}
         >
-          <img src={activeProject.screenshot} alt="" className="h-full w-full object-cover object-top" />
+          <img
+            src={previewImage}
+            alt=""
+            className={
+              activeProject.screenshot
+                ? 'h-full w-full object-cover object-top'
+                : 'mx-auto h-full w-auto object-contain p-6'
+            }
+          />
         </div>
       )}
     </section>

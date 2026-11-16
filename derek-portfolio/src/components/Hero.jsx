@@ -3,8 +3,8 @@ import { ArrowDown } from 'lucide-react';
 import Reveal from './Reveal';
 
 const Hero = () => {
-  const scrollToWork = (e) => {
-    const target = document.getElementById('work');
+  const scrollTo = (id) => (e) => {
+    const target = document.getElementById(id);
     if (target) {
       e.preventDefault();
       target.scrollIntoView();
@@ -27,13 +27,20 @@ const Hero = () => {
 
         <Reveal delay={0.1} className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-12 md:items-end">
           <p className="text-lg leading-relaxed text-muted md:col-span-6 md:text-xl">
-            Software developer in Nairobi, Kenya. Building products at the intersection of
-            engineering and design, for mobile and the web.
+            Software developer in Nairobi, Kenya. I build mobile apps with Flutter and web apps
+            with React, from the database to the interface.
           </p>
-          <div className="md:col-span-6 md:justify-self-end">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:col-span-6 md:justify-self-end">
+            <Link
+              to="/#contact"
+              onClick={scrollTo('contact')}
+              className="rounded-full bg-foreground px-7 py-3 text-sm font-medium text-background transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              Get in touch
+            </Link>
             <Link
               to="/#work"
-              onClick={scrollToWork}
+              onClick={scrollTo('work')}
               className="link-underline inline-flex items-center gap-2 text-lg"
             >
               View work <ArrowDown size={18} aria-hidden="true" />
@@ -46,7 +53,7 @@ const Hero = () => {
           className="mt-16 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 md:mt-24"
         >
           <span className="label flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <span className="h-1.5 w-1.5 rounded-full bg-foreground" aria-hidden="true" />
             Open for work
           </span>
           <span className="label">Flutter · React · Node</span>
