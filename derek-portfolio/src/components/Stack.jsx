@@ -2,10 +2,10 @@ import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
 const STACK = [
-  { category: 'Mobile', items: ['Flutter', 'Dart', 'Riverpod', 'Firebase'] },
-  { category: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
-  { category: 'Backend', items: ['Node.js', 'PostgreSQL', 'Supabase', 'REST APIs'] },
-  { category: 'Tooling', items: ['Vite', 'Git', 'Figma'] },
+  { category: 'Mobile', items: ['Flutter', 'Dart', 'Firebase', 'Supabase'] },
+  { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
+  { category: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'SQL'] },
+  { category: 'Tooling', items: ['Git', 'GitHub', 'Linux', 'Vercel'] },
 ];
 
 const Stack = () => {

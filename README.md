@@ -97,7 +97,7 @@ To get a local copy up and running, follow these simple steps:
 <!-- CONTACT -->
 ## Contact
 
-Derrick Macharia - [derrickmacharia2022@gmail.com](mailto:derrickmacharia2022@gmail.com) - WhatsApp: [+254735319205](https://wa.me/254735319205)
+Derrick Macharia - [derrickmacharia2022@gmail.com](mailto:derrickmacharia2022@gmail.com) - WhatsApp: [+254792612021](https://wa.me/254792612021)
 
 Project Link: [https://github.com/J-Derek/derrickmacharia](https://github.com/J-Derek/derrickmacharia)
 

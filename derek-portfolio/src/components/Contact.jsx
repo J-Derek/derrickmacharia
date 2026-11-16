@@ -3,7 +3,7 @@ import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
 const EMAIL = 'derrickmacharia2022@gmail.com';
-const WHATSAPP = '254735319205';
+const WHATSAPP = '254792612021';
 
 const fieldClass =
   'w-full border-0 border-b border-border bg-transparent px-0 py-3 text-base text-foreground placeholder:text-muted/70 transition-colors focus:border-foreground focus:outline-none';
