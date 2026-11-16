@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 const SPACING = 34; // px between dots
 const DOT = 1.6; // dot size in px
-const BASE_ALPHA = 0.16;
+const BASE_ALPHA = 0.12;
 const POINTER_RADIUS = 150; // px of cursor influence
 const MAX_DPR = 2;
 
@@ -74,9 +74,11 @@ const AmbientBackground = () => {
         for (let c = 0; c < cols; c++) {
           const x = offX + c * SPACING;
 
-          // Slow diagonal wave of light
-          const wave = Math.sin((x + y) * 0.006 - time * 0.55) * 0.5 + 0.5;
-          let alpha = BASE_ALPHA + wave * wave * 0.22;
+          // Two slow waves of light travelling in different directions
+          const w1 = Math.sin((x + y) * 0.006 - time * 0.9) * 0.5 + 0.5;
+          const w2 = Math.sin((x - y * 0.6) * 0.004 + time * 0.35) * 0.5 + 0.5;
+          const wave = (w1 + w2) / 2;
+          let alpha = BASE_ALPHA + wave * wave * 0.4;
           let size = DOT;
           let color = fg;
           let dx = 0;

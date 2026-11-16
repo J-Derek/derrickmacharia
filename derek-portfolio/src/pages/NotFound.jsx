@@ -14,7 +14,10 @@ const NotFound = () => {
       <p className="mt-6 max-w-md text-lg text-muted">
         The page you are looking for does not exist or has moved.
       </p>
-      <Link to="/" className="link-underline mt-10 self-start text-lg">
+      <Link
+        to="/"
+        className="mt-10 self-start rounded-full bg-foreground px-7 py-3 text-sm font-medium text-background transition-colors hover:bg-accent hover:text-accent-foreground"
+      >
         Back home
       </Link>
     </div>

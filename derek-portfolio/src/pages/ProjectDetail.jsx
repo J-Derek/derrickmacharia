@@ -102,19 +102,19 @@ const ProjectDetail = () => {
           <img
             src={project.screenshot}
             alt={`Screenshot of ${project.name}`}
-            className="h-auto max-h-[80svh] w-auto max-w-full"
+            className={`h-auto max-h-[80svh] w-auto max-w-full ${project.screenshotPortrait ? 'max-w-[320px]' : ''}`}
           />
         </Reveal>
       ) : project.logo ? (
-        <Reveal className="my-12 flex aspect-[16/7] flex-col items-center justify-center gap-5 rounded-sm bg-card md:my-20">
+        <Reveal className="my-10 flex items-center gap-5 border-y border-border py-8 md:my-14">
           <img
             src={project.logo}
             alt={`${project.name} logo`}
-            width={96}
-            height={96}
-            className="h-24 w-24 rounded-2xl object-cover"
+            width={64}
+            height={64}
+            className="h-16 w-16 rounded-xl object-cover"
           />
-          <span className="label">{project.name}</span>
+          <span className="label">No public screenshots yet</span>
         </Reveal>
       ) : (
         <div className="h-12 md:h-20" />
@@ -140,7 +140,7 @@ const ProjectDetail = () => {
       </Block>
 
       <nav aria-label="More projects" className="border-t border-border pt-12 md:pt-16">
-        <Link to={`/project/${prev.id}`} className="link-underline text-sm text-muted hover:text-foreground">
+        <Link to={`/project/${prev.id}`} className="link-underline text-base text-muted hover:text-foreground">
           Previous: {prev.name}
         </Link>
 
@@ -148,7 +148,7 @@ const ProjectDetail = () => {
           <span className="label">Next project</span>
           <span
             className="mt-3 flex items-baseline gap-4 font-serif leading-[0.95] break-words"
-            style={{ fontSize: 'clamp(2.75rem, 8vw, 7rem)' }}
+            style={{ fontSize: 'clamp(2.25rem, 6vw, 5rem)' }}
           >
             <span className="transition-transform duration-300 ease-(--ease-out-soft) group-hover:translate-x-2">
               {next.name}

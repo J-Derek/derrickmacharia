@@ -92,6 +92,7 @@ export const projects = [
     github: "https://github.com/J-Derek/Pickd",
     live: null,
     screenshot: screenshotPickd,
+    screenshotPortrait: true,
     status: "Shipped · 2026"
   },
   {
