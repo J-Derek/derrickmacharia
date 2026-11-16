@@ -12,12 +12,12 @@ const Hero = () => {
   };
 
   return (
-    <section className="flex min-h-[100svh] flex-col justify-end pt-32 pb-10">
+    <section className="flex flex-col justify-end pt-28 pb-10 md:min-h-[100svh] md:pt-32">
       <div className="container-page">
         <Reveal>
           <h1
             className="font-serif leading-[0.95] tracking-[-0.01em]"
-            style={{ fontSize: 'clamp(3.25rem, 10vw, 8.5rem)' }}
+            style={{ fontSize: 'clamp(4rem, 12vw, 8.5rem)' }}
           >
             Derrick
             <br />
