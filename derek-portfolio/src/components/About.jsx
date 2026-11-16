@@ -10,7 +10,7 @@ const TIMELINE = [
 
 const About = () => {
   return (
-    <section id="about" className="border-t border-border py-24 md:py-36">
+    <section id="about" className="border-t border-border py-16 md:py-28">
       <div className="container-page">
         <SectionHeader title="About" />
 

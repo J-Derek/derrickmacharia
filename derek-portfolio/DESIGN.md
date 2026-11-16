@@ -4,9 +4,9 @@ Style: editorial minimal. Few elements, large serif type, generous space, hairli
 
 ## Principles
 - One container (`.container-page`, max 1280px) for every section so all edges align.
-- Type does the work. No decorative backgrounds, gradients, shadows, glass panels, marquees or cursor effects.
+- Type does the work. The only decoration is the quiet dot field behind the page (`AmbientBackground.jsx`): a slow wave of light drifts across it and dots near the cursor swell and take the accent colour. No gradients, shadows, glass panels, marquees or video backgrounds.
 - One accent colour, used only for the availability dot, focus rings, selection and button hover.
-- Motion is a single fade-and-rise on scroll (`Reveal.jsx`). Nothing loops. Reduced motion is respected.
+- Motion: a single fade-and-rise on scroll (`Reveal.jsx`), plus the dot field. The dot field runs at about 30 fps on one small canvas, pauses when the tab is hidden, and is drawn once (static) for reduced motion.
 - No invented content: no metrics, testimonials or client names that are not real.
 
 ## Fonts

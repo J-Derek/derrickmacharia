@@ -29,7 +29,7 @@ All commands should be run from within the `derek-portfolio` directory.
 derek-portfolio/
 ├── src/
 │   ├── assets/       # WebP images: logos, screenshots, profile
-│   ├── components/   # Navbar, Hero, WorkIndex, About, Stack, Contact, Footer, Reveal, SectionHeader, ScrollToTop
+│   ├── components/   # Navbar, Hero, WorkIndex, About, Stack, Contact, Footer, Reveal, SectionHeader, ScrollToTop, AmbientBackground
 │   ├── data/         # projects.js (project list + getMeta helper)
 │   ├── hooks/        # usePreferences.js (useFinePointer)
 │   ├── pages/        # Home, ProjectDetail, NotFound
@@ -67,7 +67,7 @@ Routing is configured in `src/main.jsx` using React Router's `createBrowserRoute
 - Nav links check `useLocation().pathname` to switch between anchor links (`#section`) and full paths (`/#section`).
 
 ### Animations
-`framer-motion`, through the single `Reveal` component. `<MotionConfig reducedMotion="user">` in `App.jsx` respects accessibility preferences. Scrolling is native (no smooth-scroll library).
+`framer-motion`, through the single `Reveal` component. `<MotionConfig reducedMotion="user">` in `App.jsx` respects accessibility preferences. `AmbientBackground` is the canvas dot field behind the page. Scrolling is native (no smooth-scroll library).
 
 ## Gotchas & Important Notes
 
