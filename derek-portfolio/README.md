@@ -95,7 +95,7 @@ Use this space to showcase how your portfolio operates. The site includes:
 <!-- CONTACT -->
 ## Contact
 
-Derek Macharia - [derrickmacharia2022@gmail.com](mailto:derrickmacharia2022@gmail.com) - WhatsApp: [+254735319205](https://wa.me/254735319205)
+Derrick Macharia - [derrickmacharia2022@gmail.com](mailto:derrickmacharia2022@gmail.com) - WhatsApp: [+254792612021](https://wa.me/254792612021)
 
 Project Link: [https://github.com/J-Derek/derek-portfolio](https://github.com/J-Derek/derek-portfolio)
 

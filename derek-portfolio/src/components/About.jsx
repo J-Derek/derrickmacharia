@@ -3,9 +3,11 @@ import Reveal from './Reveal';
 import SectionHeader from './SectionHeader';
 
 const TIMELINE = [
-  { year: '2025', role: 'Software Engineer', org: 'Freelance' },
-  { year: '2024', role: 'Industrial Attaché', org: 'KPLC' },
-  { year: '2023', role: 'Developer', org: 'Daystar University' },
+  { when: 'Aug 2025 – Now', role: 'Deployment Engineer', org: 'Sugen HMS' },
+  { when: '2025', role: 'IT & Networking Intern', org: 'KPLC Training School' },
+  { when: '2024 – Now', role: 'Freelance Software Developer', org: 'Self-employed' },
+  { when: 'May 2024 – Sep 2025', role: 'IT Support Specialist', org: 'Royal Business Services' },
+  { when: '2022 – 2026', role: 'BSc Computer Science', org: 'Daystar University' },
 ];
 
 const About = () => {
@@ -27,10 +29,13 @@ const About = () => {
 
             <ul className="mt-12 max-w-xl border-t border-border">
               {TIMELINE.map((item) => (
-                <li key={item.year} className="flex items-baseline gap-4 border-b border-border py-3">
-                  <span className="label w-10 tabular-nums">{item.year}</span>
+                <li
+                  key={item.role}
+                  className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-border py-3"
+                >
+                  <span className="label w-full tabular-nums sm:w-44">{item.when}</span>
                   <span className="text-sm">{item.role}</span>
-                  <span className="ml-auto text-right text-sm text-muted">{item.org}</span>
+                  <span className="text-sm text-muted sm:ml-auto sm:text-right">{item.org}</span>
                 </li>
               ))}
             </ul>

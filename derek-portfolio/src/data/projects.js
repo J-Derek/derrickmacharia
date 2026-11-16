@@ -81,12 +81,12 @@ export const projects = [
     logo: logoPickd,
     tagline: "A mood-driven movie and TV discovery app with swipe curation",
     problem: "Endless scrolling on streaming platforms causes choice paralysis. People spend more time searching catalogues than watching something that fits their mood.",
-    solution: "Built Pickd, a Flutter mobile app that turns discovery into a quick gesture game. Users pick a mood and swipe through curated decks powered by the TMDB API. Supabase keeps the watchlist and swipe history in sync across devices, and Hive stores the profile and history on the device.",
+    solution: "Built Pickd, a Flutter mobile app that turns discovery into a quick gesture game. Users pick a mood and swipe through curated decks powered by the TMDB API. Version 1 keeps the profile and swipe history on the device with Hive; Supabase sign-in and cross-device sync are built into the current source and planned for v1.2.",
     stack: ["Flutter", "Dart", "Supabase", "Hive", "TMDB API"],
     features: [
       "Mood-based discovery: curated movie and TV decks for the selected mood",
       "Swipe mechanics: right to save to the watchlist, left to pass, up to mark as watched",
-      "Cross-device sync: Supabase auth and database keep the watchlist and swipe history in sync",
+      "Cross-device sync with Supabase (in the current source, planned for v1.2)",
       "Local persistence: Hive stores the profile and swipe history on the device"
     ],
     github: "https://github.com/J-Derek/Pickd",
@@ -133,7 +133,7 @@ export const projects = [
     github: null,
     live: null,
     screenshot: null,
-    status: "Prototype · 2026"
+    status: "Prototype · 2025"
   }
 ];
 
