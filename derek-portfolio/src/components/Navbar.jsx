@@ -82,7 +82,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-border bg-background/85 backdrop-blur">
+      <header className="nav-glow fixed inset-x-0 top-0 z-50 h-16 border-b border-border bg-background/85 backdrop-blur">
         <div className="container-page flex h-full items-center justify-between gap-6">
           <Link to="/" onClick={handleHomeClick} className="font-serif text-xl leading-none">
             Derrick Macharia

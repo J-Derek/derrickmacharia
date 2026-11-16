@@ -26,6 +26,7 @@
   --accent: #7c2d12;
   --accent-foreground: #f7f7f5;
   --danger: #b3261e;
+  --glow: #ff6a13;
 }
 
 :root[data-theme='dark'] {
@@ -37,6 +38,7 @@
   --accent: #e0a17a;
   --accent-foreground: #0e0e0d;
   --danger: #ff8a80;
+  --glow: #ff8a2b;
 }
 
 @layer base {
@@ -96,6 +98,65 @@
   .link-underline:focus-visible {
     background-size: 100% 1px;
   }
+}
+
+/* Warm orange glow: faint light in the four screen corners ... */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --corner: color-mix(in srgb, var(--glow) 16%, transparent);
+  background:
+    radial-gradient(circle at 0 0, var(--corner), transparent 22rem),
+    radial-gradient(circle at 100% 0, var(--corner), transparent 22rem),
+    radial-gradient(circle at 0 100%, var(--corner), transparent 18rem),
+    radial-gradient(circle at 100% 100%, var(--corner), transparent 18rem);
+}
+
+html:not([data-theme='dark']) body::before {
+  --corner: color-mix(in srgb, var(--glow) 11%, transparent);
+}
+
+/* ... and a glowing lower edge on the navbar with a brief glint, like light sliding over new car paint */
+.nav-glow::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--glow) 75%, transparent) 15%,
+    color-mix(in srgb, var(--glow) 75%, transparent) 85%,
+    transparent
+  );
+  box-shadow: 0 0 14px 1px color-mix(in srgb, var(--glow) 40%, transparent);
+}
+.nav-glow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 22vw;
+  height: 2px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, #ffd9b0 45%, #fff 50%, #ffd9b0 55%, transparent);
+  box-shadow: 0 0 18px 3px color-mix(in srgb, var(--glow) 70%, transparent);
+  animation: nav-glint 9s ease-in-out 1.5s infinite;
+}
+@keyframes nav-glint {
+  0% { transform: translateX(-30vw); opacity: 0; }
+  3% { opacity: 1; }
+  13% { transform: translateX(110vw); opacity: 0; }
+  100% { transform: translateX(110vw); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-glow::before { animation: none; }
 }
 
 * {
